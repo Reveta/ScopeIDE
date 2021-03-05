@@ -24,7 +24,7 @@ namespace ScopeIDE {
             Application.SetCompatibleTextRenderingDefault(false);
 
             IDesignConfig designConfigDef = new DesignEmpty() {
-                InstrumentPanel = new InstrumentPanelDef()
+                PanelInstrument = new PanelInstrumentDef(),
             };
 
             Application.Run(new FormMain(designConfigDef));

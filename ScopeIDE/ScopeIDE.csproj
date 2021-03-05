@@ -44,10 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\EScales.cs" />
-    <Compile Include="Config\Implementions\Def\ButtonConfigDef.cs" />
+    <Compile Include="Config\Implementions\Def\ButtonConfigEmpty.cs" />
     <Compile Include="Config\Implementions\Def\ColorConfigDef.cs" />
     <Compile Include="Config\Implementions\Def\FormSizeDef.cs" />
     <Compile Include="Config\Implementions\Def\InstrumentPanelDef.cs" />
+    <Compile Include="Config\Implementions\Def\PanelNavbarDef.cs" />
     <Compile Include="Config\Implementions\Def\ResourcesDef.cs" />
     <Compile Include="Config\Implementions\Def\ScaleDef.cs" />
     <Compile Include="Config\Implementions\DesignConfigDef.cs" />
@@ -58,7 +59,8 @@
     <Compile Include="Config\Interfaces\IColorConfig.cs" />
     <Compile Include="Config\Interfaces\IDesignConfig.cs" />
     <Compile Include="Config\Interfaces\IFormSize.cs" />
-    <Compile Include="Config\Interfaces\IInstrumentPanel.cs" />
+    <Compile Include="Config\Interfaces\IPanelInstrument.cs" />
+    <Compile Include="Config\Interfaces\IPanelNavbar.cs" />
     <Compile Include="Config\Interfaces\IResources.cs" />
     <Compile Include="Config\Interfaces\IScale.cs" />
     <Compile Include="Elements\ButtonColorDepend.cs">
@@ -105,6 +107,8 @@
     </Compile>
     <Compile Include="libs\Egolds\FlatColors.cs" />
     <Compile Include="libs\Egolds\ShadowedForm.cs" />
+    <Compile Include="Panels\APanelWithButtons.cs" />
+    <Compile Include="Panels\IPanelWithButtons.cs" />
     <Compile Include="Panels\PanelInstrument.cs">
       <SubType>UserControl</SubType>
     </Compile>

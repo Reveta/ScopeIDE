@@ -27,7 +27,8 @@ namespace ScopeIDE.Forms {
 
             FormConfig();
             InitializeComponent();
-            AddInstrumentPanel();
+            AddPanelInstrument();
+            AddPanelNavbar();
         }
 
         protected override void OnResize(EventArgs e) {
@@ -52,7 +53,17 @@ namespace ScopeIDE.Forms {
             };
         }
 
-        private void AddInstrumentPanel() {
+        private void AddPanelNavbar() {
+            _panelNavbar1 = new PanelNavbar(DesignConfig) {
+                Location = new Point(
+                    DesignConfig.PanelNavbar.LogoWidth + 25,
+                    DesignConfig.PanelNavbar.Height * -1)
+            };
+
+            this.Controls.Add(_panelNavbar1);
+        }
+
+        private void AddPanelInstrument() {
             this._panelInstrumentPanel1 = new PanelInstrument(DesignConfig) {TabIndex = 0};
 
             this.Controls.Add(_panelInstrumentPanel1);
@@ -64,7 +75,6 @@ namespace ScopeIDE.Forms {
             // FormMain
             // 
             this.Name = "FormMain";
-            this.Text = "FormTest";
             this.ResumeLayout(false);
         }
 

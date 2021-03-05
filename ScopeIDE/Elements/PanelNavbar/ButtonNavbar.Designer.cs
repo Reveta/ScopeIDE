@@ -29,14 +29,6 @@ namespace ScopeIDE.Elements.PanelNavbar {
         /// </summary>
         private void InitializeComponent() {
             components = new System.ComponentModel.Container();
-            
-            this.Size = new System.Drawing.Size(50, 20);
-            this.Font = new Font("Arial", (float) 8, FontStyle.Regular);
-            this.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.Padding = new Padding(5, 0, 5,0);
-            this.Margin = new Padding(5, 0, 5,0);
-            this.BackColor = System.Drawing.Color.Gray;
-            this.AutoSize = true;
         }
 
         #endregion

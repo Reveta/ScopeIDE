@@ -9,7 +9,7 @@ using ScopeIDE.Elements.PanelInstruments;
 using ScopeIDE.libs.ControlExt;
 
 namespace ScopeIDE.Panels {
-    public partial class PanelInstrument : UserControl, IEventFormResize {
+    public partial class PanelInstrument : APanelWithButtons, IEventFormResize {
         public IDesignConfig DesignConfig { get; }
 
         private ButtonTransform _buttonTransform1;
@@ -24,11 +24,18 @@ namespace ScopeIDE.Panels {
             AddButton(new ButtonInstrument(designConfig));
             AddButton(new ButtonInstrument(designConfig));
             AddButton(new ButtonInstrument(designConfig));
+            AddButton(new ButtonInstrument(designConfig));
+            AddButton(new ButtonInstrument(designConfig));
+            AddButton(new ButtonInstrument(designConfig));
+            AddButton(new ButtonInstrument(designConfig));
+            AddButton(new ButtonInstrument(designConfig));
+            AddButton(new ButtonInstrument(designConfig));
+            AddButton(new ButtonInstrument(designConfig));
 
             InitializeComponent();
         }
 
-        public void AddButton(Button button, bool onlyPosition = false) {
+        public override void AddButton(Button button, bool onlyPosition = false) {
             int count = this.GetAllButtons().Count;
             button.Name = "buttonInstrument" + count;
             button.TabIndex = count;
@@ -48,8 +55,8 @@ namespace ScopeIDE.Panels {
                 button.Margin = new Padding(0);
 
                 button.Size = new Size(
-                    DesignConfig.InstrumentPanel.Button.Width,
-                    DesignConfig.InstrumentPanel.Button.Height);
+                    DesignConfig.PanelInstrument.Button.Width,
+                    DesignConfig.PanelInstrument.Button.Height);
 
                 button.TabStop = false;
                 button.TextAlign = ContentAlignment.BottomCenter;
@@ -59,7 +66,7 @@ namespace ScopeIDE.Panels {
 
             this.Controls.Add(button);
         }
-        
+
         #region Initialize_region
 
         private void InitializeComponent() {
@@ -120,7 +127,7 @@ namespace ScopeIDE.Panels {
             RePaint();
         }
 
-        private void RePaint() {
+        public override void RePaint() {
             switch (_state) {
                 case EState.Big:
                     this.SetBigStyle();
@@ -133,10 +140,10 @@ namespace ScopeIDE.Panels {
 
         private void SetBigStyle() {
             _state = EState.Big;
-            int width = (DesignConfig.InstrumentPanel.Button.Width * 2) + 20;
+            int width = (DesignConfig.PanelInstrument.Button.Width * 2) + 20;
             int height = this._buttonTransform1.Height
-                         + DesignConfig.InstrumentPanel.Button.Height
-                         + ((GetAllButtons().Count / 2) * (DesignConfig.InstrumentPanel.Button.Height + 10));
+                         + DesignConfig.PanelInstrument.Button.Height
+                         + ((GetAllButtons().Count / 2) * (DesignConfig.PanelInstrument.Button.Height + 10));
             
             this.Size = new Size(
                 width,
@@ -146,8 +153,8 @@ namespace ScopeIDE.Panels {
             this._buttonTransform1.SetBigStyle();
 
             int x1 = 5;
-            int x2 = DesignConfig.InstrumentPanel.Button.Width + 5 + x1;
-            int y = DesignConfig.InstrumentPanel.Button.Height + this._buttonTransform1.Height;
+            int x2 = DesignConfig.PanelInstrument.Button.Width + 5 + x1;
+            int y = DesignConfig.PanelInstrument.Button.Height + this._buttonTransform1.Height;
             bool xState = true;
             foreach (Control element in this.Controls) {
                 if (element is ButtonTransform) {
@@ -165,9 +172,9 @@ namespace ScopeIDE.Panels {
 
         private void SetSmallStyle() {
             _state = EState.Small;
-            int width = (DesignConfig.InstrumentPanel.Button.Width) + 10;
+            int width = (DesignConfig.PanelInstrument.Button.Width) + 10;
             int height = this._buttonTransform1.Height
-                         + (GetAllButtons().Count * (DesignConfig.InstrumentPanel.Button.Height + 10));
+                         + (GetAllButtons().Count * (DesignConfig.PanelInstrument.Button.Height + 10));
             
             this.Size = new Size(
                 width,
@@ -177,7 +184,7 @@ namespace ScopeIDE.Panels {
             this._buttonTransform1.SetSmallStyle();
 
             int x1 = 5;
-            int y = DesignConfig.InstrumentPanel.Button.Height + this._buttonTransform1.Height;
+            int y = DesignConfig.PanelInstrument.Button.Height + this._buttonTransform1.Height;
             foreach (Control element in this.Controls) {
                 if (element is ButtonTransform) {
                     continue;
@@ -191,10 +198,6 @@ namespace ScopeIDE.Panels {
         #endregion
 
         #region Utill_region
-
-        private List<Button> GetAllButtons() {
-            return this.Controls.OfType<Button>().ToList();
-        }
 
         private enum EState {
             Big,

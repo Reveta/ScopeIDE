@@ -16,7 +16,7 @@ namespace ScopeIDE.Forms.FormStyls {
                 new EgoldsStyle() {
                     FormBorderStyle = FormBorderStyle.None,
                     BackColor = DesignConfig.ColorConfig.MainBackColor,
-                    HeaderHeight = 38,
+                    HeaderHeight = DesignConfig.PanelNavbar.Height,
                     HeaderColor = DesignConfig.ColorConfig.SecondBackColor,
                     HeaderTextColor = DesignConfig.ColorConfig.FontColorMain,
                     HeaderTextFont = new Font(
@@ -25,9 +25,12 @@ namespace ScopeIDE.Forms.FormStyls {
                         DesignConfig.Resources.FontStyle
                         ),
                     ControlBoxButtonsWidth = HeaderHeight,
-                    ControlBoxIconsSize = new Size(10, 10),
+                    ControlBoxIconsSize = new Size(DesignConfig.PanelNavbar.Height / 5, DesignConfig.PanelNavbar.Height / 5),
                     UseSecondControlBoxIconsColorOnHover = true, // <-
-                    ControlBoxEnabledIconsColor = DesignConfig.ColorConfig.FontColorMain
+                    ControlBoxEnabledIconsColor = DesignConfig.ColorConfig.FontColorMain,
+                    IconSize = new Size(DesignConfig.PanelNavbar.LogoWidth, DesignConfig.PanelNavbar.LogoHeight),
+                    ControlBoxOnHoverIconsColor = DesignConfig.ColorConfig.ContrBackColor,
+                    
                     
                 });
 

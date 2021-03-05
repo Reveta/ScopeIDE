@@ -1,11 +1,16 @@
 ﻿using ScopeIDE.Config.Interfaces;
 
 namespace ScopeIDE.Config.Implementions.Def {
-    public class InstrumentPanelDef : IInstrumentPanel{
+    public class PanelInstrumentDef : IPanelInstrument{
         public IButtonConfig Button { get; set; }
 
-        public InstrumentPanelDef() {
-            Button = new ButtonConfigDef();
+        public PanelInstrumentDef() {
+            Button = new ButtonConfigEmpty() {
+                WidthDef = 50,
+                HeightDef = 50,
+                Width = 50,
+                Height = 50
+            };
         }
     }
 }
