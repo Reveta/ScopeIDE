@@ -72,10 +72,10 @@ namespace ScopeIDE.Forms {
 
             this.Height = DesignConfig.FormSize.HeightDef;
             this.Width = DesignConfig.FormSize.WidthDef;
+            this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(
                 DesignConfig.FormSize.XDef,
                 DesignConfig.FormSize.YDef);
-            //TODO fix location
         }
     }
 }

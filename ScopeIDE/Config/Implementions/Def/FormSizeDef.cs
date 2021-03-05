@@ -20,10 +20,10 @@ namespace ScopeIDE.Config.Implementions.Def {
             Height = WidthDef;
 
             Rectangle primaryScreenBounds = Screen.PrimaryScreen.Bounds;
-            var width = primaryScreenBounds.Width / 2 + (WidthDef / 2);
-            var height = primaryScreenBounds.Height / 2 + (HeightDef / 2);
-            YDef = width;
-            XDef = height;
+            var width = primaryScreenBounds.Width / 2.5;
+            var height = primaryScreenBounds.Height / 2.5;
+            YDef = (int) height;
+            XDef = (int) width;
         }
     }
 }

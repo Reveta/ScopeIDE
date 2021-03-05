@@ -28,9 +28,6 @@ namespace ScopeIDE {
             };
 
             Application.Run(new FormMain(designConfigDef));
-
-
-            
         }
     }
 }
