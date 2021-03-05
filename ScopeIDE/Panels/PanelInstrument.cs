@@ -9,13 +9,13 @@ using ScopeIDE.Elements.PanelInstruments;
 using ScopeIDE.libs.ControlExt;
 
 namespace ScopeIDE.Panels {
-    public partial class InstrumentPanel : UserControl, IEventFormResize {
+    public partial class PanelInstrument : UserControl, IEventFormResize {
         public IDesignConfig DesignConfig { get; }
 
         private ButtonTransform _buttonTransform1;
         private EState _state;
 
-        public InstrumentPanel(IDesignConfig designConfig) {
+        public PanelInstrument(IDesignConfig designConfig) {
             _state = EState.Big;
             DesignConfig = designConfig;
             AddTransformButton();
@@ -76,7 +76,7 @@ namespace ScopeIDE.Panels {
 
 
             this.SetBigStyle();
-            this.Name = "InstrumentPanel";
+            this.Name = "PanelInstrument";
             this.ResumeLayout(false);
         }
 

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using ScopeIDE.Elements.PanelInstruments;
 
 namespace ScopeIDE.Panels {
-	partial class InstrumentPanel {
+	partial class PanelInstrument {
 		/// <summary> 
 		/// Required designer variable.
 		/// </summary>

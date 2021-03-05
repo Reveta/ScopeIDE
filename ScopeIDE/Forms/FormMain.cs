@@ -17,7 +17,8 @@ namespace ScopeIDE.Forms {
         private MyStyleExtenstion _styleExtenstion;
         public EScales Scales { get; set; }
 
-        private InstrumentPanel instrumentPanel1;
+        private PanelInstrument _panelInstrumentPanel1;
+        private PanelNavbar _panelNavbar1;
 
         public FormMain(IDesignConfig designConfig) {
             DesignConfig = designConfig;
@@ -52,9 +53,9 @@ namespace ScopeIDE.Forms {
         }
 
         private void AddInstrumentPanel() {
-            this.instrumentPanel1 = new InstrumentPanel(DesignConfig) {TabIndex = 0};
+            this._panelInstrumentPanel1 = new PanelInstrument(DesignConfig) {TabIndex = 0};
 
-            this.Controls.Add(instrumentPanel1);
+            this.Controls.Add(_panelInstrumentPanel1);
         }
 
         private void InitializeComponent() {
