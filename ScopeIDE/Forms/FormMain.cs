@@ -19,6 +19,7 @@ namespace ScopeIDE.Forms {
 
         private PanelInstrument _panelInstrumentPanel1;
         private PanelNavbar _panelNavbar1;
+        private PanelMain _panelMain1;
 
         public FormMain(IDesignConfig designConfig) {
             DesignConfig = designConfig;
@@ -27,8 +28,9 @@ namespace ScopeIDE.Forms {
 
             FormConfig();
             InitializeComponent();
-            AddPanelInstrument();
             AddPanelNavbar();
+            AddPanelMain();
+            AddPanelInstrument();
         }
 
         protected override void OnResize(EventArgs e) {
@@ -54,6 +56,7 @@ namespace ScopeIDE.Forms {
 
         private void AddPanelNavbar() {
             _panelNavbar1 = new PanelNavbar(DesignConfig) {
+                TabIndex = 0,
                 Location = new Point(
                     DesignConfig.PanelNavbar.LogoWidth + 25,
                     DesignConfig.PanelNavbar.Height * -1)
@@ -62,11 +65,24 @@ namespace ScopeIDE.Forms {
             this.Controls.Add(_panelNavbar1);
         }
 
+        private void AddPanelMain() {
+            this._panelMain1 = new PanelMain(DesignConfig) {
+                TabIndex = 1,
+                Location = new Point(0, 0 + 5)
+            };
+
+            this.Controls.Add(_panelMain1);
+        }
+
         private void AddPanelInstrument() {
-            this._panelInstrumentPanel1 = new PanelInstrument(DesignConfig) {TabIndex = 0};
+            this._panelInstrumentPanel1 = new PanelInstrument(DesignConfig) {
+                TabIndex = 2,
+                Location = new Point(0, DesignConfig.PanelMainConfig.Height + 10)
+            };
 
             this.Controls.Add(_panelInstrumentPanel1);
         }
+
 
         private void InitializeComponent() {
             this.SuspendLayout();

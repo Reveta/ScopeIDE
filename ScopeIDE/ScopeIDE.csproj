@@ -48,6 +48,7 @@
     <Compile Include="Config\Implementions\Def\ColorConfigDef.cs" />
     <Compile Include="Config\Implementions\Def\FormSizeDef.cs" />
     <Compile Include="Config\Implementions\Def\InstrumentPanelDef.cs" />
+    <Compile Include="Config\Implementions\Def\PanelMainConfig.cs" />
     <Compile Include="Config\Implementions\Def\PanelNavbarDef.cs" />
     <Compile Include="Config\Implementions\Def\ResourcesDef.cs" />
     <Compile Include="Config\Implementions\Def\ScaleDef.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Config\Interfaces\IDesignConfig.cs" />
     <Compile Include="Config\Interfaces\IFormSize.cs" />
     <Compile Include="Config\Interfaces\IPanelInstrument.cs" />
+    <Compile Include="Config\Interfaces\IPanelMainConfig.cs" />
     <Compile Include="Config\Interfaces\IPanelNavbar.cs" />
     <Compile Include="Config\Interfaces\IResources.cs" />
     <Compile Include="Config\Interfaces\IScale.cs" />
@@ -81,6 +83,12 @@
     </Compile>
     <Compile Include="Elements\PanelInstruments\ButtonTransform.Designer.cs">
       <DependentUpon>ButtonTransform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\PanelMain\ButtonMainInstrument.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Elements\PanelMain\ButtonMainInstrument.Designer.cs">
+      <DependentUpon>ButtonMainInstrument.cs</DependentUpon>
     </Compile>
     <Compile Include="Elements\PanelNavbar\ButtonNavbar.cs">
       <SubType>Component</SubType>
@@ -114,6 +122,12 @@
     </Compile>
     <Compile Include="Panels\PanelInstrument.Designer.cs">
       <DependentUpon>PanelInstrument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\PanelMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\PanelMain.Designer.cs">
+      <DependentUpon>PanelMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Panels\PanelNavbar.cs">
       <SubType>UserControl</SubType>

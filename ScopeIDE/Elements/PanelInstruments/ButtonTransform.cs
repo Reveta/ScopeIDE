@@ -25,7 +25,8 @@ namespace ScopeIDE.Elements.PanelInstruments {
             this.FlatStyle = FlatStyle.Flat;
             this.Font = new Font("Arial", 15.33333F, System.Drawing.FontStyle.Bold);
             this.ForeColor = DesignConfig.ColorConfig.FontColorMain;
-            this.Height = 50;
+            this.TextAlign = ContentAlignment.MiddleCenter;
+            this.Height = 30;
             this.TabIndex = 0;
             this.TabStop = false;
             this.UseVisualStyleBackColor = true;

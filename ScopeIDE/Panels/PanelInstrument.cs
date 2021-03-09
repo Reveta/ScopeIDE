@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements;
@@ -22,17 +20,17 @@ namespace ScopeIDE.Panels {
             
             AddTransformButton();
 
-            AddButton(new ButtonInstrument(designConfig));
-            AddButton(new ButtonInstrument(designConfig));
-            AddButton(new ButtonInstrument(designConfig));
-            AddButton(new ButtonInstrument(designConfig));
-            AddButton(new ButtonInstrument(designConfig));
-            AddButton(new ButtonInstrument(designConfig));
-            AddButton(new ButtonInstrument(designConfig));
-            AddButton(new ButtonInstrument(designConfig));
-            AddButton(new ButtonInstrument(designConfig));
-            AddButton(new ButtonInstrument(designConfig));
-            AddButton(new ButtonInstrument(designConfig));
+            AddButton(new ButtonInstrument(designConfig){Text = "😍"});
+            AddButton(new ButtonInstrument(designConfig){Text = "😘"});
+            AddButton(new ButtonInstrument(designConfig){Text = "👌"});
+            AddButton(new ButtonInstrument(designConfig){Text = "😒"});
+            AddButton(new ButtonInstrument(designConfig){Text = "😁"});
+            AddButton(new ButtonInstrument(designConfig){Text = "😂"});
+            AddButton(new ButtonInstrument(designConfig){Text = "😊"});
+            AddButton(new ButtonInstrument(designConfig){Text = "🤣"});
+            AddButton(new ButtonInstrument(designConfig){Text = "❤"});
+            AddButton(new ButtonInstrument(designConfig){Text = "💕"});
+            AddButton(new ButtonInstrument(designConfig){Text = "🎉"});
 
             InitializeComponent();
         }
@@ -46,9 +44,10 @@ namespace ScopeIDE.Panels {
                 button.FlatStyle = FlatStyle.Flat;
 
                 button.Font = new Font(
-                    DesignConfig.Resources.FontName,
-                    DesignConfig.Resources.FontSize,
-                    DesignConfig.Resources.FontStyle);
+                    DesignConfig.PanelInstrument.Button.FontName,
+                    DesignConfig.PanelInstrument.Button.FontSize,
+                    DesignConfig.PanelInstrument.Button.FontStyle
+                );
 
                 button.BackColor = DesignConfig.ColorConfig.ContrBackColor;
                 button.ForeColor = DesignConfig.ColorConfig.FontColorMain;
@@ -61,7 +60,7 @@ namespace ScopeIDE.Panels {
                     DesignConfig.PanelInstrument.Button.Height);
 
                 button.TabStop = false;
-                button.TextAlign = ContentAlignment.BottomCenter;
+                button.TextAlign = ContentAlignment.MiddleCenter;
                 button.UseVisualStyleBackColor = false;
                 button.AutoSize = false;
             }
@@ -79,7 +78,6 @@ namespace ScopeIDE.Panels {
             this.AccessibleRole = AccessibleRole.MenuItem;
             this.BackColor = DesignConfig.ColorConfig.SecondBackColor;
             this.BorderStyle = BorderStyle.None;
-            this.Location = new Point(0, 83);
             this.Margin = new Padding(0);
             this.Name = "instrumentPanel1";
 

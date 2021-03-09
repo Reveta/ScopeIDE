@@ -1,0 +1,80 @@
+﻿using System.Drawing;
+using System.Windows.Forms;
+using ScopeIDE.Config.Interfaces;
+using ScopeIDE.Elements;
+using ScopeIDE.Elements.PanelMain;
+using ScopeIDE.libs.ControlExt;
+
+namespace ScopeIDE.Panels {
+    public partial class PanelMain : APanelWithButtons, IEventFormResize{
+
+        public IDesignConfig DesignConfig { get; set; }
+        public PanelMain(IDesignConfig designConfig) {
+            DesignConfig = designConfig;
+            
+            AddButton(new ButtonMainInstrument(designConfig){Text = "😁"});
+            AddButton(new ButtonMainInstrument(designConfig){Text = "😂"});
+            AddButton(new ButtonMainInstrument(designConfig){Text = "😊"});
+            AddButton(new ButtonMainInstrument(designConfig){Text = "🤣"});
+            AddButton(new ButtonMainInstrument(designConfig){Text = "❤"});
+            AddButton(new ButtonMainInstrument(designConfig){Text = "😍"});
+            
+            InitializeComponent();
+            RePaint();
+        }
+
+        private void InitializeComponent() {
+            components = new System.ComponentModel.Container();
+            this.ResumeLayout(false);
+            
+            RePaint();
+            this.Name = "PanelMain";
+            this.PerformLayout();
+        }
+
+        public override void AddButton(Button button, bool onlyPosition = false) {
+            int count = this.GetAllButtons().Count;
+            button.Name = "buttonMainInstrument" + count;
+            button.TabIndex = count;
+
+            if (!onlyPosition) {
+                button.FlatStyle = FlatStyle.Flat;
+
+                button.BackColor = DesignConfig.ColorConfig.ContrBackColor;
+                button.ForeColor = DesignConfig.ColorConfig.FontColorMain;
+
+                button.FlatAppearance.BorderSize = 0;
+                button.Margin = new Padding(0);
+
+                button.Size = new Size(
+                    DesignConfig.PanelMainConfig.Button.Width,
+                    DesignConfig.PanelMainConfig.Button.Height);
+
+                button.TabStop = false;
+                button.TextAlign = ContentAlignment.MiddleCenter;
+                button.UseVisualStyleBackColor = false;
+                button.AutoSize = false;
+            }
+
+            this.Controls.Add(button);
+        }
+
+        public override void RePaint() {
+            int xMargin = 5;
+            int yMargin = (int) ((DesignConfig.PanelMainConfig.Height - DesignConfig.PanelMainConfig.Button.Height) / 2f);
+            ControlCollectionExt.ToList(this.Controls).ForEach(control => {
+                control.Location = new Point(xMargin, yMargin);
+                xMargin += control.Width + 5;
+            });
+            
+            this.BackColor = DesignConfig.ColorConfig.SecondBackColor;
+            this.Height = DesignConfig.PanelMainConfig.HeightDef;
+        }
+
+        public void EventFormResize(Form form) {
+            this.Width = form.Width;
+            
+            RePaint();
+        }
+    }
+}
