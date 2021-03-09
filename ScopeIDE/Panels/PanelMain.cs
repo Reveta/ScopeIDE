@@ -11,6 +11,7 @@ namespace ScopeIDE.Panels {
         public IDesignConfig DesignConfig { get; set; }
         public PanelMain(IDesignConfig designConfig) {
             DesignConfig = designConfig;
+            DoubleBuffered = true;
             
             AddButton(new ButtonMainInstrument(designConfig){Text = "😁"});
             AddButton(new ButtonMainInstrument(designConfig){Text = "😂"});
@@ -68,11 +69,19 @@ namespace ScopeIDE.Panels {
             });
             
             this.BackColor = DesignConfig.ColorConfig.SecondBackColor;
-            this.Height = DesignConfig.PanelMainConfig.HeightDef;
+            this.Height = DesignConfig.PanelMainConfig.Height;
+            this.Width = DesignConfig.PanelMainConfig.Width;
         }
 
         public void EventFormResize(Form form) {
-            this.Width = form.Width;
+            ControlCollectionExt.ToList(this.Controls).ForEach(control => {
+                if (control is IEventFormResize element) {
+                    element.EventFormResize(form);
+                }
+            });
+            
+            DesignConfig.PanelMainConfig.Width = form.Width;
+            DesignConfig.PanelMainConfig.Height = DesignConfig.PanelMainConfig.Button.Height + 10;
             
             RePaint();
         }
