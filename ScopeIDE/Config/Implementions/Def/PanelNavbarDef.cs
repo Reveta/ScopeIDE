@@ -12,8 +12,8 @@ namespace ScopeIDE.Config.Implementions.Def {
         public PanelNavbarDef() {
             LogoHeight = 20;
             LogoWidth = 20;
-            HeightDef = 50;
-            Height = 50;
+            HeightDef = 30;
+            Height = 30;
 
             Button = new ButtonConfigEmpty() {
                 WidthDef = 100,

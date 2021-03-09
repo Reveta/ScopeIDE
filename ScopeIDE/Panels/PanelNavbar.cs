@@ -55,7 +55,7 @@ namespace ScopeIDE.Panels {
                     DesignConfig.PanelNavbar.Button.Height);
 
                 button.TabStop = false;
-                button.TextAlign = ContentAlignment.BottomCenter;
+                button.TextAlign = ContentAlignment.TopCenter;
                 button.UseVisualStyleBackColor = false;
                 button.AutoSize = true;
             }
@@ -64,12 +64,12 @@ namespace ScopeIDE.Panels {
         }
 
         public override void RePaint() {
-            int xMargin = 5;
-            int yMargin = (int) ((DesignConfig.PanelNavbar.HeightDef - DesignConfig.PanelNavbar.Button.Height) / 1.9f);
+            int xMargin = 0;
+            int yMargin = (int) ((DesignConfig.PanelNavbar.Height - DesignConfig.PanelNavbar.Button.Height) / 2f);
 
             GetAllButtons().ForEach(button => {
                 button.Location = new Point(xMargin, yMargin);
-                xMargin += button.Width + 5;
+                xMargin += button.Width;
             });
             
             this.Size = new Size(xMargin, DesignConfig.PanelNavbar.Height);   

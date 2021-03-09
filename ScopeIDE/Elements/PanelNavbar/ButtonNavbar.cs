@@ -10,13 +10,8 @@ namespace ScopeIDE.Elements.PanelNavbar {
 
         public ButtonNavbar(IDesignConfig designConfig) {
             DesignConfig = designConfig;
-            this.TextAlign = ContentAlignment.TopCenter;
-            this.Padding = Padding.Empty;
-            this.Margin = Padding.Empty;
-
-            this.Height = DesignConfig.PanelNavbar.Height;
+            DesignConfig.PanelNavbar.Button.Height = this.Height;
             
-            this.DoubleBuffered = true;
             InitializeComponent();
         }
 
