@@ -33,13 +33,12 @@ namespace ScopeIDE.Forms {
 
         protected override void OnResize(EventArgs e) {
             UpdateScale();
-            
             ControlCollectionExt.ToList(this.Controls).ForEach(control => {
                 if (control is IEventFormResize element) {
                     element.EventFormResize(this);
                 }
             });
-            
+
             base.OnResize(e);
         }
 
@@ -48,7 +47,7 @@ namespace ScopeIDE.Forms {
                 < 1080 => EScales.HD,
                 < 1720 => EScales.FullHD,
                 < 2360 => EScales.DoubleHD,
-                < 3560 => EScales.DoubleHD,
+                < 3560 => EScales.FourHD,
                 _ => EScales.FourHD
             };
         }

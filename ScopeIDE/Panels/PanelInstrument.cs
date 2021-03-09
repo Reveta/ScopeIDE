@@ -18,6 +18,8 @@ namespace ScopeIDE.Panels {
         public PanelInstrument(IDesignConfig designConfig) {
             _state = EState.Big;
             DesignConfig = designConfig;
+            this.DoubleBuffered = true;
+            
             AddTransformButton();
 
             AddButton(new ButtonInstrument(designConfig));

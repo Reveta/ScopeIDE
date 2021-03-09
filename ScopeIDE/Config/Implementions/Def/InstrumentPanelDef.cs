@@ -1,4 +1,5 @@
-﻿using ScopeIDE.Config.Interfaces;
+﻿using System.Drawing;
+using ScopeIDE.Config.Interfaces;
 
 namespace ScopeIDE.Config.Implementions.Def {
     public class PanelInstrumentDef : IPanelInstrument{
@@ -9,7 +10,11 @@ namespace ScopeIDE.Config.Implementions.Def {
                 WidthDef = 50,
                 HeightDef = 50,
                 Width = 50,
-                Height = 50
+                Height = 50,
+                FontName = FontFamily.GenericMonospace,
+                FontSizeDef = 15,
+                FontSize = 15,
+                FontStyle = FontStyle.Regular
             };
         }
     }

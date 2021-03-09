@@ -1,26 +1,31 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using ScopeIDE.Config;
 using ScopeIDE.Config.Interfaces;
+using ScopeIDE.Elements;
 using ScopeIDE.Elements.PanelNavbar;
+using ScopeIDE.Forms;
+using ScopeIDE.libs.ControlExt;
 
 namespace ScopeIDE.Panels {
-    public partial class PanelNavbar : APanelWithButtons {
+    public partial class PanelNavbar : APanelWithButtons, IEventFormResize {
         public IDesignConfig DesignConfig { get; set; }
 
         public PanelNavbar(IDesignConfig designConfig) {
             DesignConfig = designConfig;
+            this.DoubleBuffered = true;
 
-            AddButton(new ButtonNavbar(){Text = "File"});
-            AddButton(new ButtonNavbar(){Text = "Windows"});
-            AddButton(new ButtonNavbar(){Text = "Edit"});
-            AddButton(new ButtonNavbar(){Text = "View"});
-            AddButton(new ButtonNavbar(){Text = "Navigate"});
-            AddButton(new ButtonNavbar(){Text = "View"});
-            AddButton(new ButtonNavbar(){Text = "Navigadsadasadte"});
-            AddButton(new ButtonNavbar(){Text = "Windows"});
-            AddButton(new ButtonNavbar(){Text = "Code"});
+            AddButton(new ButtonNavbar(designConfig){Text = "File"});
+            AddButton(new ButtonNavbar(designConfig){Text = "Windows"});
+            AddButton(new ButtonNavbar(designConfig){Text = "Edit"});
+            AddButton(new ButtonNavbar(designConfig){Text = "View"});
+            AddButton(new ButtonNavbar(designConfig){Text = "Navigate"});
+            AddButton(new ButtonNavbar(designConfig){Text = "View"});
+            AddButton(new ButtonNavbar(designConfig){Text = "Navigadsadasadte"});
+            AddButton(new ButtonNavbar(designConfig){Text = "Windows"});
+            AddButton(new ButtonNavbar(designConfig){Text = "Code"});
 
             InitializeComponent();
             RePaint();
@@ -39,7 +44,7 @@ namespace ScopeIDE.Panels {
                     DesignConfig.Resources.FontSize,
                     DesignConfig.Resources.FontStyle);
 
-                button.BackColor = DesignConfig.ColorConfig.ContrBackColor;
+                button.BackColor = DesignConfig.ColorConfig.SecondBackColor;
                 button.ForeColor = DesignConfig.ColorConfig.FontColorMain;
 
                 button.FlatAppearance.BorderSize = 0;
@@ -59,26 +64,34 @@ namespace ScopeIDE.Panels {
         }
 
         public override void RePaint() {
-            int x = 5;
-            int y = (int) ((DesignConfig.PanelNavbar.Height - DesignConfig.PanelNavbar.Button.Height) / 2f);
+            int xMargin = 5;
+            int yMargin = (int) ((DesignConfig.PanelNavbar.HeightDef - DesignConfig.PanelNavbar.Button.Height) / 1.9f);
 
             GetAllButtons().ForEach(button => {
-                button.Location = new Point(x, y);
-                x += button.Width + 5;
+                button.Location = new Point(xMargin, yMargin);
+                xMargin += button.Width + 5;
             });
             
-            
-            int height = DesignConfig.PanelNavbar.Height;
-            this.Size = new Size(x+5, height);
+            this.Size = new Size(xMargin, DesignConfig.PanelNavbar.Height);   
+
         }
 
+
+        public void EventFormResize(Form form) {
+            ControlCollectionExt.ToList(this.Controls).ForEach(control => {
+                if (control is IEventFormResize element) {
+                    element.EventFormResize(form);
+                }
+            });
+            
+            RePaint();
+        }
 
         private void InitializeComponent() {
             // 
             // PanelNavbar
             // 
             this.ResumeLayout(false);
-            this.AutoScaleMode = AutoScaleMode.Font;
             this.BackColor = DesignConfig.ColorConfig.SecondBackColor;
             this.Name = "PanelNavbar";
             this.PerformLayout();
