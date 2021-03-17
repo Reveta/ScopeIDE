@@ -44,20 +44,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\EScales.cs" />
-    <Compile Include="Config\Implementions\Def\ButtonConfigEmpty.cs">
+    <Compile Include="Config\Implementation\Def\ButtonConfigEmpty.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Config\Implementions\Def\ColorConfigDef.cs" />
-    <Compile Include="Config\Implementions\Def\FormSizeDef.cs" />
-    <Compile Include="Config\Implementions\Def\InstrumentPanelDef.cs" />
-    <Compile Include="Config\Implementions\Def\PanelMainConfig.cs" />
-    <Compile Include="Config\Implementions\Def\PanelNavbarDef.cs" />
-    <Compile Include="Config\Implementions\Def\ResourcesDef.cs" />
-    <Compile Include="Config\Implementions\Def\ScaleDef.cs" />
-    <Compile Include="Config\Implementions\DesignConfigDef.cs" />
-    <Compile Include="Config\Implementions\DesignConfigLight.cs" />
-    <Compile Include="Config\Implementions\DesignEmpty.cs" />
-    <Compile Include="Config\Implementions\Light\ColorConfigLight.cs" />
+    <Compile Include="Config\Implementation\Def\ColorConfigDef.cs" />
+    <Compile Include="Config\Implementation\Def\FormSizeDef.cs" />
+    <Compile Include="Config\Implementation\Def\InstrumentPanelDef.cs" />
+    <Compile Include="Config\Implementation\Def\PanelMainConfig.cs" />
+    <Compile Include="Config\Implementation\Def\PanelNavbarDef.cs" />
+    <Compile Include="Config\Implementation\Def\PanelToolbox.cs" />
+    <Compile Include="Config\Implementation\Def\ResourcesDef.cs" />
+    <Compile Include="Config\Implementation\Def\ScaleDef.cs" />
+    <Compile Include="Config\Implementation\DesignConfigDef.cs" />
+    <Compile Include="Config\Implementation\DesignConfigLight.cs" />
+    <Compile Include="Config\Implementation\DesignEmpty.cs" />
+    <Compile Include="Config\Implementation\FunJeka\ColorConfigJekaFun1.cs" />
+    <Compile Include="Config\Implementation\FunJeka\ColorConfigJekaFun2.cs" />
+    <Compile Include="Config\Implementation\Light\ColorConfigLight.cs" />
     <Compile Include="Config\Interfaces\IButtonConfig.cs" />
     <Compile Include="Config\Interfaces\IColorConfig.cs" />
     <Compile Include="Config\Interfaces\IDesignConfig.cs" />
@@ -65,6 +68,7 @@
     <Compile Include="Config\Interfaces\IPanelInstrument.cs" />
     <Compile Include="Config\Interfaces\IPanelMainConfig.cs" />
     <Compile Include="Config\Interfaces\IPanelNavbar.cs" />
+    <Compile Include="Config\Interfaces\IPanelToolBox.cs" />
     <Compile Include="Config\Interfaces\IResources.cs" />
     <Compile Include="Config\Interfaces\IScale.cs" />
     <Compile Include="Elements\ButtonColorDepend.cs">
@@ -103,6 +107,12 @@
     </Compile>
     <Compile Include="Elements\PanelNavbar\ButtonNavbar.Designer.cs">
       <DependentUpon>ButtonNavbar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\PanelToolBox\ButtonToolBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Elements\PanelToolBox\ButtonToolBox.Designer.cs">
+      <DependentUpon>ButtonToolBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormStyls\MyStyleExtenstion.cs">
       <SubType>Component</SubType>
@@ -151,6 +161,12 @@
     <Compile Include="Panels\PanelNavbar.Designer.cs">
       <DependentUpon>PanelNavbar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Panels\PanelToolBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\PanelToolBox.Designer.cs">
+      <DependentUpon>PanelToolBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\FormMain.resx">
@@ -164,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Panels\PanelNavbar.resx">
       <DependentUpon>PanelNavbar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\PanelToolBox.resx">
+      <DependentUpon>PanelToolBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

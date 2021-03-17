@@ -20,7 +20,7 @@ namespace ScopeIDE.Elements.PanelInstruments {
             // buttonTransform1
             // 
             this.Name = "buttonTransform1";
-            this.BackColor = DesignConfig.ColorConfig.ContrBackColor;
+            this.BackColor = DesignConfig.ColorConfig.ThirdBackColor;
             this.FlatAppearance.BorderSize = 0;
             this.FlatStyle = FlatStyle.Flat;
             this.Font = new Font("Arial", 15.33333F, System.Drawing.FontStyle.Regular);

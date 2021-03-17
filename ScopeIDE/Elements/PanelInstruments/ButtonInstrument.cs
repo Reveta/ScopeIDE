@@ -8,11 +8,20 @@ using ScopeIDE.Forms;
 namespace ScopeIDE.Elements.PanelInstruments {
     public partial class ButtonInstrument : ButtonColorDepend, IEventFormResize {
         public IDesignConfig DesignConfig { get; }
+        
 
-        public ButtonInstrument(IDesignConfig designConfig) {
+        public ButtonInstrument(IDesignConfig designConfig) : base(designConfig.ColorConfig) {
             DesignConfig = designConfig;
 
             InitializeComponent();
+        }
+
+        protected override void OnClick(EventArgs e) {
+            this.BackColor = ColorTranslator.FromHtml("#A30015");
+            
+            
+            
+            base.OnClick(e);
         }
 
         public void EventFormResize(Form form) {

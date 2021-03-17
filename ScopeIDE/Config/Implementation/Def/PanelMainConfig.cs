@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using ScopeIDE.Config.Interfaces;
 
-namespace ScopeIDE.Config.Implementions.Def {
+namespace ScopeIDE.Config.Implementation.Def {
     public class PanelMainConfig : IPanelMainConfig{
         public int Height { get; set; }
         public int HeightDef { get; set; }
@@ -15,10 +15,10 @@ namespace ScopeIDE.Config.Implementions.Def {
             Width = 400;
             WidthDef = 400;
             Button = new ButtonConfigEmpty() {
-                WidthDef = 50,
-                HeightDef = 50,
-                Width = 50,
-                Height = 50,
+                WidthDef = 40,
+                HeightDef = 40,
+                Width = 40,
+                Height = 40,
                 FontName = FontFamily.GenericMonospace,
                 FontSizeDef = 15,
                 FontSize = 15,

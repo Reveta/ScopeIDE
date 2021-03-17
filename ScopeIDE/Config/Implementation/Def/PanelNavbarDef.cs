@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using ScopeIDE.Config.Interfaces;
 
-namespace ScopeIDE.Config.Implementions.Def {
+namespace ScopeIDE.Config.Implementation.Def {
     public class PanelNavbarDef : IPanelNavbar {
         public int Height { get; set; }
         public int HeightDef { get; set; }
@@ -16,11 +16,11 @@ namespace ScopeIDE.Config.Implementions.Def {
             Height = 30;
 
             Button = new ButtonConfigEmpty() {
-                WidthDef = 100,
-                HeightDef = 30,
-                Width = 100,
-                Height = 30,
-                FontName = FontFamily.GenericMonospace,
+                WidthDef = 80,
+                HeightDef = 40,
+                Width = 80,
+                Height = 40,
+                FontName =  new FontFamily("Verdana"),
                 FontSizeDef = 10,
                 FontStyle = FontStyle.Regular
             };

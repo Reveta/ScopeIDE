@@ -39,7 +39,7 @@ namespace ScopeIDE.Forms.FormStyls {
                 UseSecondControlBoxIconsColorOnHover = true, // <-
                 ControlBoxEnabledIconsColor = DesignConfig.ColorConfig.FontColorMain,
                 IconSize = new Size(DesignConfig.PanelNavbar.LogoWidth, DesignConfig.PanelNavbar.LogoHeight),
-                ControlBoxOnHoverIconsColor = DesignConfig.ColorConfig.ContrBackColor,
+                ControlBoxOnHoverIconsColor = DesignConfig.ColorConfig.ThirdBackColor,
             };
 
             StylesDictionary[fStyle.ConfigBasedStyle] = _style;

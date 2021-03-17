@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace ScopeIDE.Forms {
 
         private PanelInstrument _panelInstrumentPanel1;
         private PanelNavbar _panelNavbar1;
+        private PanelToolBox _panelToolBox;
         private PanelMain _panelMain1;
 
         public FormMain(IDesignConfig designConfig) {
@@ -28,9 +30,11 @@ namespace ScopeIDE.Forms {
 
             FormConfig();
             InitializeComponent();
+            
             AddPanelNavbar();
             AddPanelMain();
             AddPanelInstrument();
+            AddPanelToolBox();
         }
 
         protected override void OnResize(EventArgs e) {
@@ -59,7 +63,7 @@ namespace ScopeIDE.Forms {
                 TabIndex = 0,
                 Location = new Point(
                     DesignConfig.PanelNavbar.LogoWidth + 25,
-                    DesignConfig.PanelNavbar.Height * -1)
+                    (DesignConfig.PanelNavbar.Height * -1) + 1)
             };
 
             this.Controls.Add(_panelNavbar1);
@@ -68,16 +72,31 @@ namespace ScopeIDE.Forms {
         private void AddPanelMain() {
             this._panelMain1 = new PanelMain(DesignConfig) {
                 TabIndex = 1,
-                Location = new Point(0, 0 + DesignConfig.Resources.RetreatWidth)
+                Location = new Point(0, 0 + DesignConfig.Resources.RetreatSize)
             };
 
             this.Controls.Add(_panelMain1);
         }
 
+        private void AddPanelToolBox() {
+            List<UserControl> panelsToolBox = new List<UserControl>() {
+                this._panelMain1,
+                this._panelNavbar1,
+                this._panelInstrumentPanel1,
+            };
+            
+            _panelToolBox = new PanelToolBox(DesignConfig, panelsToolBox) {
+                TabIndex = 2,
+                Location = new Point(0, 55),
+            };
+            
+            this.Controls.Add(_panelToolBox);
+        }
+
         private void AddPanelInstrument() {
             this._panelInstrumentPanel1 = new PanelInstrument(DesignConfig) {
-                TabIndex = 2,
-                Location = new Point(0, DesignConfig.PanelMainConfig.Height + 10)
+                TabIndex = 3,
+                Location = new Point(DesignConfig.PanelToolBox.Button.Width + 5, DesignConfig.PanelMainConfig.Height - 5)
             };
 
             this.Controls.Add(_panelInstrumentPanel1);
@@ -95,7 +114,8 @@ namespace ScopeIDE.Forms {
 
         private void FormConfig() {
             _styleExtenstion = new MyStyleExtenstion(this, this.components);
-
+            this.Padding = Padding.Empty;
+            this.Margin = Padding.Empty;
             this.Height = DesignConfig.FormSize.HeightDef;
             this.Width = DesignConfig.FormSize.WidthDef;
             this.StartPosition = FormStartPosition.Manual;

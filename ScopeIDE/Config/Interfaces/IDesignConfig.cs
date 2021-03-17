@@ -5,6 +5,7 @@
         public  IPanelMainConfig PanelMainConfig { get; set; }
         public  IPanelInstrument PanelInstrument { get; set; }
         public  IPanelNavbar PanelNavbar { get; set; }
+        public  IPanelToolBox PanelToolBox { get; set; }
         public IResources Resources { get; set; }
 
         public IScale Scale { get; set; }

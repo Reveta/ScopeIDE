@@ -8,7 +8,7 @@ namespace ScopeIDE.Elements.PanelMain {
     public partial class ButtonMainInstrument : ButtonColorDepend, IEventFormResize {
         public IDesignConfig DesignConfig { get; }
 
-        public ButtonMainInstrument(IDesignConfig designConfig) {
+        public ButtonMainInstrument(IDesignConfig designConfig) : base(designConfig.ColorConfig) {
             DesignConfig = designConfig;
 
             InitializeComponent();

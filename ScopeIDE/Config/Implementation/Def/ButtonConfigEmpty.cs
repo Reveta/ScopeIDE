@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using ScopeIDE.Config.Interfaces;
 
-namespace ScopeIDE.Config.Implementions.Def {
+namespace ScopeIDE.Config.Implementation.Def {
     public class ButtonConfigEmpty : Button, IButtonConfig {
         public int WidthDef { get; set; }
         public int HeightDef { get; set; }

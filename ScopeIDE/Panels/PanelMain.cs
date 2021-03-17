@@ -49,7 +49,7 @@ namespace ScopeIDE.Panels {
             if (!onlyPosition) {
                 button.FlatStyle = FlatStyle.Flat;
 
-                button.BackColor = DesignConfig.ColorConfig.ContrBackColor;
+                button.BackColor = DesignConfig.ColorConfig.ThirdBackColor;
                 button.ForeColor = DesignConfig.ColorConfig.FontColorMain;
 
                 button.FlatAppearance.BorderSize = 0;
@@ -69,11 +69,11 @@ namespace ScopeIDE.Panels {
         }
 
         public override void RePaint() {
-            int xMargin = DesignConfig.Resources.RetreatWidth;;
+            int xMargin = DesignConfig.Resources.RetreatSize;;
             int yMargin = (int) ((DesignConfig.PanelMainConfig.Height - DesignConfig.PanelMainConfig.Button.Height) / 2f);
             ControlCollectionExt.ToList(this.Controls).ForEach(control => {
                 control.Location = new Point(xMargin, yMargin);
-                xMargin += control.Width + DesignConfig.Resources.RetreatWidth;;
+                xMargin += control.Width + DesignConfig.Resources.RetreatSize;;
             });
             
             this.BackColor = DesignConfig.ColorConfig.SecondBackColor;
@@ -89,7 +89,7 @@ namespace ScopeIDE.Panels {
             });
             
             DesignConfig.PanelMainConfig.Width = form.Width;
-            DesignConfig.PanelMainConfig.Height = DesignConfig.PanelMainConfig.Button.Height + (DesignConfig.Resources.RetreatWidth * 2);
+            DesignConfig.PanelMainConfig.Height = DesignConfig.PanelMainConfig.Button.Height + (DesignConfig.Resources.RetreatSize * 2);
             
             RePaint();
         }

@@ -1,6 +1,6 @@
 ﻿using ScopeIDE.Config.Interfaces;
 
-namespace ScopeIDE.Config.Implementions.Def {
+namespace ScopeIDE.Config.Implementation.Def {
     public class ScaleDef : IScale{
         public int FullHD { get; set; }
         public int DoubleHD { get; set; }

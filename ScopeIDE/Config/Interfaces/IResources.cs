@@ -6,6 +6,6 @@ namespace ScopeIDE.Config.Interfaces {
         public float FontSize { get; set; }
         public FontStyle FontStyle { get; set; }
     
-        public int RetreatWidth { get; set; }
+        public int RetreatSize { get; set; }
     }
 }
