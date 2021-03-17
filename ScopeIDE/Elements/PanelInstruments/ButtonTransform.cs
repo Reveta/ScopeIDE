@@ -23,7 +23,7 @@ namespace ScopeIDE.Elements.PanelInstruments {
             this.BackColor = DesignConfig.ColorConfig.ContrBackColor;
             this.FlatAppearance.BorderSize = 0;
             this.FlatStyle = FlatStyle.Flat;
-            this.Font = new Font("Arial", 15.33333F, System.Drawing.FontStyle.Bold);
+            this.Font = new Font("Arial", 15.33333F, System.Drawing.FontStyle.Regular);
             this.ForeColor = DesignConfig.ColorConfig.FontColorMain;
             this.TextAlign = ContentAlignment.MiddleCenter;
             this.Height = 30;

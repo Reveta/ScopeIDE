@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\EScales.cs" />
-    <Compile Include="Config\Implementions\Def\ButtonConfigEmpty.cs" />
+    <Compile Include="Config\Implementions\Def\ButtonConfigEmpty.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Config\Implementions\Def\ColorConfigDef.cs" />
     <Compile Include="Config\Implementions\Def\FormSizeDef.cs" />
     <Compile Include="Config\Implementions\Def\InstrumentPanelDef.cs" />
@@ -66,7 +68,7 @@
     <Compile Include="Config\Interfaces\IResources.cs" />
     <Compile Include="Config\Interfaces\IScale.cs" />
     <Compile Include="Elements\ButtonColorDepend.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Elements\ButtonColorDepend.Designer.cs">
       <DependentUpon>ButtonColorDepend.cs</DependentUpon>
@@ -84,6 +86,12 @@
     <Compile Include="Elements\PanelInstruments\ButtonTransform.Designer.cs">
       <DependentUpon>ButtonTransform.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\PanelMain\PartitionMainPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Elements\PanelMain\PartitionMainPanel.Designer.cs">
+      <DependentUpon>PartitionMainPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Elements\PanelMain\ButtonMainInstrument.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -96,7 +104,9 @@
     <Compile Include="Elements\PanelNavbar\ButtonNavbar.Designer.cs">
       <DependentUpon>ButtonNavbar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormStyls\MyStyleExtenstion.cs" />
+    <Compile Include="Forms\FormStyls\MyStyleExtenstion.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Forms\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,14 +118,20 @@
     <Compile Include="libs\Egolds\Animation\Animation.cs" />
     <Compile Include="libs\Egolds\Animation\Animator.cs" />
     <Compile Include="libs\Egolds\Drawer.cs" />
-    <Compile Include="libs\Egolds\EgoldsFormStyle.cs" />
+    <Compile Include="libs\Egolds\EgoldsFormStyle.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="libs\Egolds\EgoldsFormStyle.Designer.cs" />
     <Compile Include="libs\Egolds\EgoldsStyle.cs">
       <DependentUpon>EgoldsFormStyle.cs</DependentUpon>
     </Compile>
     <Compile Include="libs\Egolds\FlatColors.cs" />
-    <Compile Include="libs\Egolds\ShadowedForm.cs" />
-    <Compile Include="Panels\APanelWithButtons.cs" />
+    <Compile Include="libs\Egolds\ShadowedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Panels\APanelWithButtons.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Panels\IPanelWithButtons.cs" />
     <Compile Include="Panels\PanelInstrument.cs">
       <SubType>UserControl</SubType>

@@ -5,5 +5,7 @@ namespace ScopeIDE.Config.Interfaces {
         public FontFamily FontName { get; set; }
         public float FontSize { get; set; }
         public FontStyle FontStyle { get; set; }
+    
+        public int RetreatWidth { get; set; }
     }
 }

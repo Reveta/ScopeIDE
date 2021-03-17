@@ -143,10 +143,10 @@ namespace ScopeIDE.Panels {
 
         private void SetBigStyle() {
             _state = EState.Big;
-            int width = (DesignConfig.PanelInstrument.Button.Width * 2) + 20;
+            int width = (DesignConfig.PanelInstrument.Button.Width * 2) + (DesignConfig.Resources.RetreatWidth * 3);
             int height = this._buttonTransform1.Height
                          + DesignConfig.PanelInstrument.Button.Height
-                         + ((GetAllButtons().Count / 2) * (DesignConfig.PanelInstrument.Button.Height + 10));
+                         + ((GetAllButtons().Count / 2) * (DesignConfig.PanelInstrument.Button.Height + (DesignConfig.Resources.RetreatWidth*2) ));
             
             this.Size = new Size(
                 width,
@@ -155,8 +155,8 @@ namespace ScopeIDE.Panels {
 
             this._buttonTransform1.SetBigStyle();
 
-            int x1 = 5;
-            int x2 = DesignConfig.PanelInstrument.Button.Width + 5 + x1;
+            int x1 = DesignConfig.Resources.RetreatWidth;
+            int x2 = DesignConfig.PanelInstrument.Button.Width + DesignConfig.Resources.RetreatWidth + x1;
             int y = DesignConfig.PanelInstrument.Button.Height + this._buttonTransform1.Height;
             bool xState = true;
             foreach (Control element in this.Controls) {
@@ -166,7 +166,7 @@ namespace ScopeIDE.Panels {
 
                 element.Location = xState ? new Point(x1, y) : new Point(x2, y);
                 if (!xState) {
-                    y += 5 + element.Size.Width;
+                    y += DesignConfig.Resources.RetreatWidth + element.Size.Width;
                 }
 
                 xState = !xState;
@@ -175,9 +175,9 @@ namespace ScopeIDE.Panels {
 
         private void SetSmallStyle() {
             _state = EState.Small;
-            int width = (DesignConfig.PanelInstrument.Button.Width) + 10;
+            int width = (DesignConfig.PanelInstrument.Button.Width) + (DesignConfig.Resources.RetreatWidth * 2);
             int height = this._buttonTransform1.Height
-                         + (GetAllButtons().Count * (DesignConfig.PanelInstrument.Button.Height + 10));
+                         + (GetAllButtons().Count * (DesignConfig.PanelInstrument.Button.Height + (DesignConfig.Resources.RetreatWidth*2) ));
             
             this.Size = new Size(
                 width,
@@ -186,7 +186,7 @@ namespace ScopeIDE.Panels {
 
             this._buttonTransform1.SetSmallStyle();
 
-            int x1 = 5;
+            int x1 = DesignConfig.Resources.RetreatWidth;;
             int y = DesignConfig.PanelInstrument.Button.Height + this._buttonTransform1.Height;
             foreach (Control element in this.Controls) {
                 if (element is ButtonTransform) {
@@ -194,7 +194,7 @@ namespace ScopeIDE.Panels {
                 }
 
                 element.Location = new Point(x1, y);
-                y += 5 + element.Size.Width;
+                y += DesignConfig.Resources.RetreatWidth + element.Size.Width;
             }
         }
 

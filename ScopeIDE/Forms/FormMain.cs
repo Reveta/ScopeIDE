@@ -68,7 +68,7 @@ namespace ScopeIDE.Forms {
         private void AddPanelMain() {
             this._panelMain1 = new PanelMain(DesignConfig) {
                 TabIndex = 1,
-                Location = new Point(0, 0 + 5)
+                Location = new Point(0, 0 + DesignConfig.Resources.RetreatWidth)
             };
 
             this.Controls.Add(_panelMain1);

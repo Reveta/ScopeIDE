@@ -17,9 +17,17 @@ namespace ScopeIDE.Panels {
             AddButton(new ButtonMainInstrument(designConfig){Text = "😂"});
             AddButton(new ButtonMainInstrument(designConfig){Text = "😊"});
             AddButton(new ButtonMainInstrument(designConfig){Text = "🤣"});
+            AddButton(new PartitionMainPanel(designConfig), true);
             AddButton(new ButtonMainInstrument(designConfig){Text = "❤"});
             AddButton(new ButtonMainInstrument(designConfig){Text = "😍"});
-            
+            AddButton(new ButtonMainInstrument(designConfig){Text = "😁"});
+            AddButton(new ButtonMainInstrument(designConfig){Text = "😂"});
+            AddButton(new ButtonMainInstrument(designConfig){Text = "😊"});
+            AddButton(new ButtonMainInstrument(designConfig){Text = "🤣"});
+            AddButton(new PartitionMainPanel(designConfig), true);
+            AddButton(new ButtonMainInstrument(designConfig){Text = "🤣"});
+            AddButton(new ButtonMainInstrument(designConfig){Text = "😁"});
+
             InitializeComponent();
             RePaint();
         }
@@ -61,11 +69,11 @@ namespace ScopeIDE.Panels {
         }
 
         public override void RePaint() {
-            int xMargin = 5;
+            int xMargin = DesignConfig.Resources.RetreatWidth;;
             int yMargin = (int) ((DesignConfig.PanelMainConfig.Height - DesignConfig.PanelMainConfig.Button.Height) / 2f);
             ControlCollectionExt.ToList(this.Controls).ForEach(control => {
                 control.Location = new Point(xMargin, yMargin);
-                xMargin += control.Width + 5;
+                xMargin += control.Width + DesignConfig.Resources.RetreatWidth;;
             });
             
             this.BackColor = DesignConfig.ColorConfig.SecondBackColor;
@@ -81,7 +89,7 @@ namespace ScopeIDE.Panels {
             });
             
             DesignConfig.PanelMainConfig.Width = form.Width;
-            DesignConfig.PanelMainConfig.Height = DesignConfig.PanelMainConfig.Button.Height + 10;
+            DesignConfig.PanelMainConfig.Height = DesignConfig.PanelMainConfig.Button.Height + (DesignConfig.Resources.RetreatWidth * 2);
             
             RePaint();
         }
