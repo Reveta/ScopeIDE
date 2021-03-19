@@ -4,18 +4,21 @@ using System.Windows.Forms;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements;
 using ScopeIDE.Elements.PanelToolBox;
+using ScopeIDE.Elements.PanelToolBox.ButtonAdd;
 using ScopeIDE.libs.ControlExt;
 
 namespace ScopeIDE.Panels {
     public partial class PanelToolBox : APanelWithButtons, IEventFormResize {
         public IDesignConfig DesignConfig { get; set; }
         private readonly List<UserControl> _panels;
+        private ButtonToolBoxAdd ButtonToolBoxAdd { get; set; }
 
         public PanelToolBox(IDesignConfig designConfig, List<UserControl> panels) {
             _panels = panels;
             DesignConfig = designConfig;
             this.DoubleBuffered = true;
-            
+
+            AddToolBoxAdd();
             SetPanels();
 
             InitializeComponent();
@@ -23,9 +26,12 @@ namespace ScopeIDE.Panels {
         }
 
         private void SetPanels() {
-            _panels.ForEach(panel => {
-                AddButton(new ButtonToolBox(panel.Name, DesignConfig, panel));
-            });
+            _panels.ForEach(panel => { AddButton(new ButtonToolBox(panel.Name, DesignConfig, panel)); });
+        }
+
+        private void AddToolBoxAdd() {
+            ButtonToolBoxAdd = new ButtonToolBoxAdd(this.DesignConfig);
+            AddButton(ButtonToolBoxAdd);
         }
 
         public override void AddButton(Button button, bool onlyPosition = false) {
@@ -40,9 +46,9 @@ namespace ScopeIDE.Panels {
                     DesignConfig.PanelToolBox.Button.FontName,
                     DesignConfig.PanelToolBox.Button.FontSize,
                     DesignConfig.PanelToolBox.Button.FontStyle
-                    );
+                );
                 button.Font = font;
-                
+
                 button.FlatAppearance.BorderSize = 0;
                 button.Margin = new Padding(0);
 
@@ -53,21 +59,25 @@ namespace ScopeIDE.Panels {
                 button.TabStop = false;
                 button.UseVisualStyleBackColor = true;
                 button.AutoSize = false;
-
             }
 
             this.Controls.Add(button);
         }
-        
+
         public override void RePaint() {
             int xMargin = 0;
             int yMargin = DesignConfig.Resources.RetreatSize;
 
+            //Paint special Add Button
+            ButtonToolBoxAdd.Location = new Point(xMargin, yMargin);
+            yMargin += ButtonToolBoxAdd.Height + DesignConfig.Resources.RetreatSize;
+            
             GetAllButtons().ForEach(button => {
+                if (button == ButtonToolBoxAdd) return;
                 button.Location = new Point(xMargin, yMargin);
                 yMargin += button.Height;
             });
-            
+
             this.Size = new Size(DesignConfig.PanelToolBox.Width, DesignConfig.PanelToolBox.Height);
         }
 

@@ -108,6 +108,12 @@
     <Compile Include="Elements\PanelNavbar\ButtonNavbar.Designer.cs">
       <DependentUpon>ButtonNavbar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\PanelToolBox\ButtonAdd\ButtonToolBoxAdd.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Elements\PanelToolBox\ButtonAdd\ButtonToolBoxAdd.Designer.cs">
+      <DependentUpon>ButtonToolBoxAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Elements\PanelToolBox\ButtonToolBox.cs">
       <SubType>Component</SubType>
     </Compile>
