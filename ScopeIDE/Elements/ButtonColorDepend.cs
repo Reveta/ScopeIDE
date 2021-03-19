@@ -1,5 +1,4 @@
 ﻿using System.Windows.Forms;
-using ScopeIDE.Config;
 using ScopeIDE.Config.Interfaces;
 
 namespace ScopeIDE.Elements {

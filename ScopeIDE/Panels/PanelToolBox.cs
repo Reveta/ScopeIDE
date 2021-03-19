@@ -3,8 +3,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements;
-using ScopeIDE.Elements.PanelInstruments;
-using ScopeIDE.Elements.PanelNavbar;
 using ScopeIDE.Elements.PanelToolBox;
 using ScopeIDE.libs.ControlExt;
 

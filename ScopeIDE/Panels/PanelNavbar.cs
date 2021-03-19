@@ -1,12 +1,8 @@
-﻿using System;
-using System.Diagnostics;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
-using ScopeIDE.Config;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements;
 using ScopeIDE.Elements.PanelNavbar;
-using ScopeIDE.Forms;
 using ScopeIDE.libs.ControlExt;
 
 namespace ScopeIDE.Panels {

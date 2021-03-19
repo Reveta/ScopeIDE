@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace ScopeIDE.Config.Interfaces {
+﻿namespace ScopeIDE.Config.Interfaces {
     public interface IPanelToolBox {
         public IButtonConfig Button { get; set; }
         

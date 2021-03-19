@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using ScopeIDE.Elements;
 
 namespace ScopeIDE.Panels {
     public abstract class APanelWithButtons : UserControl, IPanelWithButtons {
