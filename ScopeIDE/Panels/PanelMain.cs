@@ -49,9 +49,6 @@ namespace ScopeIDE.Panels {
             if (!onlyPosition) {
                 button.FlatStyle = FlatStyle.Flat;
 
-                button.BackColor = DesignConfig.ColorConfig.ThirdBackColor;
-                button.ForeColor = DesignConfig.ColorConfig.FontColorMain;
-
                 button.FlatAppearance.BorderSize = 0;
                 button.Margin = new Padding(0);
 

@@ -32,7 +32,6 @@ namespace ScopeIDE.Elements.PanelNavbar {
                     DesignConfig.PanelNavbar.Button.FontStyle
                 );
 
-
                 var newWidth = 0;
                 this.Width = newWidth; //Set minWidth, it will be automatic resize, but without it it can`t resize to lower
                 this.Height = DesignConfig.PanelNavbar.LogoHeight;

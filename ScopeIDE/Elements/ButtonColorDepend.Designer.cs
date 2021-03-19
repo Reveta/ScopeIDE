@@ -28,8 +28,8 @@ namespace ScopeIDE.Elements {
         private void InitializeComponent() {
             components = new System.ComponentModel.Container();
             //TODO Button color config
-            this.BackColor = this.ColorConfig.SecondBackColor;
-            this.ForeColor = this.ColorConfig.ContrBackColor;
+            this.BackColor = this.ColorConfig.ThirdBackColor;
+            this.ForeColor = this.ColorConfig.FontColorMain;
         }
 
         #endregion

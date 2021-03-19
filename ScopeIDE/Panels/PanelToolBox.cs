@@ -45,9 +45,6 @@ namespace ScopeIDE.Panels {
                     );
                 button.Font = font;
                 
-                button.BackColor = DesignConfig.ColorConfig.SecondBackColor;
-                button.ForeColor = DesignConfig.ColorConfig.FontColorMain;
-
                 button.FlatAppearance.BorderSize = 0;
                 button.Margin = new Padding(0);
 
