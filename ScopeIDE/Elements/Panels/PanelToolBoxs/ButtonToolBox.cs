@@ -32,7 +32,7 @@ namespace ScopeIDE.Elements.Panels.PanelToolBoxs {
 
             base.OnClick(e);
         }
-
+        
         public void EventFormResize(Form form) {
             if (form is not IFormResizable formResizable) return;
 
@@ -47,11 +47,13 @@ namespace ScopeIDE.Elements.Panels.PanelToolBoxs {
             DesignConfig.PanelToolBox.Button.FontSize = DesignConfig.PanelToolBox.Button.FontSizeDef / 100 * coof;
 
             DesignConfig.PanelToolBox.Button.Width =
-                (int) (DesignConfig.PanelToolBox.Button.WidthDef / 100f * coof);
+                (int) (DesignConfig.PanelToolBox.Button.WidthDef / 100f * coof) - DesignConfig.Resources.RetreatSize;
 
             DesignConfig.PanelToolBox.Button.Height =
                 (int) (DesignConfig.PanelToolBox.Button.HeightDef / 100f * coof);
 
+            
+            
             this.Width = DesignConfig.PanelToolBox.Button.Width;
             this.Height = DesignConfig.PanelToolBox.Button.Height;
             this.Font = new Font(

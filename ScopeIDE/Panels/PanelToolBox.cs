@@ -43,7 +43,7 @@ namespace ScopeIDE.Panels {
                 addContextMenuButtons.Add(menuItem);
             });
 
-            ContextMenu.Buttons = addContextMenuButtons; 
+            ContextMenu.Buttons = addContextMenuButtons;
             ButtonToolBoxAdd = new ButtonToolBoxAdd(this.DesignConfig, ContextMenu);
             AddButton(ButtonToolBoxAdd);
         }
@@ -79,11 +79,11 @@ namespace ScopeIDE.Panels {
         }
 
         public override void RePaint() {
-            int xMargin = 0;
+            int xMargin = DesignConfig.Resources.RetreatSize;
             int yMargin = DesignConfig.Resources.RetreatSize;
 
             //Paint special Add Button
-            ButtonToolBoxAdd.Location = new Point(xMargin, yMargin);
+            ButtonToolBoxAdd.Location = new Point(0, yMargin);
             yMargin += ButtonToolBoxAdd.Height + DesignConfig.Resources.RetreatSize;
 
             var allButtons = GetAllButtons();
@@ -92,7 +92,7 @@ namespace ScopeIDE.Panels {
                 .FindAll(button => button != ButtonToolBoxAdd)
                 .ForEach(button => {
                     button.Location = new Point(xMargin, yMargin);
-                    yMargin += button.Height;
+                    yMargin += button.Height + DesignConfig.Resources.RetreatSize;;
                 });
 
             ContextMenu.Location = new Point(
@@ -111,7 +111,7 @@ namespace ScopeIDE.Panels {
             });
 
             DesignConfig.PanelToolBox.Height = form.Height;
-            DesignConfig.PanelToolBox.Width = DesignConfig.PanelToolBox.Button.Width;
+            DesignConfig.PanelToolBox.Width = DesignConfig.PanelToolBox.Button.Width + DesignConfig.Resources.RetreatSize;
 
             RePaint();
         }

@@ -45,15 +45,11 @@ namespace ScopeIDE.Elements.Panels.PanelToolBoxs.ButtonAdd {
                 _ => DesignConfig.Scale.FullHD
             };
 
-            DesignConfig.PanelInstrument.Button.FontSize = DesignConfig.PanelInstrument.Button.FontSizeDef / 100 * coof;
-
-            DesignConfig.PanelInstrument.Button.Width =
-                (int) (DesignConfig.PanelInstrument.Button.WidthDef / 100f * coof);
-
             DesignConfig.PanelInstrument.Button.Height =
                 (int) (DesignConfig.PanelInstrument.Button.HeightDef / 100f * coof);
 
-            this.Width = DesignConfig.PanelInstrument.Button.Width;
+            this.Width = this.Parent.Width;
+            
             this.Height = DesignConfig.PanelInstrument.Button.Height;
             this.Font = new Font(
                 DesignConfig.PanelInstrument.Button.FontName,

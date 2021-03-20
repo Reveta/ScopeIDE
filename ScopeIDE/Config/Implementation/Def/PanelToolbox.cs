@@ -10,9 +10,9 @@ namespace ScopeIDE.Config.Implementation.Def {
         public PanelToolbox() {
             Button = new ButtonConfigEmpty() {
                 WidthDef = 40,
-                HeightDef = 80,
+                HeightDef = 84,
                 Width = 40,
-                Height = 80,
+                Height = 84,
 
                 FontName = new FontFamily("Verdana"),
                 FontSizeDef = 8,
