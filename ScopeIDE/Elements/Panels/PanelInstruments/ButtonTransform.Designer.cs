@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace ScopeIDE.Elements.PanelInstruments
+namespace ScopeIDE.Elements.Panels.PanelInstruments
 {
     partial class ButtonTransform
     {

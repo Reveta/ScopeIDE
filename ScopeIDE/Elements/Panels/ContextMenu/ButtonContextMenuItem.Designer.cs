@@ -1,9 +1,7 @@
 ﻿using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
 
-namespace ScopeIDE.Elements.PanelNavbar {
-    partial class ButtonNavbar {
+namespace ScopeIDE.Elements.Panels.ContextMenu {
+    partial class ButtonContextMenuItem {
         /// <summary> 
         /// Required designer variable.
         /// </summary>

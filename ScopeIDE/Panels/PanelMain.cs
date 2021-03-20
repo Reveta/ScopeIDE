@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements;
-using ScopeIDE.Elements.PanelMain;
+using ScopeIDE.Elements.Panels.PanelMain;
 using ScopeIDE.libs.ControlExt;
 
 namespace ScopeIDE.Panels {

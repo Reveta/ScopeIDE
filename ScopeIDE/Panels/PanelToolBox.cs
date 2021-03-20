@@ -1,36 +1,50 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements;
-using ScopeIDE.Elements.PanelToolBox;
-using ScopeIDE.Elements.PanelToolBox.ButtonAdd;
+using ScopeIDE.Elements.Panels.PanelToolBoxs;
+using ScopeIDE.Elements.Panels.PanelToolBoxs.ButtonAdd;
 using ScopeIDE.libs.ControlExt;
+using ContextMenu = ScopeIDE.Elements.ContextMenu;
 
 namespace ScopeIDE.Panels {
     public partial class PanelToolBox : APanelWithButtons, IEventFormResize {
         public IDesignConfig DesignConfig { get; set; }
         private readonly List<UserControl> _panels;
         private ButtonToolBoxAdd ButtonToolBoxAdd { get; set; }
+        private ContextMenu ContextMenu { get; set; }
 
-        public PanelToolBox(IDesignConfig designConfig, List<UserControl> panels) {
+        public PanelToolBox(IDesignConfig designConfig, List<UserControl> panels, ContextMenu contextMenu) {
+            //TODO придумати як зберігати контекстне меню всередині
+            ContextMenu = contextMenu;
             _panels = panels;
             DesignConfig = designConfig;
             this.DoubleBuffered = true;
 
-            AddToolBoxAdd();
             SetPanels();
-
             InitializeComponent();
             RePaint();
         }
 
         private void SetPanels() {
-            _panels.ForEach(panel => { AddButton(new ButtonToolBox(panel.Name, DesignConfig, panel)); });
-        }
+            //TODO split to many methods
+            List<Button> addContextMenuButtons = new List<Button>();
 
-        private void AddToolBoxAdd() {
-            ButtonToolBoxAdd = new ButtonToolBoxAdd(this.DesignConfig);
+            _panels.ForEach(panel => {
+                var buttonToolBox = new ButtonToolBox(panel.Name, DesignConfig, panel);
+                var menuItem = new ButtonToolBoxAddContextItem(DesignConfig, buttonToolBox, this) {
+                    Text = panel.Name
+                };
+
+                buttonToolBox.Hide();
+                AddButton(buttonToolBox);
+                addContextMenuButtons.Add(menuItem);
+            });
+
+            ContextMenu.Buttons = addContextMenuButtons; 
+            ButtonToolBoxAdd = new ButtonToolBoxAdd(this.DesignConfig, ContextMenu);
             AddButton(ButtonToolBoxAdd);
         }
 
@@ -71,13 +85,21 @@ namespace ScopeIDE.Panels {
             //Paint special Add Button
             ButtonToolBoxAdd.Location = new Point(xMargin, yMargin);
             yMargin += ButtonToolBoxAdd.Height + DesignConfig.Resources.RetreatSize;
-            
-            GetAllButtons().ForEach(button => {
-                if (button == ButtonToolBoxAdd) return;
-                button.Location = new Point(xMargin, yMargin);
-                yMargin += button.Height;
-            });
 
+            var allButtons = GetAllButtons();
+            allButtons
+                .FindAll(button => button.Visible)
+                .FindAll(button => button != ButtonToolBoxAdd)
+                .ForEach(button => {
+                    button.Location = new Point(xMargin, yMargin);
+                    yMargin += button.Height;
+                });
+
+            ContextMenu.Location = new Point(
+                base.Location.X + this.Width + DesignConfig.Resources.RetreatSize,
+                base.Location.Y
+            );
+            
             this.Size = new Size(DesignConfig.PanelToolBox.Width, DesignConfig.PanelToolBox.Height);
         }
 

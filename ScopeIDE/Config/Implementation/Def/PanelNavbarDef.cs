@@ -16,9 +16,9 @@ namespace ScopeIDE.Config.Implementation.Def {
             Height = 30;
 
             Button = new ButtonConfigEmpty() {
-                WidthDef = 80,
+                WidthDef = 50,
                 HeightDef = 40,
-                Width = 80,
+                Width = 50,
                 Height = 40,
                 FontName =  new FontFamily("Verdana"),
                 FontSizeDef = 10,

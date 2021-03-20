@@ -5,12 +5,16 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using ScopeIDE.Config;
+using ScopeIDE.Config.Implementation.Def;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements;
+using ScopeIDE.Elements.Panels.ContextMenu;
+using ScopeIDE.Elements.Panels.PanelNavbar;
 using ScopeIDE.Forms.FormStyls;
 using ScopeIDE.libs.ControlExt;
 using ScopeIDE.libs.Egolds;
 using ScopeIDE.Panels;
+using ContextMenu = ScopeIDE.Elements.ContextMenu;
 
 namespace ScopeIDE.Forms {
     public partial class FormMain : ShadowedForm, IFormResizable {
@@ -30,10 +34,10 @@ namespace ScopeIDE.Forms {
 
             FormConfig();
             InitializeComponent();
-            
+
             AddPanelNavbar();
-            AddPanelMain();
             AddPanelInstrument();
+            AddPanelMain();
             AddPanelToolBox();
         }
 
@@ -84,12 +88,15 @@ namespace ScopeIDE.Forms {
                 this._panelNavbar1,
                 this._panelInstrumentPanel1,
             };
-            
-            _panelToolBox = new PanelToolBox(DesignConfig, panelsToolBox) {
+
+            var contextMenu = new ContextMenu(DesignConfig, new List<Button>());
+
+            _panelToolBox = new PanelToolBox(DesignConfig, panelsToolBox, contextMenu) {
                 TabIndex = 2,
                 Location = new Point(0, 55),
             };
-            
+
+            this.Controls.Add(contextMenu);
             this.Controls.Add(_panelToolBox);
         }
 

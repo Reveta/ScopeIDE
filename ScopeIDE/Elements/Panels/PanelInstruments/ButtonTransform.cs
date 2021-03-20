@@ -1,9 +1,8 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 using ScopeIDE.Config.Interfaces;
 
-namespace ScopeIDE.Elements.PanelInstruments {
+namespace ScopeIDE.Elements.Panels.PanelInstruments {
     public partial class ButtonTransform : Button {
         public readonly IDesignConfig DesignConfig;
 

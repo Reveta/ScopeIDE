@@ -4,18 +4,20 @@ using System.Windows.Forms;
 using ScopeIDE.Config;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Forms;
+using ScopeIDE.Panels;
 
-namespace ScopeIDE.Elements.PanelToolBox {
+namespace ScopeIDE.Elements.Panels.PanelToolBoxs {
     public partial class ButtonToolBox : ButtonColorDepend, IEventFormResize {
         public IDesignConfig DesignConfig { get; }
         public UserControl Panel { get; }
+        
         private string VerticalText { get; set; }
 
         public ButtonToolBox(string verticalText, IDesignConfig designConfig, UserControl panel) : base(designConfig.ColorConfig) {
             DesignConfig = designConfig;
             Panel = panel;
+            
             this.VerticalText = verticalText;
-
             SetVerticalText(this);
             InitializeComponent();
         }

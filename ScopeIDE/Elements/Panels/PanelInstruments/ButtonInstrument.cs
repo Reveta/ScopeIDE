@@ -5,16 +5,23 @@ using ScopeIDE.Config;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Forms;
 
-namespace ScopeIDE.Elements.PanelToolBox.ButtonAdd {
-    public partial class ButtonToolBoxAdd : ButtonColorDepend, IEventFormResize {
+namespace ScopeIDE.Elements.Panels.PanelInstruments {
+    public partial class ButtonInstrument : ButtonColorDepend, IEventFormResize {
         public IDesignConfig DesignConfig { get; }
         
 
-        public ButtonToolBoxAdd(IDesignConfig designConfig) : base(designConfig.ColorConfig) {
+        public ButtonInstrument(IDesignConfig designConfig) : base(designConfig.ColorConfig) {
             DesignConfig = designConfig;
-            Text = "+";
 
             InitializeComponent();
+        }
+
+        protected override void OnClick(EventArgs e) {
+            this.BackColor = ColorTranslator.FromHtml("#A30015");
+            
+            
+            
+            base.OnClick(e);
         }
 
         public void EventFormResize(Form form) {

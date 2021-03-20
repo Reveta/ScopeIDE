@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 
-namespace ScopeIDE.Elements.PanelToolBox.ButtonAdd {
-	partial class ButtonToolBoxAdd {
+namespace ScopeIDE.Elements.Panels.PanelToolBoxs {
+	partial class ButtonToolBox {
 		/// <summary> 
 		/// Required designer variable.
 		/// </summary>

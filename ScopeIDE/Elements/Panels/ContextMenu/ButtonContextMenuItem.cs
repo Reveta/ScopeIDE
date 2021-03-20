@@ -4,39 +4,41 @@ using ScopeIDE.Config;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Forms;
 
-namespace ScopeIDE.Elements.PanelNavbar {
-    public partial class ButtonNavbar : Button, IEventFormResize {
+namespace ScopeIDE.Elements.Panels.ContextMenu {
+    public partial class ButtonContextMenuItem : Button, IEventFormResize {
         public IDesignConfig DesignConfig;
 
-        public ButtonNavbar(IDesignConfig designConfig) {
+        public ButtonContextMenuItem(IDesignConfig designConfig) {
             DesignConfig = designConfig;
             DesignConfig.PanelNavbar.Button.Height = this.Height;
-            
+
             InitializeComponent();
         }
 
         public void EventFormResize(Form form) {
             if (form is IFormResizable formResizable) {
                 DesignConfig.PanelNavbar.Button.FontSize =
-                    (int) (DesignConfig.PanelNavbar.Button.FontSizeDef / 100 *  formResizable.Scales switch {
+                    (int) (DesignConfig.PanelNavbar.Button.FontSizeDef / 100 * formResizable.Scales switch {
                         EScales.HD => DesignConfig.Scale.HD,
                         EScales.FullHD => DesignConfig.Scale.FullHD,
                         EScales.DoubleHD => DesignConfig.Scale.DoubleHD,
                         EScales.FourHD => DesignConfig.Scale.FourHD,
                         _ => DesignConfig.Scale.FourHD
                     });
-                
+
                 this.Font = new Font(
-                    DesignConfig.PanelNavbar.Button.FontName,
-                    DesignConfig.PanelNavbar.Button.FontSize,
-                    DesignConfig.PanelNavbar.Button.FontStyle
+                    DesignConfig.ContextMenuConfig.ButtonConfig.FontName,
+                    DesignConfig.ContextMenuConfig.ButtonConfig.FontSize,
+                    DesignConfig.ContextMenuConfig.ButtonConfig.FontStyle
                 );
 
-                var newWidth = 0;
-                this.Width = newWidth; //Set minWidth, it will be automatic resize, but without it it can`t resize to lower
-                this.Height = DesignConfig.PanelNavbar.LogoHeight;
-            }
+                this.Padding = new Padding(
+                    DesignConfig.Resources.RetreatSize,0,
+                    DesignConfig.Resources.RetreatSize, 0);
 
+                this.Width = DesignConfig.ContextMenuConfig.ButtonConfig.Width;
+                this.Height = DesignConfig.ContextMenuConfig.ButtonConfig.Height;
+            }
         }
     }
 }

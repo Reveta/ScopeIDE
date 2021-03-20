@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
-using ScopeIDE.Elements.PanelInstruments;
 
 namespace ScopeIDE.Panels {
 	partial class PanelInstrument {
