@@ -18,20 +18,22 @@ namespace ScopeIDE.Panels {
             _state = EState.Big;
             DesignConfig = designConfig;
             this.DoubleBuffered = true;
-            
+
             AddTransformButton();
 
-            AddButton(new ButtonInstrument(designConfig){Text = "😍"});
-            AddButton(new ButtonInstrument(designConfig){Text = "😘"});
-            AddButton(new ButtonInstrument(designConfig){Text = "👌"});
-            AddButton(new ButtonInstrument(designConfig){Text = "😒"});
-            AddButton(new ButtonInstrument(designConfig){Text = "😁"});
-            AddButton(new ButtonInstrument(designConfig){Text = "😂"});
-            AddButton(new ButtonInstrument(designConfig){Text = "😊"});
-            AddButton(new ButtonInstrument(designConfig){Text = "🤣"});
-            AddButton(new ButtonInstrument(designConfig){Text = "❤"});
-            AddButton(new ButtonInstrument(designConfig){Text = "💕"});
-            AddButton(new ButtonInstrument(designConfig){Text = "🎉"});
+            AddButton(new ButtonInstrument(designConfig) {Text = "😍"});
+            AddButton(new ButtonInstrument(designConfig) {Text = "😘"});
+            AddButton(new ButtonInstrument(designConfig) {Text = "👌"});
+            AddButton(new ButtonInstrument(designConfig) {Text = "😒"});
+
+            AddButton(new ButtonInstrument(designConfig) {Text = "😁"});
+            AddButton(new ButtonInstrument(designConfig) {Text = "😂"});
+            AddButton(new ButtonInstrument(designConfig) {Text = "😊"});
+            AddButton(new ButtonInstrument(designConfig) {Text = "🤣"});
+
+            AddButton(new ButtonInstrument(designConfig) {Text = "❤"});
+            AddButton(new ButtonInstrument(designConfig) {Text = "💕"});
+            AddButton(new ButtonInstrument(designConfig) {Text = "🎉"});
 
             InitializeComponent();
         }
@@ -87,7 +89,7 @@ namespace ScopeIDE.Panels {
 
         private void AddTransformButton() {
             _buttonTransform1 = new ButtonTransform(DesignConfig) {
-                Location = new Point(0, 0),
+                Location = new Point(0, DesignConfig.Resources.RetreatSize),
             };
             this._buttonTransform1.Click += this.buttonTransform1_Click_1;
 
@@ -95,13 +97,13 @@ namespace ScopeIDE.Panels {
         }
 
         #endregion
-        
+
         #region EventFormResize
 
         public void EventFormResize(Form form) {
             var height = DesignConfig.PanelMainConfig.Height;
             this.Height = height + 40; //TODO this 40 it`s not ok, not work correctly
-            
+
             ControlCollectionExt.ToList(this.Controls).ForEach(control => {
                 if (control is IEventFormResize element) {
                     element.EventFormResize(form);
@@ -110,7 +112,7 @@ namespace ScopeIDE.Panels {
 
             RePaint();
         }
-        
+
         #endregion
 
         #region EventButtonTransformClick_Region
@@ -142,10 +144,17 @@ namespace ScopeIDE.Panels {
         private void SetBigStyle() {
             _state = EState.Big;
             int width = (DesignConfig.PanelInstrument.Button.Width * 2) + (DesignConfig.Resources.RetreatSize * 3);
-            int height = this._buttonTransform1.Height
-                         + DesignConfig.PanelInstrument.Button.Height
-                         + ((GetAllButtons().Count / 2) * (DesignConfig.PanelInstrument.Button.Height + (DesignConfig.Resources.RetreatSize*2) ));
-            
+
+            var count = GetAllButtons().Count;
+            int height =
+                (count / 2 * DesignConfig.PanelInstrument.Button.Height) +
+                (count / 2 * DesignConfig.Resources.RetreatSize) +
+                DesignConfig.Resources.RetreatSize;
+
+            if (count / 2 != 0) {
+                height += DesignConfig.PanelInstrument.Button.Height + DesignConfig.Resources.RetreatSize;
+            }
+
             this.Size = new Size(
                 width,
                 height
@@ -155,7 +164,7 @@ namespace ScopeIDE.Panels {
 
             int x1 = DesignConfig.Resources.RetreatSize;
             int x2 = DesignConfig.PanelInstrument.Button.Width + DesignConfig.Resources.RetreatSize + x1;
-            int y = DesignConfig.PanelInstrument.Button.Height + this._buttonTransform1.Height;
+            int y = this._buttonTransform1.Height + (DesignConfig.Resources.RetreatSize * 2);
             bool xState = true;
             foreach (Control element in this.Controls) {
                 if (element is ButtonTransform) {
@@ -174,9 +183,11 @@ namespace ScopeIDE.Panels {
         private void SetSmallStyle() {
             _state = EState.Small;
             int width = (DesignConfig.PanelInstrument.Button.Width) + (DesignConfig.Resources.RetreatSize * 2);
-            int height = this._buttonTransform1.Height
-                         + (GetAllButtons().Count * (DesignConfig.PanelInstrument.Button.Height + (DesignConfig.Resources.RetreatSize*2) ));
-            
+            int height =
+                (GetAllButtons().Count * DesignConfig.PanelInstrument.Button.Height) +
+                (GetAllButtons().Count * DesignConfig.Resources.RetreatSize) +
+                DesignConfig.Resources.RetreatSize;
+
             this.Size = new Size(
                 width,
                 height
@@ -184,8 +195,8 @@ namespace ScopeIDE.Panels {
 
             this._buttonTransform1.SetSmallStyle();
 
-            int x1 = DesignConfig.Resources.RetreatSize;;
-            int y = DesignConfig.PanelInstrument.Button.Height + this._buttonTransform1.Height;
+            int x1 = DesignConfig.Resources.RetreatSize;
+            int y = this._buttonTransform1.Height + (DesignConfig.Resources.RetreatSize * 2);
             foreach (Control element in this.Controls) {
                 if (element is ButtonTransform) {
                     continue;
