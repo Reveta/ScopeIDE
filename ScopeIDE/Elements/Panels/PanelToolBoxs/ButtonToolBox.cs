@@ -47,7 +47,7 @@ namespace ScopeIDE.Elements.Panels.PanelToolBoxs {
             DesignConfig.PanelToolBox.Button.FontSize = DesignConfig.PanelToolBox.Button.FontSizeDef / 100 * coof;
 
             DesignConfig.PanelToolBox.Button.Width =
-                (int) (DesignConfig.PanelToolBox.Button.WidthDef / 100f * coof) - DesignConfig.Resources.RetreatSize;
+                (int) (DesignConfig.PanelToolBox.Button.WidthDef / 100f * coof);
 
             DesignConfig.PanelToolBox.Button.Height =
                 (int) (DesignConfig.PanelToolBox.Button.HeightDef / 100f * coof);

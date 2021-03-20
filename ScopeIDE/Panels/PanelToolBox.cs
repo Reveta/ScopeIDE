@@ -111,7 +111,7 @@ namespace ScopeIDE.Panels {
             });
 
             DesignConfig.PanelToolBox.Height = form.Height;
-            DesignConfig.PanelToolBox.Width = DesignConfig.PanelToolBox.Button.Width + DesignConfig.Resources.RetreatSize;
+            DesignConfig.PanelToolBox.Width = DesignConfig.PanelToolBox.Button.Width + (DesignConfig.Resources.RetreatSize);
 
             RePaint();
         }

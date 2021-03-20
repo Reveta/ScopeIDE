@@ -103,7 +103,9 @@ namespace ScopeIDE.Forms {
         private void AddPanelInstrument() {
             this._panelInstrumentPanel1 = new PanelInstrument(DesignConfig) {
                 TabIndex = 3,
-                Location = new Point(DesignConfig.PanelToolBox.Button.Width + 5, DesignConfig.PanelMainConfig.Height - 5)
+                Location = new Point(
+                    DesignConfig.PanelToolBox.Button.Width + DesignConfig.Resources.RetreatSize + DesignConfig.Resources.RetreatSize,
+                    DesignConfig.PanelMainConfig.Height - DesignConfig.Resources.RetreatSize - 1)
             };
 
             this.Controls.Add(_panelInstrumentPanel1);
