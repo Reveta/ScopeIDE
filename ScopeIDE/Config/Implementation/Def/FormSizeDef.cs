@@ -9,12 +9,12 @@ namespace ScopeIDE.Config.Implementation.Def {
         
         public int Width { get; set; }
         public int Height { get; set; }
-        public int XDef { get; set; }
-        public int YDef { get; set; }
+        public int LocationXDef { get; set; }
+        public int LocationYDef { get; set; }
 
         public FormSizeDef() {
-            WidthDef = 800;
-            HeightDef = 600;
+            WidthDef = 1280;
+            HeightDef = 720;
 
             Width = WidthDef;
             Height = WidthDef;
@@ -22,8 +22,8 @@ namespace ScopeIDE.Config.Implementation.Def {
             Rectangle primaryScreenBounds = Screen.PrimaryScreen.Bounds;
             var width = primaryScreenBounds.Width / 2.5;
             var height = primaryScreenBounds.Height / 2.5;
-            YDef = (int) height;
-            XDef = (int) width;
+            LocationYDef = (int) height;
+            LocationXDef = (int) width;
         }
     }
 }

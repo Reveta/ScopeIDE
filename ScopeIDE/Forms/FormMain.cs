@@ -2,14 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 using ScopeIDE.Config;
-using ScopeIDE.Config.Implementation.Def;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements;
-using ScopeIDE.Elements.Panels.ContextMenu;
-using ScopeIDE.Elements.Panels.PanelNavbar;
 using ScopeIDE.Forms.FormStyls;
 using ScopeIDE.libs.ControlExt;
 using ScopeIDE.libs.Egolds;
@@ -35,9 +31,9 @@ namespace ScopeIDE.Forms {
             FormConfig();
             InitializeComponent();
 
+            AddPanelMain();
             AddPanelNavbar();
             AddPanelInstrument();
-            AddPanelMain();
             AddPanelToolBox();
         }
 
@@ -63,20 +59,28 @@ namespace ScopeIDE.Forms {
         }
 
         private void AddPanelNavbar() {
-            _panelNavbar1 = new PanelNavbar(DesignConfig) {
+            DesignConfig.PanelNavbar.LocationXDef = DesignConfig.PanelNavbar.LogoWidth + 25;
+            DesignConfig.PanelNavbar.LocationYDef = (DesignConfig.PanelNavbar.Height * -1) + 1;
+
+            _panelNavbar1 = new PanelNavbar(DesignConfig, new Point(
+                DesignConfig.PanelNavbar.LocationXDef,
+                DesignConfig.PanelNavbar.LocationYDef
+            )) {
                 TabIndex = 0,
-                Location = new Point(
-                    DesignConfig.PanelNavbar.LogoWidth + 25,
-                    (DesignConfig.PanelNavbar.Height * -1) + 1)
             };
 
             this.Controls.Add(_panelNavbar1);
         }
 
         private void AddPanelMain() {
-            this._panelMain1 = new PanelMain(DesignConfig) {
+            DesignConfig.PanelMainConfig.LocationXDef = 0;
+            DesignConfig.PanelMainConfig.LocationYDef = 0 + DesignConfig.Resources.RetreatSize;
+
+            this._panelMain1 = new PanelMain(DesignConfig, new Point(
+                DesignConfig.PanelMainConfig.LocationXDef,
+                DesignConfig.PanelMainConfig.LocationYDef
+            )) {
                 TabIndex = 1,
-                Location = new Point(0, 0 + DesignConfig.Resources.RetreatSize)
             };
 
             this.Controls.Add(_panelMain1);
@@ -91,9 +95,13 @@ namespace ScopeIDE.Forms {
 
             var contextMenu = new ContextMenu(DesignConfig, new List<Button>());
 
-            _panelToolBox = new PanelToolBox(DesignConfig, panelsToolBox, contextMenu) {
+            DesignConfig.PanelToolBox.LocationXDef = 0;
+            DesignConfig.PanelToolBox.LocationYDef = 55;
+            _panelToolBox = new PanelToolBox(DesignConfig, panelsToolBox, contextMenu, new Point(
+                DesignConfig.PanelToolBox.LocationXDef,
+                DesignConfig.PanelToolBox.LocationYDef
+            )) {
                 TabIndex = 2,
-                Location = new Point(0, 55),
             };
 
             this.Controls.Add(contextMenu);
@@ -101,11 +109,18 @@ namespace ScopeIDE.Forms {
         }
 
         private void AddPanelInstrument() {
-            this._panelInstrumentPanel1 = new PanelInstrument(DesignConfig) {
+            DesignConfig.PanelInstrument.LocationXDef =
+                DesignConfig.PanelToolBox.Button.Width + DesignConfig.Resources.RetreatSize +
+                DesignConfig.Resources.RetreatSize;
+
+            DesignConfig.PanelInstrument.LocationYDef =
+                DesignConfig.PanelMainConfig.Height - DesignConfig.Resources.RetreatSize - 1;
+
+            this._panelInstrumentPanel1 = new PanelInstrument(DesignConfig, new Point(
+                DesignConfig.PanelInstrument.LocationXDef,
+                DesignConfig.PanelInstrument.LocationYDef
+                )) {
                 TabIndex = 3,
-                Location = new Point(
-                    DesignConfig.PanelToolBox.Button.Width + DesignConfig.Resources.RetreatSize + DesignConfig.Resources.RetreatSize,
-                    DesignConfig.PanelMainConfig.Height - DesignConfig.Resources.RetreatSize - 1)
             };
 
             this.Controls.Add(_panelInstrumentPanel1);
@@ -129,8 +144,8 @@ namespace ScopeIDE.Forms {
             this.Width = DesignConfig.FormSize.WidthDef;
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(
-                DesignConfig.FormSize.XDef,
-                DesignConfig.FormSize.YDef);
+                DesignConfig.FormSize.LocationXDef,
+                DesignConfig.FormSize.LocationYDef);
         }
     }
 }

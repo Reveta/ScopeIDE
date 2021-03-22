@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Panels;
+using ScopeIDE.Panels.PanelTemplates;
 
 namespace ScopeIDE.Elements {
     public partial class ContextMenu : APanelWithButtons, IEventFormResize {

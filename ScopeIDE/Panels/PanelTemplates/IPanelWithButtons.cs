@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
-namespace ScopeIDE.Panels {
+namespace ScopeIDE.Panels.PanelTemplates {
     public interface IPanelWithButtons {
         public void AddButton(Button button, bool onlyPosition = false);
 

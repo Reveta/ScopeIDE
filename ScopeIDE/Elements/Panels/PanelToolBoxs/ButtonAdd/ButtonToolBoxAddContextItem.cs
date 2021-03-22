@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements.Panels.ContextMenu;
 using ScopeIDE.Panels;
+using ScopeIDE.Panels.PanelTemplates;
 
 namespace ScopeIDE.Elements.Panels.PanelToolBoxs.ButtonAdd {
     public partial class ButtonToolBoxAddContextItem : ButtonContextMenuItem {

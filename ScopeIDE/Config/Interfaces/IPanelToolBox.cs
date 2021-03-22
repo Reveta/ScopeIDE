@@ -1,9 +1,5 @@
 ﻿namespace ScopeIDE.Config.Interfaces {
-    public interface IPanelToolBox {
+    public interface IPanelToolBox : ISizeConfig, ILocationConfig {
         public IButtonConfig Button { get; set; }
-        
-        public int Height { get; set; }
-        public int Width { get; set; }
-        
     }
 }

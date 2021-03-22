@@ -4,12 +4,13 @@ using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements;
 using ScopeIDE.Elements.Panels.PanelNavbar;
 using ScopeIDE.libs.ControlExt;
+using ScopeIDE.Panels.PanelTemplates;
 
 namespace ScopeIDE.Panels {
-    public partial class PanelNavbar : APanelWithButtons, IEventFormResize {
+    public partial class PanelNavbar : APanelTemplateWB, IEventFormResize {
         public IDesignConfig DesignConfig { get; set; }
 
-        public PanelNavbar(IDesignConfig designConfig) {
+        public PanelNavbar(IDesignConfig designConfig, Point location) : base(location) {
             DesignConfig = designConfig;
             this.DoubleBuffered = true;
 

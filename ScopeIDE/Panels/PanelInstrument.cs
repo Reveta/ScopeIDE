@@ -5,16 +5,17 @@ using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements;
 using ScopeIDE.Elements.Panels.PanelInstruments;
 using ScopeIDE.libs.ControlExt;
+using ScopeIDE.Panels.PanelTemplates;
 
 //TODO Correct the indents of the first and last buttons to the panel end in height
 namespace ScopeIDE.Panels {
-    public partial class PanelInstrument : APanelWithButtons, IEventFormResize {
+    public partial class PanelInstrument : APanelTemplateWB, IEventFormResize {
         public IDesignConfig DesignConfig { get; }
 
         private ButtonTransform _buttonTransform1;
         private EState _state;
 
-        public PanelInstrument(IDesignConfig designConfig) {
+        public PanelInstrument(IDesignConfig designConfig, Point location) : base(location) {
             _state = EState.Big;
             DesignConfig = designConfig;
             this.DoubleBuffered = true;

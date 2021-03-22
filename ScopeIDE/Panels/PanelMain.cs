@@ -4,12 +4,13 @@ using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements;
 using ScopeIDE.Elements.Panels.PanelMain;
 using ScopeIDE.libs.ControlExt;
+using ScopeIDE.Panels.PanelTemplates;
 
 namespace ScopeIDE.Panels {
-    public partial class PanelMain : APanelWithButtons, IEventFormResize{
+    public partial class PanelMain : APanelTemplateWB, IEventFormResize{
 
         public IDesignConfig DesignConfig { get; set; }
-        public PanelMain(IDesignConfig designConfig) {
+        public PanelMain(IDesignConfig designConfig, Point location) : base(location) {
             DesignConfig = designConfig;
             DoubleBuffered = true;
             

@@ -4,6 +4,8 @@ using ScopeIDE.Config.Interfaces;
 namespace ScopeIDE.Config.Implementation.Def {
     public class PanelNavbarDef : IPanelNavbar {
         public int Height { get; set; }
+        public int WidthDef { get; set; }
+        public int Width { get; set; }
         public int HeightDef { get; set; }
         public int LogoHeight { get; set; }
         public int LogoWidth { get; set; }
@@ -25,5 +27,8 @@ namespace ScopeIDE.Config.Implementation.Def {
                 FontStyle = FontStyle.Regular
             };
         }
+
+        public int LocationXDef { get; set; }
+        public int LocationYDef { get; set; }
     }
 }

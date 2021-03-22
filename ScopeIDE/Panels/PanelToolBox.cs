@@ -7,16 +7,22 @@ using ScopeIDE.Elements;
 using ScopeIDE.Elements.Panels.PanelToolBoxs;
 using ScopeIDE.Elements.Panels.PanelToolBoxs.ButtonAdd;
 using ScopeIDE.libs.ControlExt;
+using ScopeIDE.Panels.PanelTemplates;
 using ContextMenu = ScopeIDE.Elements.ContextMenu;
 
 namespace ScopeIDE.Panels {
-    public partial class PanelToolBox : APanelWithButtons, IEventFormResize {
+    public partial class PanelToolBox : APanelTemplateWB, IEventFormResize {
         public IDesignConfig DesignConfig { get; set; }
         private readonly List<UserControl> _panels;
         private ButtonToolBoxAdd ButtonToolBoxAdd { get; set; }
         private ContextMenu ContextMenu { get; set; }
 
-        public PanelToolBox(IDesignConfig designConfig, List<UserControl> panels, ContextMenu contextMenu) {
+        public PanelToolBox(
+            IDesignConfig designConfig,
+            List<UserControl> panels,
+            ContextMenu contextMenu,
+            Point location
+                ) : base(location) {
             //TODO придумати як зберігати контекстне меню всередині
             ContextMenu = contextMenu;
             _panels = panels;

@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\EScales.cs" />
+    <Compile Include="Config\ILocationConfig.cs" />
     <Compile Include="Config\Implementation\Def\ButtonConfigEmpty.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -73,6 +74,7 @@
     <Compile Include="Config\Interfaces\IPanelToolBox.cs" />
     <Compile Include="Config\Interfaces\IResources.cs" />
     <Compile Include="Config\Interfaces\IScale.cs" />
+    <Compile Include="Config\ISizeConfig.cs" />
     <Compile Include="Elements\ButtonColorDepend.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -149,10 +151,6 @@
     <Compile Include="libs\Egolds\ShadowedForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Panels\APanelWithButtons.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Panels\IPanelWithButtons.cs" />
     <Compile Include="Panels\PanelInstrument.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -171,6 +169,14 @@
     <Compile Include="Panels\PanelNavbar.Designer.cs">
       <DependentUpon>PanelNavbar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Panels\PanelTemplates\ALocationFiller.cs" />
+    <Compile Include="Panels\PanelTemplates\APanelTemplateWB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\PanelTemplates\APanelWithButtons.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\PanelTemplates\IPanelWithButtons.cs" />
     <Compile Include="Panels\PanelToolBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -190,6 +196,9 @@
     <EmbeddedResource Include="Panels\PanelNavbar.resx">
       <DependentUpon>PanelNavbar.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LocationManager" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
