@@ -151,6 +151,17 @@
     <Compile Include="libs\Egolds\ShadowedForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LocationManagment\Configs\ILocationManagerConfig.cs" />
+    <Compile Include="LocationManagment\Configs\ILocationManagerSideConfig.cs" />
+    <Compile Include="LocationManagment\Configs\IReLocateControl.cs" />
+    <Compile Include="LocationManagment\Configs\LocationManagerConfig.cs" />
+    <Compile Include="LocationManagment\Configs\LocationSideConfig.cs" />
+    <Compile Include="LocationManagment\Configs\Sides\Left.cs" />
+    <Compile Include="LocationManagment\Configs\Sides\StaticLeft.cs" />
+    <Compile Include="LocationManagment\Configs\Sides\Up.cs" />
+    <Compile Include="LocationManagment\LocationContainers.cs" />
+    <Compile Include="LocationManagment\LocationManager.cs" />
+    <Compile Include="LocationManagment\LocationSide.cs" />
     <Compile Include="Panels\PanelInstrument.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -196,9 +207,6 @@
     <EmbeddedResource Include="Panels\PanelNavbar.resx">
       <DependentUpon>PanelNavbar.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="LocationManager" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

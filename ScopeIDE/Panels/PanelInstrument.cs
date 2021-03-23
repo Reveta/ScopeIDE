@@ -4,21 +4,26 @@ using System.Windows.Forms;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements;
 using ScopeIDE.Elements.Panels.PanelInstruments;
+using ScopeIDE.Forms;
 using ScopeIDE.libs.ControlExt;
+using ScopeIDE.LocationManagment;
+using ScopeIDE.LocationManagment.Configs;
 using ScopeIDE.Panels.PanelTemplates;
 
 //TODO Correct the indents of the first and last buttons to the panel end in height
 namespace ScopeIDE.Panels {
-    public partial class PanelInstrument : APanelTemplateWB, IEventFormResize {
+    public partial class PanelInstrument : APanelTemplateWB, IEventFormResize, IReLocateControl {
         public IDesignConfig DesignConfig { get; }
+        public LocationManager LocationManager { get; set; }
 
         private ButtonTransform _buttonTransform1;
         private EState _state;
 
+
         public PanelInstrument(IDesignConfig designConfig, Point location) : base(location) {
-            _state = EState.Big;
             DesignConfig = designConfig;
             this.DoubleBuffered = true;
+            _state = EState.Big;
 
             AddTransformButton();
 
@@ -102,9 +107,6 @@ namespace ScopeIDE.Panels {
         #region EventFormResize
 
         public void EventFormResize(Form form) {
-            var height = DesignConfig.PanelMainConfig.Height;
-            this.Height = height + 40; //TODO this 40 it`s not ok, not work correctly
-
             ControlCollectionExt.ToList(this.Controls).ForEach(control => {
                 if (control is IEventFormResize element) {
                     element.EventFormResize(form);
@@ -140,6 +142,8 @@ namespace ScopeIDE.Panels {
                     this.SetSmallStyle();
                     break;
             }
+
+            ReLocateAll();
         }
 
         private void SetBigStyle() {
@@ -218,5 +222,9 @@ namespace ScopeIDE.Panels {
         }
 
         #endregion
+
+        public void ReLocateAll() {
+            LocationManager?.ReLocateAll();
+        }
     }
 }

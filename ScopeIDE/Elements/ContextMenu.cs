@@ -2,11 +2,13 @@
 using System.Drawing;
 using System.Windows.Forms;
 using ScopeIDE.Config.Interfaces;
+using ScopeIDE.LocationManagment;
+using ScopeIDE.LocationManagment.Configs;
 using ScopeIDE.Panels;
 using ScopeIDE.Panels.PanelTemplates;
 
 namespace ScopeIDE.Elements {
-    public partial class ContextMenu : APanelWithButtons, IEventFormResize {
+    public partial class ContextMenu : APanelWithButtons, IEventFormResize, IReLocateControl {
         private List<Button> _buttons;
         public IDesignConfig DesignConfig { get; set; }
 
@@ -99,6 +101,7 @@ namespace ScopeIDE.Elements {
             });
 
             RePaint();
+            ReLocateAll();
         }
 
         private void InitializeComponent() {
@@ -107,6 +110,11 @@ namespace ScopeIDE.Elements {
             this.BorderStyle = BorderStyle.None;
             this.Name = "contextMenu";
             this.PerformLayout();
+        }
+
+        public LocationManager LocationManager { get; set; }
+        public void ReLocateAll() {
+            LocationManager.ReLocateAll();
         }
     }
 }

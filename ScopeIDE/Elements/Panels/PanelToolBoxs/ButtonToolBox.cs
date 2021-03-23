@@ -4,17 +4,22 @@ using System.Windows.Forms;
 using ScopeIDE.Config;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Forms;
+using ScopeIDE.LocationManagment;
+using ScopeIDE.LocationManagment.Configs;
 using ScopeIDE.Panels;
 
 namespace ScopeIDE.Elements.Panels.PanelToolBoxs {
-    public partial class ButtonToolBox : ButtonColorDepend, IEventFormResize {
+    public partial class ButtonToolBox : ButtonColorDepend, IEventFormResize, IReLocateControl {
         public IDesignConfig DesignConfig { get; }
+        public LocationManager LocationManager { get; set; }
         public UserControl Panel { get; }
-        
+
         private string VerticalText { get; set; }
 
-        public ButtonToolBox(string verticalText, IDesignConfig designConfig, UserControl panel) : base(designConfig.ColorConfig) {
+
+        public ButtonToolBox(string verticalText, IDesignConfig designConfig, UserControl panel, LocationManager locationManager) : base(designConfig.ColorConfig) {
             DesignConfig = designConfig;
+            LocationManager = locationManager;
             Panel = panel;
             
             this.VerticalText = verticalText;
@@ -30,9 +35,10 @@ namespace ScopeIDE.Elements.Panels.PanelToolBoxs {
                 Panel.Show();
             }
 
+            ReLocateAll();
             base.OnClick(e);
         }
-        
+
         public void EventFormResize(Form form) {
             if (form is not IFormResizable formResizable) return;
 
@@ -84,6 +90,10 @@ namespace ScopeIDE.Elements.Panels.PanelToolBoxs {
             img.RotateFlip(RotateFlipType.Rotate270FlipNone);
 
             button.BackgroundImage = img;
+        }
+
+        public void ReLocateAll() {
+            LocationManager?.ReLocateAll();
         }
     }
 }

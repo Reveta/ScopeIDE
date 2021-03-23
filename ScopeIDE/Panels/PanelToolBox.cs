@@ -7,15 +7,19 @@ using ScopeIDE.Elements;
 using ScopeIDE.Elements.Panels.PanelToolBoxs;
 using ScopeIDE.Elements.Panels.PanelToolBoxs.ButtonAdd;
 using ScopeIDE.libs.ControlExt;
+using ScopeIDE.LocationManagment;
+using ScopeIDE.LocationManagment.Configs;
 using ScopeIDE.Panels.PanelTemplates;
 using ContextMenu = ScopeIDE.Elements.ContextMenu;
 
 namespace ScopeIDE.Panels {
-    public partial class PanelToolBox : APanelTemplateWB, IEventFormResize {
+    public partial class PanelToolBox : APanelTemplateWB, IEventFormResize, IReLocateControl {
         public IDesignConfig DesignConfig { get; set; }
+        public LocationManager LocationManager { get; set; }
         private readonly List<UserControl> _panels;
         private ButtonToolBoxAdd ButtonToolBoxAdd { get; set; }
         private ContextMenu ContextMenu { get; set; }
+
 
         public PanelToolBox(
             IDesignConfig designConfig,
@@ -39,7 +43,7 @@ namespace ScopeIDE.Panels {
             List<Button> addContextMenuButtons = new List<Button>();
 
             _panels.ForEach(panel => {
-                var buttonToolBox = new ButtonToolBox(panel.Name, DesignConfig, panel);
+                var buttonToolBox = new ButtonToolBox(panel.Name, DesignConfig, panel, LocationManager);
                 var menuItem = new ButtonToolBoxAddContextItem(DesignConfig, buttonToolBox, this) {
                     Text = panel.Name
                 };
@@ -107,6 +111,7 @@ namespace ScopeIDE.Panels {
             );
             
             this.Size = new Size(DesignConfig.PanelToolBox.Width, DesignConfig.PanelToolBox.Height);
+            ReLocateAll();
         }
 
         public void EventFormResize(Form form) {
@@ -128,6 +133,16 @@ namespace ScopeIDE.Panels {
             this.BorderStyle = BorderStyle.None;
             this.Name = "panelToolBox";
             this.PerformLayout();
+        }
+
+        public void ReLocateAll() {
+            ControlCollectionExt.ToList(this.Controls).ForEach(control => {
+                if (control is IReLocateControl reLocateControl) {
+                    reLocateControl.LocationManager = LocationManager;
+                }
+            });
+            
+            LocationManager?.ReLocateAll();
         }
     }
 }
