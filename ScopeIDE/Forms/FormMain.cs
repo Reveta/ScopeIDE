@@ -42,7 +42,7 @@ namespace ScopeIDE.Forms {
             AddPanelMain();
             AddPanelNavbar();
             AddPanelInstrument();
-            AddPanelInstrument2();
+            AddPanelLayer();
             AddPanelToolBox();
             AddLocationManager();
         }
@@ -50,7 +50,7 @@ namespace ScopeIDE.Forms {
 
         protected override void OnResize(EventArgs e) {
             UpdateScale();
-            
+
             int coof = Scales switch {
                 EScales.HD => DesignConfig.Scale.HD,
                 EScales.FullHD => DesignConfig.Scale.FullHD,
@@ -60,7 +60,7 @@ namespace ScopeIDE.Forms {
             };
 
             DesignConfig.Resources.RetreatSize = (int) (def / 100f * coof);
-            
+
             ControlCollectionExt.ToList(this.Controls).ForEach(control => {
                 if (control is IEventFormResize element) {
                     element.EventFormResize(this);
@@ -76,23 +76,23 @@ namespace ScopeIDE.Forms {
             Up up = new Up(
                 DesignConfig.PanelNavbar.Height + DesignConfig.Resources.RetreatSize
             );
-            
+
             StaticLeft staticLeft = new StaticLeft(
                 0,
                 up.Y + DesignConfig.PanelMainConfig.Height + DesignConfig.Resources.RetreatSize
             );
-            
+
             Left left = new Left(
                 DesignConfig.PanelToolBox.Width + DesignConfig.Resources.RetreatSize,
                 up.Y + DesignConfig.PanelMainConfig.Height + DesignConfig.Resources.RetreatSize
             );
-            
+
             return new LocationManagerConfig(up, staticLeft, left);
         }
 
         private void AddLocationManager() {
             _locationManager = new LocationManager(GetLocationManagerConfig(), DesignConfig);
-                        
+
             ControlCollectionExt.ToList(this.Controls).ForEach(control => {
                 if (control is IReLocateControl reLocateControl) {
                     reLocateControl.LocationManager = _locationManager;
@@ -110,10 +110,10 @@ namespace ScopeIDE.Forms {
 
         private void UpdateScale() {
             Scales = this.Width switch {
-                < 1080 => EScales.HD,
-                < 1720 => EScales.FullHD,
-                < 2360 => EScales.DoubleHD,
-                < 3560 => EScales.FourHD,
+                <= (int) EScales.HD - 100 => EScales.HD,
+                <= (int) EScales.FullHD - 100 => EScales.FullHD,
+                <= (int) EScales.DoubleHD - 100 => EScales.DoubleHD,
+                <= (int) EScales.FourHD - 100 => EScales.FourHD,
                 _ => EScales.FourHD
             };
         }
@@ -178,8 +178,8 @@ namespace ScopeIDE.Forms {
                 DesignConfig.PanelMainConfig.Height - DesignConfig.Resources.RetreatSize - 1;
 
             this._panelInstrumentPanel1 = new PanelInstrument(DesignConfig, new Point(
-                    DesignConfig.PanelInstrument.LocationXDef,
-                    DesignConfig.PanelInstrument.LocationYDef)
+                DesignConfig.PanelInstrument.LocationXDef,
+                DesignConfig.PanelInstrument.LocationYDef)
             ) {
                 TabIndex = 3,
             };
@@ -187,7 +187,7 @@ namespace ScopeIDE.Forms {
             this.Controls.Add(_panelInstrumentPanel1);
         }
 
-        private void AddPanelInstrument2() {
+        private void AddPanelLayer() {
             DesignConfig.PanelInstrument.LocationXDef =
                 DesignConfig.PanelToolBox.Button.Width + DesignConfig.Resources.RetreatSize +
                 DesignConfig.Resources.RetreatSize;
@@ -196,12 +196,12 @@ namespace ScopeIDE.Forms {
                 DesignConfig.PanelMainConfig.Height - DesignConfig.Resources.RetreatSize - 1;
 
             this._panelInstrumentPanel2 = new PanelInstrument(DesignConfig, new Point(
-                    DesignConfig.PanelInstrument.LocationXDef,
-                    DesignConfig.PanelInstrument.LocationYDef)
+                DesignConfig.PanelInstrument.LocationXDef,
+                DesignConfig.PanelInstrument.LocationYDef)
             ) {
                 TabIndex = 3,
             };
-            
+
             _panelInstrumentPanel2.BackColor = Color.Indigo;
 
             this.Controls.Add(_panelInstrumentPanel2);

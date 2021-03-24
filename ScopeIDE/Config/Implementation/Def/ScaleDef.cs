@@ -11,7 +11,7 @@ namespace ScopeIDE.Config.Implementation.Def {
             HD = 80;
             FullHD = 100;
             DoubleHD = 125;
-            FourHD = 170;
+            FourHD = 165;
         }
     }
 }

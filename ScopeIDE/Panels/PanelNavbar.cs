@@ -14,21 +14,21 @@ namespace ScopeIDE.Panels {
             DesignConfig = designConfig;
             this.DoubleBuffered = true;
 
-            AddButton(new ButtonNavbar(designConfig){Text = "File"});
-            AddButton(new ButtonNavbar(designConfig){Text = "Windows"});
-            AddButton(new ButtonNavbar(designConfig){Text = "Edit"});
-            AddButton(new ButtonNavbar(designConfig){Text = "View"});
-            AddButton(new ButtonNavbar(designConfig){Text = "Navigate"});
-            AddButton(new ButtonNavbar(designConfig){Text = "View"});
-            AddButton(new ButtonNavbar(designConfig){Text = "Navigadsadasadte"});
-            AddButton(new ButtonNavbar(designConfig){Text = "Windows"});
-            AddButton(new ButtonNavbar(designConfig){Text = "Code"});
+            AddLayer(new ButtonNavbar(designConfig){Text = "File"});
+            AddLayer(new ButtonNavbar(designConfig){Text = "Windows"});
+            AddLayer(new ButtonNavbar(designConfig){Text = "Edit"});
+            AddLayer(new ButtonNavbar(designConfig){Text = "View"});
+            AddLayer(new ButtonNavbar(designConfig){Text = "Navigate"});
+            AddLayer(new ButtonNavbar(designConfig){Text = "View"});
+            AddLayer(new ButtonNavbar(designConfig){Text = "Navigadsadasadte"});
+            AddLayer(new ButtonNavbar(designConfig){Text = "Windows"});
+            AddLayer(new ButtonNavbar(designConfig){Text = "Code"});
 
             InitializeComponent();
             RePaint();
         }
 
-        public override void AddButton(Button button, bool onlyPosition = false) {
+        public override void AddLayer(Button button, bool onlyPosition = false) {
             int count = this.GetAllButtons().Count;
             button.Name = "buttonNavbar" + count;
             button.TabIndex = count;

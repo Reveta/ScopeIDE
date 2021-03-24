@@ -49,16 +49,16 @@ namespace ScopeIDE.Panels {
                 };
 
                 buttonToolBox.Hide();
-                AddButton(buttonToolBox);
+                AddLayer(buttonToolBox);
                 addContextMenuButtons.Add(menuItem);
             });
 
             ContextMenu.Buttons = addContextMenuButtons;
             ButtonToolBoxAdd = new ButtonToolBoxAdd(this.DesignConfig, ContextMenu);
-            AddButton(ButtonToolBoxAdd);
+            AddLayer(ButtonToolBoxAdd);
         }
 
-        public override void AddButton(Button button, bool onlyPosition = false) {
+        public override void AddLayer(Button button, bool onlyPosition = false) {
             int count = this.GetAllButtons().Count;
             button.Name = "buttonToolbox" + count;
             button.TabIndex = count;
