@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\EScales.cs" />
-    <Compile Include="Config\ILocationConfig.cs" />
+    <Compile Include="Config\IDefLocationConfig.cs" />
     <Compile Include="Config\Implementation\Def\ButtonConfigEmpty.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -152,7 +152,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LocationManagment\Configs\ILocationManagerConfig.cs" />
-    <Compile Include="LocationManagment\Configs\ILocationManagerSideConfig.cs" />
+    <Compile Include="LocationManagment\Configs\ILocationSideConfig.cs" />
     <Compile Include="LocationManagment\Configs\IReLocateControl.cs" />
     <Compile Include="LocationManagment\Configs\LocationManagerConfig.cs" />
     <Compile Include="LocationManagment\Configs\LocationSideConfig.cs" />

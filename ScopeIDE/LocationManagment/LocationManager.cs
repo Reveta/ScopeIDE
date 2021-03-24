@@ -11,9 +11,9 @@ namespace ScopeIDE.LocationManagment {
         private Dictionary<LocationSide, List<LocationContainers>> Containers { get; }
         private Dictionary<LocationSide, LocationSideConfig> LocationSideConfigs { get; }
 
-        private LocationManagerConfig _managerConfig;
+        private ILocationManagerConfig _managerConfig;
 
-        public LocationManager(LocationManagerConfig managerConfig, IDesignConfig designConfig) {
+        public LocationManager(ILocationManagerConfig managerConfig, IDesignConfig designConfig) {
             _managerConfig = managerConfig;
             LocationSideConfigs = new Dictionary<LocationSide, LocationSideConfig>();
             Containers = new Dictionary<LocationSide, List<LocationContainers>>();
@@ -25,7 +25,7 @@ namespace ScopeIDE.LocationManagment {
             });
         }
 
-        public void UpdateDefValues(LocationManagerConfig managerConfig) {
+        public void UpdateDefValues(ILocationManagerConfig managerConfig) {
             _managerConfig = managerConfig;
         }
 

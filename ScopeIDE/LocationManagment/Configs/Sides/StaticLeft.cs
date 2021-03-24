@@ -1,5 +1,5 @@
 ﻿namespace ScopeIDE.LocationManagment.Configs.Sides {
-    public class StaticLeft : ILocationManagerSideConfig {
+    public class StaticLeft : ILocationSideConfig {
         public int X { get; set; }
         public int Y { get; set; }
 

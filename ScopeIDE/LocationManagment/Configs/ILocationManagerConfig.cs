@@ -1,7 +1,8 @@
 ﻿namespace ScopeIDE.LocationManagment.Configs {
     public interface ILocationManagerConfig {
-        public ILocationManagerSideConfig StaticUp { get; set; }
-        public ILocationManagerSideConfig Left { get; set; }
+        public ILocationSideConfig StaticUp { get; set; }
+        public ILocationSideConfig Left { get; set; }
+        public ILocationSideConfig StaticLeft { get; set; }
 
 
     }

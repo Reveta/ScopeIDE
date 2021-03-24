@@ -4,13 +4,13 @@ using ScopeIDE.Config.Interfaces;
 namespace ScopeIDE.LocationManagment.Configs {
     public class LocationSideConfig {
         private LocationSide Side { get; set; }
-        public LocationManagerConfig ManagerConfig { get; set; }
+        public ILocationManagerConfig ManagerConfig { get; set; }
         public IDesignConfig DesignConfig { get; set; }
 
         public int XLevel { get; set; }
         public int YLevel { get; set; }
 
-        public LocationSideConfig(LocationSide side, LocationManagerConfig managerConfig, IDesignConfig designConfig) {
+        public LocationSideConfig(LocationSide side, ILocationManagerConfig managerConfig, IDesignConfig designConfig) {
             Side = side;
             ManagerConfig = managerConfig;
             DesignConfig = designConfig;
@@ -26,7 +26,7 @@ namespace ScopeIDE.LocationManagment.Configs {
             };
         }
 
-        public void CleanPositions( LocationManagerConfig managerConfig) {
+        public void CleanPositions(ILocationManagerConfig managerConfig) {
             ManagerConfig = managerConfig;
             
             switch (Side) {

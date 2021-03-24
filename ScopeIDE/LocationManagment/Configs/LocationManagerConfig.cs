@@ -2,10 +2,10 @@
 
 namespace ScopeIDE.LocationManagment.Configs {
     public class LocationManagerConfig : ILocationManagerConfig {
-        public ILocationManagerSideConfig StaticUp { get; set; }
-        public ILocationManagerSideConfig Left { get; set; }
-        public ILocationManagerSideConfig StaticLeft { get; set; }
-        public LocationManagerConfig(ILocationManagerSideConfig staticUp, ILocationManagerSideConfig staticLeft, ILocationManagerSideConfig left) {
+        public ILocationSideConfig StaticUp { get; set; }
+        public ILocationSideConfig Left { get; set; }
+        public ILocationSideConfig StaticLeft { get; set; }
+        public LocationManagerConfig(ILocationSideConfig staticUp, ILocationSideConfig staticLeft, ILocationSideConfig left) {
             StaticUp = staticUp;
             StaticLeft = staticLeft;
             Left = left;

@@ -72,7 +72,7 @@ namespace ScopeIDE.Forms {
             base.OnResize(e);
         }
 
-        private LocationManagerConfig GetLocationManagerConfig() {
+        private ILocationManagerConfig GetLocationManagerConfig() {
             Up up = new Up(
                 DesignConfig.PanelNavbar.Height + DesignConfig.Resources.RetreatSize
             );
