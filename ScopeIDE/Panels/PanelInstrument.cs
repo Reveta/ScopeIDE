@@ -10,7 +10,6 @@ using ScopeIDE.LocationManagment;
 using ScopeIDE.LocationManagment.Configs;
 using ScopeIDE.Panels.PanelTemplates;
 
-//TODO Correct the indents of the first and last buttons to the panel end in height
 namespace ScopeIDE.Panels {
     public partial class PanelInstrument : APanelTemplateWB, IEventFormResize, IReLocateControl {
         public IDesignConfig DesignConfig { get; }
@@ -107,7 +106,9 @@ namespace ScopeIDE.Panels {
         #region EventFormResize
 
         public void EventFormResize(Form form) {
-            ControlCollectionExt.ToList(this.Controls).ForEach(control => {
+            var controls = ControlCollectionExt.ToList(this.Controls);
+            // controls.Sort();
+            controls.ForEach(control => {
                 if (control is IEventFormResize element) {
                     element.EventFormResize(form);
                 }

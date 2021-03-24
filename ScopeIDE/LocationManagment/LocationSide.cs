@@ -1,6 +1,6 @@
 ﻿namespace ScopeIDE.LocationManagment {
     public enum LocationSide {
-        UP,
+        StaticUP,
         Left,
         StaticLeft,
     }

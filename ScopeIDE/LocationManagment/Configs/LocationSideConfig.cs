@@ -20,7 +20,7 @@ namespace ScopeIDE.LocationManagment.Configs {
 
         public void AddToLevels(LocationContainers cont) {
             YLevel = Side switch {
-                LocationSide.UP => YLevel + cont.Size.Height + DesignConfig.Resources.RetreatSize,
+                LocationSide.StaticUP => YLevel + cont.Size.Height + DesignConfig.Resources.RetreatSize,
                 LocationSide.Left => YLevel + cont.Size.Height + DesignConfig.Resources.RetreatSize,
                 LocationSide.StaticLeft => YLevel + cont.Size.Height + DesignConfig.Resources.RetreatSize
             };
@@ -30,9 +30,9 @@ namespace ScopeIDE.LocationManagment.Configs {
             ManagerConfig = managerConfig;
             
             switch (Side) {
-                case LocationSide.UP:
-                    XLevel = ManagerConfig.Up.X;
-                    YLevel = ManagerConfig.Up.Y;
+                case LocationSide.StaticUP:
+                    XLevel = ManagerConfig.StaticUp.X;
+                    YLevel = ManagerConfig.StaticUp.Y;
                     break;
                 case LocationSide.Left:
                      XLevel = ManagerConfig.Left.X;

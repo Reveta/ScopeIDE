@@ -100,7 +100,7 @@ namespace ScopeIDE.Forms {
             });
 
 
-            _locationManager.AddPanel(_panelMain1, LocationSide.UP, 1);
+            _locationManager.AddPanel(_panelMain1, LocationSide.StaticUP, 1);
             _locationManager.AddPanel(_panelToolBox, LocationSide.StaticLeft, 1);
             _locationManager.AddPanel(_panelInstrumentPanel1, LocationSide.Left, 1);
             _locationManager.AddPanel(_panelInstrumentPanel2, LocationSide.Left, 2);
