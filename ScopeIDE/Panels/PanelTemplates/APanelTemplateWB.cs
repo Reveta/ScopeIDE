@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using ScopeIDE.Config;
+using ScopeIDE.Config.Interfaces.Panels;
 
 namespace ScopeIDE.Panels.PanelTemplates {
     public abstract class APanelTemplateWB :  APanelWithButtons, ILocationConfig{

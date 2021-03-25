@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using ScopeIDE.Config.Interfaces;
+using ScopeIDE.Config;
 using ScopeIDE.Elements;
 using ScopeIDE.Elements.Panels.PanelInstruments;
 using ScopeIDE.libs.ControlExt;
@@ -25,24 +25,24 @@ namespace ScopeIDE.Panels {
 
             AddTransformButton();
 
-            AddLayer(new ButtonInstrument(designConfig) {Text = "😍"});
-            AddLayer(new ButtonInstrument(designConfig) {Text = "😘"});
-            AddLayer(new ButtonInstrument(designConfig) {Text = "👌"});
-            AddLayer(new ButtonInstrument(designConfig) {Text = "😒"});
-
-            AddLayer(new ButtonInstrument(designConfig) {Text = "😁"});
-            AddLayer(new ButtonInstrument(designConfig) {Text = "😂"});
-            AddLayer(new ButtonInstrument(designConfig) {Text = "😊"});
-            AddLayer(new ButtonInstrument(designConfig) {Text = "🤣"});
-
-            AddLayer(new ButtonInstrument(designConfig) {Text = "❤"});
-            AddLayer(new ButtonInstrument(designConfig) {Text = "💕"});
-            AddLayer(new ButtonInstrument(designConfig) {Text = "🎉"});
+            AddButton(new ButtonInstrument(designConfig) {Text = "😍"});
+            AddButton(new ButtonInstrument(designConfig){Text = "😘"});
+            AddButton(new ButtonInstrument(designConfig){Text = "👌"});
+            AddButton(new ButtonInstrument(designConfig){Text = "😒"});
+            
+            AddButton(new ButtonInstrument(designConfig){Text = "😁"});
+            AddButton(new ButtonInstrument(designConfig){Text = "😂"});
+            AddButton(new ButtonInstrument(designConfig){Text = "😊"});
+            AddButton(new ButtonInstrument(designConfig){Text = "🤣"});
+            
+            AddButton(new ButtonInstrument(designConfig){Text = "❤"});
+            AddButton(new ButtonInstrument(designConfig){Text = "💕"});
+            AddButton(new ButtonInstrument(designConfig){Text = "🎉"});
 
             InitializeComponent();
         }
 
-        public override void AddLayer(Button button, bool onlyPosition = false) {
+        public override void AddButton(Button button, bool onlyPosition = false) {
             int count = this.GetAllButtons().Count;
             button.Name = "buttonInstrument" + count;
             button.TabIndex = count;
@@ -96,7 +96,6 @@ namespace ScopeIDE.Panels {
             _buttonTransform1 = new ButtonTransform(DesignConfig) {
                 Location = new Point(0, DesignConfig.Resources.RetreatSize),
             };
-            this._buttonTransform1.Click += this.buttonTransform1_Click_1;
             this._buttonTransform1.Click += this.buttonTransform1_Click_1;
 
             this.Controls.Add(_buttonTransform1);

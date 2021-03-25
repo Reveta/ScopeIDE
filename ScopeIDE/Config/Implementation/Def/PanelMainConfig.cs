@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using ScopeIDE.Config.Interfaces;
+using ScopeIDE.Config.Interfaces.Panels;
 
 namespace ScopeIDE.Config.Implementation.Def {
     public class PanelMainConfig : IPanelMainConfig{

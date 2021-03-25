@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using ScopeIDE.Config;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements;
 using ScopeIDE.Elements.Panels.PanelToolBoxs;
@@ -49,16 +50,16 @@ namespace ScopeIDE.Panels {
                 };
 
                 buttonToolBox.Hide();
-                AddLayer(buttonToolBox);
+                AddButton(buttonToolBox);
                 addContextMenuButtons.Add(menuItem);
             });
 
             ContextMenu.Buttons = addContextMenuButtons;
             ButtonToolBoxAdd = new ButtonToolBoxAdd(this.DesignConfig, ContextMenu);
-            AddLayer(ButtonToolBoxAdd);
+            AddButton(ButtonToolBoxAdd);
         }
 
-        public override void AddLayer(Button button, bool onlyPosition = false) {
+        public override void AddButton(Button button, bool onlyPosition = false) {
             int count = this.GetAllButtons().Count;
             button.Name = "buttonToolbox" + count;
             button.TabIndex = count;

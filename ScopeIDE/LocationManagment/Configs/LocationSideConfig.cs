@@ -1,4 +1,5 @@
 ﻿using System;
+using ScopeIDE.Config;
 using ScopeIDE.Config.Interfaces;
 
 namespace ScopeIDE.LocationManagment.Configs {

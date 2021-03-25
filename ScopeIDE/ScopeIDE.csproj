@@ -48,10 +48,14 @@
     <Compile Include="Config\Implementation\Def\ButtonConfigEmpty.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Config\Implementation\Def\ButtonInstrumentDef.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Config\Implementation\Def\ColorConfigDef.cs" />
     <Compile Include="Config\Implementation\Def\ContextMenuConfigDef.cs" />
     <Compile Include="Config\Implementation\Def\FormSizeDef.cs" />
     <Compile Include="Config\Implementation\Def\PanelInstrumentDef.cs" />
+    <Compile Include="Config\Implementation\Def\PanelLayerConfigDef.cs" />
     <Compile Include="Config\Implementation\Def\PanelMainConfig.cs" />
     <Compile Include="Config\Implementation\Def\PanelNavbarDef.cs" />
     <Compile Include="Config\Implementation\Def\PanelToolbox.cs" />
@@ -72,6 +76,7 @@
     <Compile Include="Config\Interfaces\Panels\IContextMenuConfig.cs" />
     <Compile Include="Config\Interfaces\Panels\IDefLocationConfig.cs" />
     <Compile Include="Config\Interfaces\Panels\IPanelInstrument.cs" />
+    <Compile Include="Config\Interfaces\Panels\IPanelLayerConfig.cs" />
     <Compile Include="Config\Interfaces\Panels\IPanelMainConfig.cs" />
     <Compile Include="Config\Interfaces\Panels\IPanelNavbar.cs" />
     <Compile Include="Config\Interfaces\Panels\IPanelToolBox.cs" />
@@ -100,6 +105,17 @@
     <Compile Include="Elements\Panels\PanelInstruments\ButtonTransform.Designer.cs">
       <DependentUpon>ButtonTransform.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\Panels\PanelLayer\ButtonLayer.cs" />
+    <Compile Include="Elements\Panels\PanelLayer\ButtonLayer.Designer.cs">
+      <DependentUpon>ButtonLayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\Panels\PanelLayer\ButtonLayerInstrument.cs" />
+    <Compile Include="Elements\Panels\PanelLayer\ButtonLayerInstrument.Designer.cs">
+      <DependentUpon>ButtonLayerInstrument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\Panels\PanelLayer\IButtonLayer.cs" />
+    <Compile Include="Elements\Panels\PanelLayer\IButtonLayerController.cs" />
+    <Compile Include="Elements\Panels\PanelLayer\IButtonLayerInstrument.cs" />
     <Compile Include="Elements\Panels\PanelMain\ButtonMainInstrument.cs" />
     <Compile Include="Elements\Panels\PanelMain\ButtonMainInstrument.Designer.cs">
       <DependentUpon>ButtonMainInstrument.cs</DependentUpon>
@@ -168,11 +184,23 @@
     <Compile Include="Panels\PanelInstrument.Designer.cs">
       <DependentUpon>PanelInstrument.cs</DependentUpon>
     </Compile>
-    <Compile Include="Panels\PanelLayersDir\PanelLayers.cs">
+    <Compile Include="Panels\PanelLayersDir\PanelLayersVer1.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Panels\PanelLayersDir\PanelLayers.Designer.cs">
-      <DependentUpon>PanelLayers.cs</DependentUpon>
+    <Compile Include="Panels\PanelLayersDir\PanelLayersVer1.Designer.cs">
+      <DependentUpon>PanelLayersVer1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\PanelLayersDir\PanelLayersVer2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\PanelLayersDir\PanelLayersVer2.Designer.cs">
+      <DependentUpon>PanelLayersVer2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\PanelLayersDir\PanelLayersVer3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\PanelLayersDir\PanelLayersVer3.Designer.cs">
+      <DependentUpon>PanelLayersVer3.cs</DependentUpon>
     </Compile>
     <Compile Include="Panels\PanelMain.cs">
       <SubType>UserControl</SubType>
