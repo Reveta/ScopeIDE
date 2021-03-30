@@ -7,6 +7,7 @@ using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements;
 using ScopeIDE.Elements.Panels.PanelInstruments;
 using ScopeIDE.Elements.Panels.PanelLayer;
+using ScopeIDE.Elements.Panels.PanelLayer.Buttons;
 using ScopeIDE.libs.ControlExt;
 using ScopeIDE.LocationManagment;
 using ScopeIDE.LocationManagment.Configs;
@@ -33,9 +34,9 @@ namespace ScopeIDE.Panels.PanelLayersDir {
             AddButton(new ButtonLayerInstrument(designConfig) {Text = "🤷‍"});
 
             var controllerMock = new ButtonLayerControllerMock();
-            AddButtonLayer(new ButtonLayer(designConfig, controllerMock)); // Make mockup
-            AddButtonLayer(new ButtonLayer(designConfig, controllerMock));
-            AddButtonLayer(new ButtonLayer(designConfig, controllerMock));
+            AddButtonLayer(new ButtonLayerVer2(designConfig, controllerMock)); 
+            AddButtonLayer(new ButtonLayerVer2(designConfig, controllerMock));
+            AddButtonLayer(new ButtonLayerVer2(designConfig, controllerMock));
 
             AddLayersBack();
 
@@ -208,6 +209,7 @@ namespace ScopeIDE.Panels.PanelLayersDir {
                     (DesignConfig.PanelLayerConfig.ButtonInstrumentsConfig.Width + DesignConfig.Resources.RetreatSize) -
                     (DesignConfig.Resources.RetreatSize *3);
 
+            RePaint();
             controls
                 .FindAll(control => control is IButtonLayer)
                 .ForEach(control => {
@@ -215,8 +217,6 @@ namespace ScopeIDE.Panels.PanelLayersDir {
                         element.EventFormResize(form);
                     }
                 });
-
-            RePaint();
         }
 
         #endregion

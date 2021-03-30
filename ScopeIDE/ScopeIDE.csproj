@@ -105,14 +105,26 @@
     <Compile Include="Elements\Panels\PanelInstruments\ButtonTransform.Designer.cs">
       <DependentUpon>ButtonTransform.cs</DependentUpon>
     </Compile>
-    <Compile Include="Elements\Panels\PanelLayer\ButtonLayer.cs" />
-    <Compile Include="Elements\Panels\PanelLayer\ButtonLayer.Designer.cs">
-      <DependentUpon>ButtonLayer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Elements\Panels\PanelLayer\ButtonLayerControllerMock.cs" />
     <Compile Include="Elements\Panels\PanelLayer\ButtonLayerInstrument.cs" />
     <Compile Include="Elements\Panels\PanelLayer\ButtonLayerInstrument.Designer.cs">
       <DependentUpon>ButtonLayerInstrument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonLayer.cs" />
+    <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonLayer.Designer.cs">
+      <DependentUpon>ButtonLayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonLayerVer2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonLayerVer2.Designer.cs">
+      <DependentUpon>ButtonLayerVer2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonLayerVer3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonLayerVer3.Designer.cs">
+      <DependentUpon>ButtonLayerVer3.cs</DependentUpon>
     </Compile>
     <Compile Include="Elements\Panels\PanelLayer\IButtonLayer.cs" />
     <Compile Include="Elements\Panels\PanelLayer\IButtonLayerController.cs" />

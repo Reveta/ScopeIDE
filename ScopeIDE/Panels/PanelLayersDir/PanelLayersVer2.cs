@@ -6,6 +6,7 @@ using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements;
 using ScopeIDE.Elements.Panels.PanelInstruments;
 using ScopeIDE.Elements.Panels.PanelLayer;
+using ScopeIDE.Elements.Panels.PanelLayer.Buttons;
 using ScopeIDE.libs.ControlExt;
 using ScopeIDE.LocationManagment;
 using ScopeIDE.LocationManagment.Configs;
@@ -32,9 +33,9 @@ namespace ScopeIDE.Panels.PanelLayersDir {
             AddButton(new ButtonLayerInstrument(designConfig) {Text = "🤷‍"});
             
             var controllerMock = new ButtonLayerControllerMock();
-            AddButtonLayer(new ButtonLayer(designConfig, controllerMock)); // Make mockup
-            AddButtonLayer(new ButtonLayer(designConfig, controllerMock));
-            AddButtonLayer(new ButtonLayer(designConfig, controllerMock));
+            AddButtonLayer(new ButtonLayerVer3(designConfig, controllerMock));
+            AddButtonLayer(new ButtonLayerVer3(designConfig, controllerMock));
+            AddButtonLayer(new ButtonLayerVer3(designConfig, controllerMock));
             
             AddLayersBack();
 
@@ -121,7 +122,7 @@ namespace ScopeIDE.Panels.PanelLayersDir {
 
         public override void RePaint() {
             this.Width = DesignConfig.PanelLayerConfig.ButtonLayerConfig.Width
-                         + (DesignConfig.Resources.RetreatSize * 4);
+                         + (DesignConfig.Resources.RetreatSize * 2);
 
             var controls = ControlCollectionExt.ToList(this.Controls);
 
@@ -160,13 +161,13 @@ namespace ScopeIDE.Panels.PanelLayersDir {
                           DesignConfig.Resources.RetreatSize;
             }
 
-            layersBack.Location = new Point(DesignConfig.Resources.RetreatSize, yLevel);
-            layersBack.Width = Width - (DesignConfig.Resources.RetreatSize * 2);
+            layersBack.Location = new Point(0, yLevel);
+            layersBack.Width = Width;
             layersBack.Height = 0;
 
             //add ButtonLayer
             yLevel += DesignConfig.Resources.RetreatSize;
-            xLevel = DesignConfig.Resources.RetreatSize * 2;
+            xLevel = DesignConfig.Resources.RetreatSize;
             int backHeight = 0;
 
             controls.ForEach(control => {
@@ -204,8 +205,9 @@ namespace ScopeIDE.Panels.PanelLayersDir {
                 DesignConfig.PanelLayerConfig.ButtonLayerConfig.Width =
                     DesignConfig.PanelLayerConfig.InstrumentsInRow *
                     (DesignConfig.PanelLayerConfig.ButtonInstrumentsConfig.Width + DesignConfig.Resources.RetreatSize) -
-                    (DesignConfig.Resources.RetreatSize *3);
+                    (DesignConfig.Resources.RetreatSize);
 
+            RePaint();
             controls
                 .FindAll(control => control is IButtonLayer)
                 .ForEach(control => {
@@ -213,8 +215,6 @@ namespace ScopeIDE.Panels.PanelLayersDir {
                         element.EventFormResize(form);
                     }
                 });
-
-            RePaint();
         }
 
         #endregion
