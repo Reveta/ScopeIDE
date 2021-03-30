@@ -28,7 +28,7 @@ namespace ScopeIDE.Forms {
         private PanelToolBox _panelToolBox;
         private PanelMain _panelMain1;
 
-        private int def = 4;
+        private int def = 4;  //TODO add to configuration
 
         public FormMain(IDesignConfig designConfig) {
             DoubleBuffered = true;
