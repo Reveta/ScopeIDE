@@ -44,6 +44,7 @@ namespace ScopeIDE.Panels {
             List<Button> addContextMenuButtons = new List<Button>();
 
             _panels.ForEach(panel => {
+                if (panel is null){return;}
                 var buttonToolBox = new ButtonToolBox(panel.Name, DesignConfig, panel, LocationManager);
                 var menuItem = new ButtonToolBoxAddContextItem(DesignConfig, buttonToolBox, this) {
                     Text = panel.Name

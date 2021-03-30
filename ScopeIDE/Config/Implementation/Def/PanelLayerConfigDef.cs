@@ -14,8 +14,8 @@ namespace ScopeIDE.Config.Implementation.Def {
         public int InstrumentsInRow { get; set; }
 
         public PanelLayerConfigDef() {
-            WidthDef = 100;
-            Width = 100;
+            WidthDef = 10;
+            Width = 10;
             HeightDef = 100;
             Height = 100;
             LocationXDef = 500;
@@ -26,8 +26,8 @@ namespace ScopeIDE.Config.Implementation.Def {
             ButtonInstrumentsConfig = new ButtonInstrumentDef();
             
             ButtonLayerConfig = new ButtonInstrumentDef() {
-                WidthDef = 120,
-                Width = 120,
+                WidthDef = 20,
+                Width = 20,
                 HeightDef = 40,
                 Height = 40,
             };

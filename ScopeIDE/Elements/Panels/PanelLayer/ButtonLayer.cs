@@ -14,7 +14,8 @@ namespace ScopeIDE.Elements.Panels.PanelLayer {
         public ButtonLayer(IDesignConfig designConfig, IButtonLayerController buttonLayerController) : base(designConfig.ColorConfig) {
             DesignConfig = designConfig;
             ButtonLayerController = buttonLayerController;
-            BackColor = DesignConfig.ColorConfig.SecondBackColor;
+            this.BackColor = DesignConfig.ColorConfig.SecondBackColor;
+            
             
             UpdateLayerScreen();
 
@@ -49,12 +50,10 @@ namespace ScopeIDE.Elements.Panels.PanelLayer {
 
             DesignConfig.PanelLayerConfig.ButtonLayerConfig.FontSize = DesignConfig.PanelLayerConfig.ButtonLayerConfig.FontSizeDef / 100 * coof;
 
-            DesignConfig.PanelLayerConfig.ButtonLayerConfig.Width =
-                (int) (DesignConfig.PanelLayerConfig.ButtonLayerConfig.WidthDef / 100f * coof);
-
             DesignConfig.PanelLayerConfig.ButtonLayerConfig.Height =
                 (int) (DesignConfig.PanelLayerConfig.ButtonLayerConfig.HeightDef / 100f * coof);
 
+            
             this.Width = DesignConfig.PanelLayerConfig.ButtonLayerConfig.Width;
             this.Height = DesignConfig.PanelLayerConfig.ButtonLayerConfig.Height;
             this.Font = new Font(

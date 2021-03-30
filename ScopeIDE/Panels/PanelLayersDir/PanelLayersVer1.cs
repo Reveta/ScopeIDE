@@ -122,30 +122,30 @@ namespace ScopeIDE.Panels.PanelLayersDir {
 
 
         public override void RePaint() {
-            this.Width = DesignConfig.PanelLayerConfig.ButtonLayerConfig.Width 
-                         + (DesignConfig.Resources.RetreatSize * 2);
-            
+            this.Width = DesignConfig.PanelLayerConfig.ButtonLayerConfig.Width
+                         + (DesignConfig.Resources.RetreatSize * 4);
+
             var controls = ControlCollectionExt.ToList(this.Controls);
 
             int xLevel = DesignConfig.Resources.RetreatSize;
             int yLevel = DesignConfig.Resources.RetreatSize;
-            
+
             //add ButtonTransform
             _buttonTransform1.Location = new Point(0, yLevel);
             _buttonTransform1.Width = this.Width;
             _buttonTransform1.Height = DesignConfig.PanelLayerConfig.ButtonInstrumentsConfig.Height;
             yLevel += _buttonTransform1.Height + DesignConfig.Resources.RetreatSize;
-            
+
             //add ButtonInstrument
             int count = 0;
             controls.ForEach(control => {
                 if (control is IButtonLayerInstrument) {
-                    count++;
-
                     control.Location = new Point(xLevel, yLevel);
+                    
                     xLevel += DesignConfig.PanelLayerConfig.ButtonInstrumentsConfig.Width +
                               DesignConfig.Resources.RetreatSize;
 
+                    count++;
                     if (count >= DesignConfig.PanelLayerConfig.InstrumentsInRow) {
                         count = 0;
                         xLevel = DesignConfig.Resources.RetreatSize;
@@ -155,86 +155,66 @@ namespace ScopeIDE.Panels.PanelLayersDir {
                 }
             });
             
-            ReLocateAll();
-        }
-
-
-        public void RePaintOld() {
-            var controls = ControlCollectionExt.ToList(this.Controls);
-
-            int xLevel = DesignConfig.Resources.RetreatSize;
-            int yLevel = DesignConfig.Resources.RetreatSize;
-
-            _buttonTransform1.Location = new Point(0, yLevel);
-            _buttonTransform1.Height = DesignConfig.PanelLayerConfig.ButtonInstrumentsConfig.Height;
-            yLevel += _buttonTransform1.Height + DesignConfig.Resources.RetreatSize;
-
-            int count = 0;
-            controls.ForEach(control => {
-                if (control is IButtonLayerInstrument) {
-                    count++;
-
-                    control.Location = new Point(xLevel, yLevel);
-                    xLevel += DesignConfig.PanelLayerConfig.ButtonInstrumentsConfig.Width +
-                              DesignConfig.Resources.RetreatSize;
-
-                    if (count >= DesignConfig.PanelLayerConfig.InstrumentsInRow) {
-                        count = 0;
-                        xLevel = DesignConfig.Resources.RetreatSize;
-                        yLevel += DesignConfig.PanelLayerConfig.ButtonInstrumentsConfig.Height +
-                                  DesignConfig.Resources.RetreatSize;
-                    }
-                }
-            });
-
-            yLevel += DesignConfig.PanelLayerConfig.ButtonInstrumentsConfig.Height +
-                      DesignConfig.Resources.RetreatSize;
-
-            this.Width = (DesignConfig.PanelLayerConfig.ButtonInstrumentsConfig.Width +
-                          DesignConfig.Resources.RetreatSize) *
-                DesignConfig.PanelLayerConfig.InstrumentsInRow + DesignConfig.Resources.RetreatSize;
-            _buttonTransform1.Width = this.Width;
+            //add BackgroundFon for ButtonLayer
+            if (count != 0) {
+                //Add new retreat if need
+                yLevel += DesignConfig.PanelLayerConfig.ButtonInstrumentsConfig.Height +
+                          DesignConfig.Resources.RetreatSize;
+            }
 
             layersBack.Location = new Point(DesignConfig.Resources.RetreatSize, yLevel);
             layersBack.Width = Width - (DesignConfig.Resources.RetreatSize * 2);
             layersBack.Height = 0;
 
+            //add ButtonLayer
             yLevel += DesignConfig.Resources.RetreatSize;
             xLevel = DesignConfig.Resources.RetreatSize * 2;
             int backHeight = 0;
 
-
-            DesignConfig.PanelLayerConfig.ButtonLayerConfig.Width =
-                this.Width - (DesignConfig.Resources.RetreatSize * 4);
             controls.ForEach(control => {
                 if (control is IButtonLayer) {
-                    control.Width = DesignConfig.PanelLayerConfig.ButtonLayerConfig.Width;
-                    int addHeight = DesignConfig.PanelLayerConfig.ButtonLayerConfig.Height +
-                                    DesignConfig.Resources.RetreatSize;
                     control.Location = new Point(xLevel, yLevel);
-
+                    
+                    int addHeight = DesignConfig.PanelLayerConfig.ButtonLayerConfig.Height + DesignConfig.Resources.RetreatSize;
                     yLevel += addHeight;
                     backHeight += addHeight;
                 }
             });
-
-            layersBack.Text = layersBack.Height.ToString();
+            
+            //set final height for panel and backButtonLayers
             layersBack.Height = backHeight + DesignConfig.Resources.RetreatSize;
-
             this.Height = yLevel + DesignConfig.Resources.RetreatSize;
-
+            
             ReLocateAll();
         }
+
 
         #region EventFormResize
 
         public void EventFormResize(Form form) {
             var controls = ControlCollectionExt.ToList(this.Controls);
-            controls.ForEach(control => {
-                if (control is IEventFormResize element) {
-                    element.EventFormResize(form);
-                }
-            });
+            controls
+                .FindAll(control => control is IButtonLayerInstrument)
+                .ForEach(control => {
+                    if (control is IEventFormResize element) {
+                        element.EventFormResize(form);
+                    }
+                });
+
+            //SetNew Width for ButtonLayer by count of ButtonInstruments
+            DesignConfig.PanelLayerConfig.ButtonLayerConfig.WidthDef =
+                DesignConfig.PanelLayerConfig.ButtonLayerConfig.Width =
+                    DesignConfig.PanelLayerConfig.InstrumentsInRow *
+                    (DesignConfig.PanelLayerConfig.ButtonInstrumentsConfig.Width + DesignConfig.Resources.RetreatSize) -
+                    (DesignConfig.Resources.RetreatSize *3);
+
+            controls
+                .FindAll(control => control is IButtonLayer)
+                .ForEach(control => {
+                    if (control is IEventFormResize element) {
+                        element.EventFormResize(form);
+                    }
+                });
 
             RePaint();
         }
