@@ -41,6 +41,8 @@ namespace ScopeIDE.Panels {
 
             InitializeComponent();
         }
+        
+        
 
         public override void AddButton(Button button, bool onlyPosition = false) {
             int count = this.GetAllButtons().Count;

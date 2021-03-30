@@ -45,9 +45,9 @@ namespace ScopeIDE.Forms {
             AddPanelMain();
             AddPanelNavbar();
             AddPanelInstrument();
-            AddPanelLayer();
             AddPanelLayer2();
             AddPanelLayer3();
+            AddPanelLayer();
             AddPanelToolBox();
             AddLocationManager();
         }
