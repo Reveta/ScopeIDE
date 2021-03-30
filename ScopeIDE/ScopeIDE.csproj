@@ -109,6 +109,7 @@
     <Compile Include="Elements\Panels\PanelLayer\ButtonLayer.Designer.cs">
       <DependentUpon>ButtonLayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\Panels\PanelLayer\ButtonLayerControllerMock.cs" />
     <Compile Include="Elements\Panels\PanelLayer\ButtonLayerInstrument.cs" />
     <Compile Include="Elements\Panels\PanelLayer\ButtonLayerInstrument.Designer.cs">
       <DependentUpon>ButtonLayerInstrument.cs</DependentUpon>

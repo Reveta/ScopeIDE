@@ -22,7 +22,6 @@ namespace ScopeIDE.Panels.PanelLayersDir {
 
         public PanelLayersVer3(IDesignConfig designConfig, Point location) : base(location) {
             DesignConfig = designConfig;
-            DoubleBuffered = true;
             AddTransformButton();
 
             AddButton(new ButtonLayerInstrument(designConfig) {Text = "😁"});
@@ -32,9 +31,10 @@ namespace ScopeIDE.Panels.PanelLayersDir {
             AddButton(new ButtonLayerInstrument(designConfig) {Text = "😒"});
             AddButton(new ButtonLayerInstrument(designConfig) {Text = "🤷‍"});
             
-            AddButtonLayer(new ButtonLayer(designConfig, null)); // Make mockup
-            AddButtonLayer(new ButtonLayer(designConfig, null));
-            AddButtonLayer(new ButtonLayer(designConfig, null));
+            var controllerMock = new ButtonLayerControllerMock();
+            AddButtonLayer(new ButtonLayer(designConfig, controllerMock)); // Make mockup
+            AddButtonLayer(new ButtonLayer(designConfig, controllerMock));
+            AddButtonLayer(new ButtonLayer(designConfig, controllerMock));
             
             AddLayersBack();
 

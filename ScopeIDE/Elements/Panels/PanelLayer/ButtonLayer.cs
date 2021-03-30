@@ -9,19 +9,36 @@ namespace ScopeIDE.Elements.Panels.PanelLayer {
     public partial class ButtonLayer : ButtonColorDepend, IButtonLayer, IEventFormResize {
         public IDesignConfig DesignConfig { get; }
         public IButtonLayerController ButtonLayerController { get; }
-        
+        private UserControl _layerScreen;
 
-        public ButtonLayer(IDesignConfig designConfig, IButtonLayerController buttonLayerController ) : base(designConfig.ColorConfig) {
+        public ButtonLayer(IDesignConfig designConfig, IButtonLayerController buttonLayerController) : base(designConfig.ColorConfig) {
             DesignConfig = designConfig;
             ButtonLayerController = buttonLayerController;
             BackColor = DesignConfig.ColorConfig.SecondBackColor;
+            
+            UpdateLayerScreen();
 
             InitializeComponent();
+        }
+
+        private void UpdateLayerScreen() {
+            _layerScreen ??= new UserControl();
+
+            var retreat = DesignConfig.Resources.RetreatSize;
+            var layerScreenBackgroundImage = ButtonLayerController.GetLayerScreen();
+            _layerScreen.BackgroundImage = layerScreenBackgroundImage;
+            _layerScreen.Width = this.Height - (retreat * 2);
+            _layerScreen.Height = this.Height - (retreat * 2);
+            _layerScreen.Location = new Point(retreat, retreat);
+            
+            this.Controls.Add(_layerScreen);
         }
 
         public void EventFormResize(Form form) {
             if (form is not IFormResizable formResizable) return;
 
+            UpdateLayerScreen();
+            
             int coof = formResizable.Scales switch {
                 EScales.HD => DesignConfig.Scale.HD,
                 EScales.FullHD => DesignConfig.Scale.FullHD,
