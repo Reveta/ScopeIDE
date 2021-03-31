@@ -18,25 +18,24 @@ namespace ScopeIDE.Panels.PanelLayersDir {
         public IDesignConfig DesignConfig { get; }
         public LocationManager LocationManager { get; set; }
 
-        private UserControl layersBack;
-        private ButtonTransform _buttonTransform1;
+        private UserControl _layersBack;
+        private AButtonTransform _aButtonTransform1;
 
 
         public PanelLayersVer1(IDesignConfig designConfig, Point location) : base(location) {
             DesignConfig = designConfig;
             AddTransformButton();
 
-            AddButton(new ButtonLayerInstrument(designConfig) {Text = "😁"});
-            AddButton(new ButtonLayerInstrument(designConfig) {Text = "🤣"});
-            AddButton(new ButtonLayerInstrument(designConfig) {Text = "😊"});
-            AddButton(new ButtonLayerInstrument(designConfig) {Text = "😂"});
-            AddButton(new ButtonLayerInstrument(designConfig) {Text = "😒"});
-            AddButton(new ButtonLayerInstrument(designConfig) {Text = "🤷‍"});
+            AddButton(new AButtonLayerInstrument(designConfig) {Text = "😁"});
+            AddButton(new AButtonLayerInstrument(designConfig) {Text = "🤣"});
+            AddButton(new AButtonLayerInstrument(designConfig) {Text = "😊"});
+            AddButton(new AButtonLayerInstrument(designConfig) {Text = "😂"});
+            AddButton(new AButtonLayerInstrument(designConfig) {Text = "😒"});
+            AddButton(new AButtonLayerInstrument(designConfig) {Text = "🤷‍"});
 
-            var controllerMock = new ButtonLayerControllerMock();
-            AddButtonLayer(new ButtonLayerVer2(designConfig, controllerMock)); 
-            AddButtonLayer(new ButtonLayerVer2(designConfig, controllerMock));
-            AddButtonLayer(new ButtonLayerVer2(designConfig, controllerMock));
+            AddButtonLayer(new ButtonLayerVer2(designConfig, new ButtonLayerControllerMock())); 
+            AddButtonLayer(new ButtonLayerVer2(designConfig, new ButtonLayerControllerMock()));
+            AddButtonLayer(new ButtonLayerVer2(designConfig, new ButtonLayerControllerMock()));
 
             AddLayersBack();
 
@@ -44,20 +43,20 @@ namespace ScopeIDE.Panels.PanelLayersDir {
         }
 
         private void AddTransformButton() {
-            _buttonTransform1 = new ButtonTransform(DesignConfig) {
+            _aButtonTransform1 = new AButtonTransform(DesignConfig) {
                 Text = "<<<",
                 Location = new Point(0, DesignConfig.Resources.RetreatSize),
             };
 
-            this.Controls.Add(_buttonTransform1);
+            this.Controls.Add(_aButtonTransform1);
         }
 
         private void AddLayersBack() {
-            layersBack = new UserControl() {
+            _layersBack = new UserControl() {
                 BackColor = this.DesignConfig.ColorConfig.MainBackColor
             };
 
-            this.Controls.Add(layersBack);
+            this.Controls.Add(_layersBack);
         }
 
         public override void AddButton(Button button, bool onlyPosition = false) {
@@ -132,10 +131,10 @@ namespace ScopeIDE.Panels.PanelLayersDir {
             int yLevel = DesignConfig.Resources.RetreatSize;
 
             //add ButtonTransform
-            _buttonTransform1.Location = new Point(0, yLevel);
-            _buttonTransform1.Width = this.Width;
-            _buttonTransform1.Height = DesignConfig.PanelLayerConfig.ButtonInstrumentsConfig.Height;
-            yLevel += _buttonTransform1.Height + DesignConfig.Resources.RetreatSize;
+            _aButtonTransform1.Location = new Point(0, yLevel);
+            _aButtonTransform1.Width = this.Width;
+            _aButtonTransform1.Height = DesignConfig.PanelLayerConfig.ButtonInstrumentsConfig.Height;
+            yLevel += _aButtonTransform1.Height + DesignConfig.Resources.RetreatSize;
 
             //add ButtonInstrument
             int count = 0;
@@ -163,9 +162,9 @@ namespace ScopeIDE.Panels.PanelLayersDir {
                           DesignConfig.Resources.RetreatSize;
             }
 
-            layersBack.Location = new Point(DesignConfig.Resources.RetreatSize, yLevel);
-            layersBack.Width = Width - (DesignConfig.Resources.RetreatSize * 2);
-            layersBack.Height = 0;
+            _layersBack.Location = new Point(DesignConfig.Resources.RetreatSize, yLevel);
+            _layersBack.Width = Width - (DesignConfig.Resources.RetreatSize * 2);
+            _layersBack.Height = 0;
 
             //add ButtonLayer
             yLevel += DesignConfig.Resources.RetreatSize;
@@ -183,7 +182,7 @@ namespace ScopeIDE.Panels.PanelLayersDir {
             });
             
             //set final height for panel and backButtonLayers
-            layersBack.Height = backHeight + DesignConfig.Resources.RetreatSize;
+            _layersBack.Height = backHeight + DesignConfig.Resources.RetreatSize;
             this.Height = yLevel + DesignConfig.Resources.RetreatSize;
             
             ReLocateAll();

@@ -5,32 +5,19 @@ using ScopeIDE.Config;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Forms;
 
-namespace ScopeIDE.Elements.Panels.PanelToolBoxs.ButtonAdd {
-    public partial class ButtonToolBoxAdd : ButtonColorDepend, IEventFormResize {
+namespace ScopeIDE.Elements.Panels.PanelInstruments {
+    public partial class AButtonInstrument : AButtonColorDepend, IEventFormResize {
         public IDesignConfig DesignConfig { get; }
-        public Elements.ContextMenu ContextMenu { get; set; }
-        private bool state;
 
-        public ButtonToolBoxAdd(IDesignConfig designConfig, Elements.ContextMenu contextMenu) : base(designConfig.ColorConfig) {
-            state = false;
-            ContextMenu = contextMenu;
-
+        public AButtonInstrument(IDesignConfig designConfig) : base(designConfig.ColorConfig) {
             DesignConfig = designConfig;
-            Text = "+";
 
             InitializeComponent();
         }
 
         protected override void OnClick(EventArgs e) {
-            ContextMenu.BringToFront();
-            if (!state) {
-                ContextMenu.Show();
-                state = true;
-            }
-            else {
-                ContextMenu.Hide();
-                state = false;
-            }
+            this.BackColor = ColorTranslator.FromHtml("#A30015");
+
             base.OnClick(e);
         }
 
@@ -45,11 +32,15 @@ namespace ScopeIDE.Elements.Panels.PanelToolBoxs.ButtonAdd {
                 _ => DesignConfig.Scale.FullHD
             };
 
+            DesignConfig.PanelInstrument.Button.FontSize = DesignConfig.PanelInstrument.Button.FontSizeDef / 100 * coof;
+
+            DesignConfig.PanelInstrument.Button.Width =
+                (int) (DesignConfig.PanelInstrument.Button.WidthDef / 100f * coof);
+
             DesignConfig.PanelInstrument.Button.Height =
                 (int) (DesignConfig.PanelInstrument.Button.HeightDef / 100f * coof);
 
-            this.Width = this.Parent.Width;
-            
+            this.Width = DesignConfig.PanelInstrument.Button.Width;
             this.Height = DesignConfig.PanelInstrument.Button.Height;
             this.Font = new Font(
                 DesignConfig.PanelInstrument.Button.FontName,

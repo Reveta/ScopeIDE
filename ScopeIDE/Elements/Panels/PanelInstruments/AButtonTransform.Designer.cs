@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel;
 
-namespace ScopeIDE.Elements {
-    partial class ButtonColorDepend {
+namespace ScopeIDE.Elements.Panels.PanelInstruments
+{
+    partial class AButtonTransform
+    {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -11,8 +13,10 @@ namespace ScopeIDE.Elements {
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing) {
-            if (disposing && (components != null)) {
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
                 components.Dispose();
             }
 
@@ -25,12 +29,7 @@ namespace ScopeIDE.Elements {
         /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
-            components = new System.ComponentModel.Container();
-            //TODO Button color config
-            this.BackColor = this.ColorConfig.ThirdBackColor;
-            this.ForeColor = this.ColorConfig.FontColorMain;
-        }
+       
 
         #endregion
     }

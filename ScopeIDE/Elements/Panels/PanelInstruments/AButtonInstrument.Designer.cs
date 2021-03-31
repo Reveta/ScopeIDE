@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 
-namespace ScopeIDE.Elements.Panels.PanelLayer {
-	partial class ButtonLayerInstrument {
+namespace ScopeIDE.Elements.Panels.PanelInstruments {
+	partial class AButtonInstrument {
 		/// <summary> 
 		/// Required designer variable.
 		/// </summary>

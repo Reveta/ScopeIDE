@@ -18,7 +18,7 @@ namespace ScopeIDE.Panels {
         public IDesignConfig DesignConfig { get; set; }
         public LocationManager LocationManager { get; set; }
         private readonly List<UserControl> _panels;
-        private ButtonToolBoxAdd ButtonToolBoxAdd { get; set; }
+        private AButtonToolBoxAdd AButtonToolBoxAdd { get; set; }
         private ContextMenu ContextMenu { get; set; }
 
 
@@ -45,7 +45,7 @@ namespace ScopeIDE.Panels {
 
             _panels.ForEach(panel => {
                 if (panel is null){return;}
-                var buttonToolBox = new ButtonToolBox(panel.Name, DesignConfig, panel, LocationManager);
+                var buttonToolBox = new AButtonToolBox(panel.Name, DesignConfig, panel, LocationManager);
                 var menuItem = new ButtonToolBoxAddContextItem(DesignConfig, buttonToolBox, this) {
                     Text = panel.Name
                 };
@@ -56,8 +56,8 @@ namespace ScopeIDE.Panels {
             });
 
             ContextMenu.Buttons = addContextMenuButtons;
-            ButtonToolBoxAdd = new ButtonToolBoxAdd(this.DesignConfig, ContextMenu);
-            AddButton(ButtonToolBoxAdd);
+            AButtonToolBoxAdd = new AButtonToolBoxAdd(this.DesignConfig, ContextMenu);
+            AddButton(AButtonToolBoxAdd);
         }
 
         public override void AddButton(Button button, bool onlyPosition = false) {
@@ -95,13 +95,13 @@ namespace ScopeIDE.Panels {
             int yMargin = DesignConfig.Resources.RetreatSize;
 
             //Paint special Add Button
-            ButtonToolBoxAdd.Location = new Point(0, yMargin);
-            yMargin += ButtonToolBoxAdd.Height + DesignConfig.Resources.RetreatSize;
+            AButtonToolBoxAdd.Location = new Point(0, yMargin);
+            yMargin += AButtonToolBoxAdd.Height + DesignConfig.Resources.RetreatSize;
 
             var allButtons = GetAllButtons();
             allButtons
                 .FindAll(button => button.Visible)
-                .FindAll(button => button != ButtonToolBoxAdd)
+                .FindAll(button => button != AButtonToolBoxAdd)
                 .ForEach(button => {
                     button.Location = new Point(xMargin, yMargin);
                     yMargin += button.Height + DesignConfig.Resources.RetreatSize;;

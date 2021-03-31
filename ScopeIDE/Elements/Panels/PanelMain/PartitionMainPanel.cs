@@ -6,7 +6,7 @@ using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Forms;
 
 namespace ScopeIDE.Elements.Panels.PanelMain {
-    public partial class PartitionMainPanel : ButtonColorDepend, IEventFormResize {
+    public partial class PartitionMainPanel : AButtonColorDepend, IEventFormResize {
         public IDesignConfig DesignConfig { get; }
 
         public PartitionMainPanel(IDesignConfig designConfig) : base(designConfig.ColorConfig){

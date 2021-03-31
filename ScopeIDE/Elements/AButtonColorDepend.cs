@@ -2,10 +2,10 @@
 using ScopeIDE.Config.Interfaces;
 
 namespace ScopeIDE.Elements {
-    public abstract partial class ButtonColorDepend : Button {
+    public abstract partial class AButtonColorDepend : Button {
         public IColorConfig ColorConfig { get; set; }
         
-        public ButtonColorDepend(IColorConfig colorConfig) {
+        public AButtonColorDepend(IColorConfig colorConfig) {
             ColorConfig = colorConfig;
             InitializeComponent();
         }

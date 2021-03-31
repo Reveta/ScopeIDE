@@ -15,20 +15,20 @@ namespace ScopeIDE.Panels {
             DesignConfig = designConfig;
             DoubleBuffered = true;
             
-            AddButton(new ButtonMainInstrument(designConfig){Text = "😁"});
-            AddButton(new ButtonMainInstrument(designConfig){Text = "😂"});
-            AddButton(new ButtonMainInstrument(designConfig){Text = "😊"});
-            AddButton(new ButtonMainInstrument(designConfig){Text = "🤣"});
+            AddButton(new AButtonMainInstrument(designConfig){Text = "😁"});
+            AddButton(new AButtonMainInstrument(designConfig){Text = "😂"});
+            AddButton(new AButtonMainInstrument(designConfig){Text = "😊"});
+            AddButton(new AButtonMainInstrument(designConfig){Text = "🤣"});
             AddButton(new PartitionMainPanel(designConfig), true);
-            AddButton(new ButtonMainInstrument(designConfig){Text = "❤"});
-            AddButton(new ButtonMainInstrument(designConfig){Text = "😍"});
-            AddButton(new ButtonMainInstrument(designConfig){Text = "😁"});
-            AddButton(new ButtonMainInstrument(designConfig){Text = "😂"});
-            AddButton(new ButtonMainInstrument(designConfig){Text = "😊"});
-            AddButton(new ButtonMainInstrument(designConfig){Text = "🤣"});
+            AddButton(new AButtonMainInstrument(designConfig){Text = "❤"});
+            AddButton(new AButtonMainInstrument(designConfig){Text = "😍"});
+            AddButton(new AButtonMainInstrument(designConfig){Text = "😁"});
+            AddButton(new AButtonMainInstrument(designConfig){Text = "😂"});
+            AddButton(new AButtonMainInstrument(designConfig){Text = "😊"});
+            AddButton(new AButtonMainInstrument(designConfig){Text = "🤣"});
             AddButton(new PartitionMainPanel(designConfig), true);
-            AddButton(new ButtonMainInstrument(designConfig){Text = "🤣"});
-            AddButton(new ButtonMainInstrument(designConfig){Text = "😁"});
+            AddButton(new AButtonMainInstrument(designConfig){Text = "🤣"});
+            AddButton(new AButtonMainInstrument(designConfig){Text = "😁"});
 
             InitializeComponent();
             RePaint();
