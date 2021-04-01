@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using ScopeIDE.Config;
 using ScopeIDE.Config.Interfaces;
@@ -32,11 +35,13 @@ namespace ScopeIDE.Forms {
         private PanelMain _panelMain1;
 
         private int def = 4;
+        private bool _loaded = false;
 
         public FormMain(IDesignConfig designConfig) {
             DoubleBuffered = true;
             DesignConfig = designConfig;
             components = new Container();
+
             UpdateScale();
 
             FormConfig();
@@ -53,8 +58,15 @@ namespace ScopeIDE.Forms {
         }
 
 
+        protected override void OnLoad(EventArgs e) {
+            _loaded = true;
+            OnResize(e);
+            base.OnLoad(e);
+        }
+
         protected override void OnResize(EventArgs e) {
             UpdateScale();
+            if (!_loaded) return;;
 
             int coof = Scales switch {
                 EScales.HD => DesignConfig.Scale.HD,
@@ -74,6 +86,7 @@ namespace ScopeIDE.Forms {
 
             _locationManager?.UpdateDefValues(GetLocationManagerConfig());
             _locationManager?.ReLocateAll();
+
             base.OnResize(e);
         }
 
@@ -159,7 +172,6 @@ namespace ScopeIDE.Forms {
                 this._panelLayerVer2,
                 this._panelLayerVer3,
                 this._panelInstrumentPanel1,
-
             };
             var contextMenu = new ContextMenu(DesignConfig, new List<Button>());
 
@@ -189,6 +201,7 @@ namespace ScopeIDE.Forms {
                 DesignConfig.PanelInstrument.LocationYDef)
             ) {
                 TabIndex = 3,
+                Visible = false,
             };
 
             this.Controls.Add(_panelInstrumentPanel1);
@@ -207,6 +220,7 @@ namespace ScopeIDE.Forms {
                 DesignConfig.PanelInstrument.LocationYDef)
             ) {
                 TabIndex = 3,
+                Visible = false,
             };
 
             this.Controls.Add(_panelLayerVer1);
@@ -225,6 +239,7 @@ namespace ScopeIDE.Forms {
                 DesignConfig.PanelInstrument.LocationYDef)
             ) {
                 TabIndex = 4,
+                Visible = false,
             };
 
             this.Controls.Add(_panelLayerVer2);
@@ -243,6 +258,7 @@ namespace ScopeIDE.Forms {
                 DesignConfig.PanelInstrument.LocationYDef)
             ) {
                 TabIndex = 5,
+                Visible = false,
             };
 
             this.Controls.Add(_panelLayerVer3);

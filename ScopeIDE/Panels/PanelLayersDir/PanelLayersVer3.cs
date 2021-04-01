@@ -204,7 +204,7 @@ namespace ScopeIDE.Panels.PanelLayersDir {
                 DesignConfig.PanelLayerConfig.ButtonLayerConfig.Width =
                     DesignConfig.PanelLayerConfig.InstrumentsInRow *
                     (DesignConfig.PanelLayerConfig.ButtonInstrumentsConfig.Width + DesignConfig.Resources.RetreatSize) +
-                    (DesignConfig.Resources.RetreatSize * 2);
+                    (DesignConfig.Resources.RetreatSize);
 
             RePaint();
             controls
