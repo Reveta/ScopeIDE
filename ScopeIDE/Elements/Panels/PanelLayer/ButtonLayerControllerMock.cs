@@ -17,6 +17,10 @@ namespace ScopeIDE.Elements.Panels.PanelLayer {
             return _bitmap;
         }
 
+        public void SetName(string nameBoxText) {
+            // Pam pam, new name has set
+        }
+
         private Bitmap GenBitmapRandom() {
             var rnd = new Random();
             

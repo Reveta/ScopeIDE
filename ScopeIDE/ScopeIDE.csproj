@@ -127,6 +127,9 @@
     <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonLayerVer3.Designer.cs">
       <DependentUpon>ButtonLayerVer3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\Panels\PanelLayer\Buttons\AButtonLayer.EditibleName.cs">
+      <DependentUpon>AButtonLayer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Elements\Panels\PanelLayer\IButtonLayer.cs" />
     <Compile Include="Elements\Panels\PanelLayer\IButtonLayerController.cs" />
     <Compile Include="Elements\Panels\PanelLayer\IButtonLayerInstrument.cs" />
@@ -167,6 +170,7 @@
     </Compile>
     <Compile Include="Forms\IFormResizable.cs" />
     <Compile Include="libs\ControlExt\ControlCollectionExt.cs" />
+    <Compile Include="libs\EditiableButton.cs" />
     <Compile Include="libs\Egolds\Animation\Animation.cs" />
     <Compile Include="libs\Egolds\Animation\Animator.cs" />
     <Compile Include="libs\Egolds\Drawer.cs" />

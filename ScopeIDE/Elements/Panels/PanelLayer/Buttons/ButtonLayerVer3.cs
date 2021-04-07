@@ -7,7 +7,6 @@ namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
         public ButtonLayerVer3(IDesignConfig designConfig, IButtonLayerController buttonLayerController) :
             base(designConfig, buttonLayerController) { 
             this.BackColor = DesignConfig.ColorConfig.SecondBackColor; //TODO Why it`s not depend on base class??
-            UpdateLayerScreen();
 
             InitializeComponent();
         }

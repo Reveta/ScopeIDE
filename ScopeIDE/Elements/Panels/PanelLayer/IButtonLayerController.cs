@@ -4,5 +4,6 @@ namespace ScopeIDE.Elements.Panels.PanelLayer {
     public interface IButtonLayerController {
         public Bitmap GetLayerScreen();
 
+        public void SetName(string nameBoxText);
     }
 }

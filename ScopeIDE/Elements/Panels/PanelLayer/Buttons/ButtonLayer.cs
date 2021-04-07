@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using ScopeIDE.Config;
 using ScopeIDE.Forms;
@@ -9,11 +10,9 @@ namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
             base(designConfig, buttonLayerController) {
             this.BackColor = DesignConfig.ColorConfig.SecondBackColor; //TODO Why it`s not depend on base class??
 
-            UpdateLayerScreen();
-
             InitializeComponent();
         }
-
+        
         protected override void UpdateLayerScreen() {
             if (_layerScreen == null) {
                 _layerScreen = new UserControl();

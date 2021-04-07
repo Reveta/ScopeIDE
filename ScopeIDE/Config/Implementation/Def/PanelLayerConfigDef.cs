@@ -1,4 +1,5 @@
-﻿using ScopeIDE.Config.Interfaces;
+﻿using System.Drawing;
+using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Config.Interfaces.Panels;
 
 namespace ScopeIDE.Config.Implementation.Def {
@@ -30,6 +31,7 @@ namespace ScopeIDE.Config.Implementation.Def {
                 Width = 20,
                 HeightDef = 40,
                 Height = 40,
+                FontSizeDef = 9,
             };
         }
     }

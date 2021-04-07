@@ -9,6 +9,7 @@ using ScopeIDE.Panels;
 using ScopeIDE.Panels.PanelTemplates;
 
 namespace ScopeIDE.Elements {
+    //TODO Add OnLostFocus override
     public partial class ContextMenu : APanelWithButtons, IEventFormResize, IReLocateControl {
         private List<Button> _buttons;
         public IDesignConfig DesignConfig { get; set; }
