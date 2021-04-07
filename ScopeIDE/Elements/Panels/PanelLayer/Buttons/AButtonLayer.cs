@@ -6,10 +6,10 @@ using ScopeIDE.libs;
 
 namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
     public abstract partial class AButtonLayer : AButtonColorDepend, IButtonLayer, IEventFormResize {
-        public IDesignConfig DesignConfig { get; }
-        public IButtonLayerController ButtonLayerController { get; }
-        public UserControl _layerScreen;
-        public TextBox NameBox;
+        protected IDesignConfig DesignConfig { get; }
+        protected IButtonLayerController ButtonLayerController { get; }
+        protected UserControl _layerScreen;
+        private TextBox NameBox;
 
         protected AButtonLayer(IDesignConfig designConfig, IButtonLayerController buttonLayerController) :
             base(designConfig.ColorConfig) {

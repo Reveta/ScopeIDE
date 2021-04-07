@@ -5,8 +5,8 @@ using System.Windows.Forms;
 
 namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
     public partial class AButtonLayer {
-        public EditModes EditMode { get; set; } = EditModes.OnDoubleClick;
-        public bool IsEditing => NameBox.Visible;
+        private EditModes EditMode { get; set; } = EditModes.OnDoubleClick;
+        private bool IsEditing => NameBox.Visible;
 
         private void ConfigNameBox() {
             NameBox = new TextBox {
