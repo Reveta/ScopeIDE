@@ -5,10 +5,10 @@ using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Forms;
 
 namespace ScopeIDE.Elements.Panels.PanelMain {
-    public partial class AButtonMainInstrument : AButtonColorDepend, IEventFormResize {
+    public partial class ButtonMainInstrument : AButtonColorDepend, IEventFormResize {
         public IDesignConfig DesignConfig { get; }
 
-        public AButtonMainInstrument(IDesignConfig designConfig) : base(designConfig.ColorConfig) {
+        public ButtonMainInstrument(IDesignConfig designConfig) : base(designConfig.ColorConfig) {
             DesignConfig = designConfig;
 
             InitializeComponent();

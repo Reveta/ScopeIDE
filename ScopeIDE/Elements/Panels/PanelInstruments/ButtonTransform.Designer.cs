@@ -2,7 +2,7 @@
 
 namespace ScopeIDE.Elements.Panels.PanelInstruments
 {
-    partial class AButtonTransform
+    partial class ButtonTransform
     {
         /// <summary> 
         /// Required designer variable.

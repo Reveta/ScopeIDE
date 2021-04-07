@@ -1,4 +1,4 @@
 ﻿namespace ScopeIDE.Elements.Panels.PanelMain {
-	partial class ButtonInstrument {
+	public partial class ButtonInstrument {
 	}
 }

@@ -48,7 +48,7 @@ namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
             NameBox.Text = this.Text;
             NameBox.SelectAll();
             NameBox.Visible = true;
-            _layerScreen.Visible = false;
+            ShowOnlyName(true);
             NameBox.Focus();
         }
 
@@ -61,8 +61,13 @@ namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
 
         private void CancelEdit() {
             NameBox.Visible = false;
-            _layerScreen.Visible = true;
+            ShowOnlyName(false);
             Focus();
+        }
+
+        private void ShowOnlyName(bool onlyName) {
+            _layerScreen.Visible = !onlyName;
+            _buttonHide.Visible = !onlyName;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) {

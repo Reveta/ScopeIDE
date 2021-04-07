@@ -97,18 +97,18 @@
     <Compile Include="Elements\Panels\ContextMenu\ButtonContextMenuItem.Designer.cs">
       <DependentUpon>ButtonContextMenuItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Elements\Panels\PanelInstruments\AButtonInstrument.cs" />
-    <Compile Include="Elements\Panels\PanelInstruments\AButtonInstrument.Designer.cs">
-      <DependentUpon>AButtonInstrument.cs</DependentUpon>
+    <Compile Include="Elements\Panels\PanelInstruments\ButtonInstrument.cs" />
+    <Compile Include="Elements\Panels\PanelInstruments\ButtonInstrument.Designer.cs">
+      <DependentUpon>ButtonInstrument.cs</DependentUpon>
     </Compile>
-    <Compile Include="Elements\Panels\PanelInstruments\AButtonTransform.cs" />
-    <Compile Include="Elements\Panels\PanelInstruments\AButtonTransform.Designer.cs">
-      <DependentUpon>AButtonTransform.cs</DependentUpon>
+    <Compile Include="Elements\Panels\PanelInstruments\ButtonTransform.cs" />
+    <Compile Include="Elements\Panels\PanelInstruments\ButtonTransform.Designer.cs">
+      <DependentUpon>ButtonTransform.cs</DependentUpon>
     </Compile>
     <Compile Include="Elements\Panels\PanelLayer\ButtonLayerControllerMock.cs" />
-    <Compile Include="Elements\Panels\PanelLayer\AButtonLayerInstrument.cs" />
-    <Compile Include="Elements\Panels\PanelLayer\AButtonLayerInstrument.Designer.cs">
-      <DependentUpon>AButtonLayerInstrument.cs</DependentUpon>
+    <Compile Include="Elements\Panels\PanelLayer\ButtonLayerInstrument.cs" />
+    <Compile Include="Elements\Panels\PanelLayer\ButtonLayerInstrument.Designer.cs">
+      <DependentUpon>ButtonLayerInstrument.cs</DependentUpon>
     </Compile>
     <Compile Include="Elements\Panels\PanelLayer\Buttons\AButtonLayer.cs" />
     <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonLayer.cs" />
@@ -133,9 +133,9 @@
     <Compile Include="Elements\Panels\PanelLayer\IButtonLayer.cs" />
     <Compile Include="Elements\Panels\PanelLayer\IButtonLayerController.cs" />
     <Compile Include="Elements\Panels\PanelLayer\IButtonLayerInstrument.cs" />
-    <Compile Include="Elements\Panels\PanelMain\AButtonMainInstrument.cs" />
-    <Compile Include="Elements\Panels\PanelMain\AButtonMainInstrument.Designer.cs">
-      <DependentUpon>AButtonMainInstrument.cs</DependentUpon>
+    <Compile Include="Elements\Panels\PanelMain\ButtonMainInstrument.cs" />
+    <Compile Include="Elements\Panels\PanelMain\ButtonMainInstrument.Designer.cs">
+      <DependentUpon>ButtonMainInstrument.cs</DependentUpon>
     </Compile>
     <Compile Include="Elements\Panels\PanelMain\PartitionMainPanel.cs" />
     <Compile Include="Elements\Panels\PanelMain\PartitionMainPanel.Designer.cs">
@@ -145,9 +145,9 @@
     <Compile Include="Elements\Panels\PanelNavbar\ButtonNavbar.Designer.cs">
       <DependentUpon>ButtonNavbar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Elements\Panels\PanelToolBoxs\ButtonAdd\AButtonToolBoxAdd.cs" />
-    <Compile Include="Elements\Panels\PanelToolBoxs\ButtonAdd\AButtonToolBoxAdd.Designer.cs">
-      <DependentUpon>AButtonToolBoxAdd.cs</DependentUpon>
+    <Compile Include="Elements\Panels\PanelToolBoxs\ButtonAdd\ButtonToolBoxAdd.cs" />
+    <Compile Include="Elements\Panels\PanelToolBoxs\ButtonAdd\ButtonToolBoxAdd.Designer.cs">
+      <DependentUpon>ButtonToolBoxAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Elements\Panels\PanelToolBoxs\ButtonAdd\ButtonToolBoxAddContextItem.cs">
       <SubType>UserControl</SubType>
@@ -155,9 +155,9 @@
     <Compile Include="Elements\Panels\PanelToolBoxs\ButtonAdd\ButtonToolBoxAddContextItem.Designer.cs">
       <DependentUpon>ButtonToolBoxAddContextItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Elements\Panels\PanelToolBoxs\AButtonToolBox.cs" />
-    <Compile Include="Elements\Panels\PanelToolBoxs\AButtonToolBox.Designer.cs">
-      <DependentUpon>AButtonToolBox.cs</DependentUpon>
+    <Compile Include="Elements\Panels\PanelToolBoxs\ButtonToolBox.cs" />
+    <Compile Include="Elements\Panels\PanelToolBoxs\ButtonToolBox.Designer.cs">
+      <DependentUpon>ButtonToolBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormStyls\MyStyleExtenstion.cs">
       <SubType>Component</SubType>

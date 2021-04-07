@@ -1,14 +1,15 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 using ScopeIDE.Config;
+using ScopeIDE.Elements.Panels.PanelMain;
 using ScopeIDE.Forms;
-using ScopeIDE.libs;
 
 namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
     public abstract partial class AButtonLayer : AButtonColorDepend, IButtonLayer, IEventFormResize {
         protected IDesignConfig DesignConfig { get; }
         protected IButtonLayerController ButtonLayerController { get; }
         protected UserControl _layerScreen;
+        protected UserControl _buttonHide;
         private TextBox NameBox;
 
         protected AButtonLayer(IDesignConfig designConfig, IButtonLayerController buttonLayerController) :
@@ -18,6 +19,7 @@ namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
 
             UpdateLayerScreen();
             UpdateNameLabel();
+            UpdateButtonFix();
         }
 
         protected virtual void UpdateNameLabel() {
@@ -42,6 +44,29 @@ namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
                 DesignConfig.PanelLayerConfig.ButtonLayerConfig.FontStyle);
         }
 
+        protected virtual void UpdateButtonFix() {
+            if (_buttonHide == null) {
+                _buttonHide = new UserControl() {
+                    Text = "😁",
+                    Name = "dsa"
+                };
+                this.Controls.Add(_buttonHide);
+            }
+
+            this.Font = new Font(
+                DesignConfig.PanelLayerConfig.ButtonLayerConfig.FontName,
+                DesignConfig.PanelLayerConfig.ButtonLayerConfig.FontSize,
+                DesignConfig.PanelLayerConfig.ButtonLayerConfig.FontStyle
+            );
+
+            var retreat = DesignConfig.Resources.RetreatSize;
+            _buttonHide.Width = this.Height - retreat - retreat;
+            _buttonHide.Height = this.Height - retreat - retreat;
+            _buttonHide.Location = new Point(this.Width - _buttonHide.Width - retreat, retreat);
+            
+    
+        }
+        
         protected abstract void UpdateLayerScreen();
 
         public void EventFormResize(Form form) {
@@ -76,6 +101,10 @@ namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
 
             if (NameBox != null) {
                 UpdateNameLabel();
+            }
+
+            if (_buttonHide != null) {
+                UpdateButtonFix();
             }
         }
     }

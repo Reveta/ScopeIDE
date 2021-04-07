@@ -18,7 +18,7 @@ namespace ScopeIDE.Panels.PanelLayersDir {
         public LocationManager LocationManager { get; set; }
         
         private UserControl _layersBack;
-        private AButtonTransform _aButtonTransform1;
+        private ButtonTransform _buttonTransform1;
 
 
         public PanelLayersVer3(IDesignConfig designConfig, Point location) : base(location) {
@@ -43,12 +43,12 @@ namespace ScopeIDE.Panels.PanelLayersDir {
         }
 
         private void AddTransformButton() {
-            _aButtonTransform1 = new AButtonTransform(DesignConfig) {
+            _buttonTransform1 = new ButtonTransform(DesignConfig) {
                 Text = "<<<",
                 Location = new Point(0, DesignConfig.Resources.RetreatSize),
             };
 
-            this.Controls.Add(_aButtonTransform1);
+            this.Controls.Add(_buttonTransform1);
         }
         private void AddLayersBack() {
             _layersBack = new UserControl() {
@@ -129,10 +129,10 @@ namespace ScopeIDE.Panels.PanelLayersDir {
             int yLevel = DesignConfig.Resources.RetreatSize;
 
             //add ButtonTransform
-            _aButtonTransform1.Location = new Point(0, yLevel);
-            _aButtonTransform1.Width = this.Width;
-            _aButtonTransform1.Height = DesignConfig.PanelLayerConfig.ButtonInstrumentsConfig.Height;
-            yLevel += _aButtonTransform1.Height + DesignConfig.Resources.RetreatSize;
+            _buttonTransform1.Location = new Point(0, yLevel);
+            _buttonTransform1.Width = this.Width;
+            _buttonTransform1.Height = DesignConfig.PanelLayerConfig.ButtonInstrumentsConfig.Height;
+            yLevel += _buttonTransform1.Height + DesignConfig.Resources.RetreatSize;
 
             //add ButtonInstrument
             int count = 0;
