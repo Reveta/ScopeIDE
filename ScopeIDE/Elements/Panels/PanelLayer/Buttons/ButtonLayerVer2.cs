@@ -12,6 +12,15 @@ namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
 
             InitializeComponent();
         }
+        
+        protected override void UpdateButtonFix() {
+            base.UpdateButtonFix();
+            _buttonHide.Font = new Font(
+                _buttonHide.Font.FontFamily,
+                DesignConfig.Resources.FontSize - 1,
+                _buttonHide.Font.Style
+            );
+        }
 
         protected override void UpdateLayerScreen() {
             if (_layerScreen == null) {

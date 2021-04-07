@@ -21,6 +21,10 @@ namespace ScopeIDE.Elements.Panels.PanelLayer {
             // Pam pam, new name has set
         }
 
+        public void SetVisible(bool layerVisibleStatus) {
+            //Tum tum, new visible status has set
+        }
+
         private Bitmap GenBitmapRandom() {
             var rnd = new Random();
             

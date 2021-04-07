@@ -12,7 +12,20 @@ namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
 
             InitializeComponent();
         }
-        
+
+        protected override void UpdateButtonFix() {
+            base.UpdateButtonFix();
+            _buttonHide.Size = _layerScreen.Size;
+            _buttonHide.Location = new Point(
+                this.Width - _buttonHide.Width - DesignConfig.Resources.RetreatSize,
+                0);
+            _buttonHide.Font = new Font(
+                _buttonHide.Font.FontFamily,
+                DesignConfig.Resources.FontSize,
+                _buttonHide.Font.Style
+            );
+        }
+
         protected override void UpdateLayerScreen() {
             if (_layerScreen == null) {
                 _layerScreen = new UserControl();
@@ -20,11 +33,11 @@ namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
             }
 
             var retreat = DesignConfig.Resources.RetreatSize;
-            
+
             _layerScreen.Width = this.Height;
             _layerScreen.Height = this.Height;
             _layerScreen.Location = new Point(retreat, 0);
-            
+
             var layerScreenBackgroundImage = ButtonLayerController.GetLayerScreen();
             _layerScreen.BackgroundImage = layerScreenBackgroundImage;
             _layerScreen.BackgroundImageLayout = ImageLayout.Stretch;

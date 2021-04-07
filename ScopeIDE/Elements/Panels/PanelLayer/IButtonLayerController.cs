@@ -5,5 +5,6 @@ namespace ScopeIDE.Elements.Panels.PanelLayer {
         public Bitmap GetLayerScreen();
 
         public void SetName(string nameBoxText);
+        public void SetVisible(bool layerVisibleStatus);
     }
 }

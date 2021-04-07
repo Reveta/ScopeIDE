@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 using ScopeIDE.Config;
-using ScopeIDE.Elements.Panels.PanelMain;
+using ScopeIDE.Config.Implementation.Def;
 using ScopeIDE.Forms;
 
 namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
@@ -9,7 +9,7 @@ namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
         protected IDesignConfig DesignConfig { get; }
         protected IButtonLayerController ButtonLayerController { get; }
         protected UserControl _layerScreen;
-        protected UserControl _buttonHide;
+        protected Button _buttonHide;
         private TextBox NameBox;
 
         protected AButtonLayer(IDesignConfig designConfig, IButtonLayerController buttonLayerController) :
@@ -46,9 +46,12 @@ namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
 
         protected virtual void UpdateButtonFix() {
             if (_buttonHide == null) {
-                _buttonHide = new UserControl() {
-                    Text = "😁",
-                    Name = "dsa"
+                _buttonHide = new ButtonHide(DesignConfig, ButtonLayerController) {
+                    Font = new Font(
+                        DesignConfig.PanelLayerConfig.ButtonLayerConfig.FontName,
+                        DesignConfig.PanelLayerConfig.ButtonLayerConfig.FontSize,
+                        DesignConfig.PanelLayerConfig.ButtonLayerConfig.FontStyle
+                    )
                 };
                 this.Controls.Add(_buttonHide);
             }

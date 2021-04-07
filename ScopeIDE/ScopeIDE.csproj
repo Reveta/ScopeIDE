@@ -111,6 +111,10 @@
       <DependentUpon>ButtonLayerInstrument.cs</DependentUpon>
     </Compile>
     <Compile Include="Elements\Panels\PanelLayer\Buttons\AButtonLayer.cs" />
+    <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonHide.cs" />
+    <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonHide.Designer.cs">
+      <DependentUpon>ButtonHide.cs</DependentUpon>
+    </Compile>
     <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonLayer.cs" />
     <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonLayer.Designer.cs">
       <DependentUpon>ButtonLayer.cs</DependentUpon>

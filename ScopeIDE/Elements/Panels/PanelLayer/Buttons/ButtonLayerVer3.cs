@@ -11,6 +11,19 @@ namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
             InitializeComponent();
         }
 
+        protected override void UpdateButtonFix() {
+            base.UpdateButtonFix();
+            _buttonHide.Size = _layerScreen.Size;
+            _buttonHide.Location = new Point(
+                this.Width - _buttonHide.Width,
+                0);
+            _buttonHide.Font = new Font(
+                _buttonHide.Font.FontFamily,
+                DesignConfig.Resources.FontSize,
+                _buttonHide.Font.Style
+            );
+        }
+
         protected override void UpdateLayerScreen() {
             if (_layerScreen == null) {
                 _layerScreen = new UserControl();
