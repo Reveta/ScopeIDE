@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
+namespace ScopeIDE.Elements.Panels.PanelLayer.ButtonsLayerElements.ButtonsStates {
 	partial class ButtonHide {
 		/// <summary> 
 		/// Required designer variable.

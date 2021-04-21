@@ -1,28 +1,24 @@
 ﻿using System;
-using System.Drawing;
-using System.Drawing.Printing;
 using System.Windows.Forms;
+using ScopeIDE.Elements.Panels.PanelLayer.ButtonsLayerElements.ButtonsStates;
 
-namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
+namespace ScopeIDE.Elements.Panels.PanelLayer.ButtonsLayerElements.ButtonsLayers {
     public partial class AButtonLayer {
+        private ButtonLayerEditingNameState _layerEditingNameState;
         private EditModes EditMode { get; set; } = EditModes.OnDoubleClick;
-        private bool IsEditing => NameBox.Visible;
+        // private bool IsEditing => NameBox.Visible;
+        private bool IsEditing => true;
+        
 
         private void ConfigNameBox() {
-            NameBox = new TextBox {
-                Text = Text,
-                Visible = false,
-                Multiline = true,
-                Dock = DockStyle.Fill,
-                BackColor = this.BackColor,
-                BorderStyle = BorderStyle.None,
-                TextAlign = HorizontalAlignment.Center,
-                ForeColor = DesignConfig.ColorConfig.FontColorMain,
-                MaxLength = 12
+            _layerEditingNameState = new ButtonLayerEditingNameState(DesignConfig, ButtonLayerController) {
+                Visible = false
             };
-
-            NameBox.LostFocus += (sender, args) => EndEdit();
-            NameBox.KeyDown += Txt_PreviewKeyDown;
+            
+            this.Controls.Add(_layerEditingNameState);
+            
+            _layerEditingNameState.LostFocus += (sender, args) => EndEdit();
+            _layerEditingNameState.KeyDown += Txt_PreviewKeyDown;
         }
 
         public enum EditModes {
@@ -45,29 +41,29 @@ namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
         }
 
         private void BeginEdit() {
-            NameBox.Text = this.Text;
-            NameBox.SelectAll();
-            NameBox.Visible = true;
-            ShowOnlyName(true);
-            NameBox.Focus();
+            // NameBox.Text = this.Text;
+            // NameBox.SelectAll();
+            // NameBox.Visible = true;
+            // ShowOnlyName(true);
+            // NameBox.Focus();
         }
 
         private void EndEdit() {
             CancelEdit();
-            ButtonLayerController.SetName(NameBox.Text);
-            Text = NameBox.Text;
+            // ButtonLayerController.SetName(NameBox.Text);
+            // Text = NameBox.Text;
             Focus();
         }
 
         private void CancelEdit() {
-            NameBox.Visible = false;
+            // NameBox.Visible = false;
             ShowOnlyName(false);
             Focus();
         }
 
         private void ShowOnlyName(bool onlyName) {
-            _layerScreen.Visible = !onlyName;
-            _buttonHide.Visible = !onlyName;
+            // _layerScreen.Visible = !onlyName;
+            // _buttonHide.Visible = !onlyName;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) {

@@ -50,9 +50,9 @@ namespace ScopeIDE.Forms {
             AddPanelMain();
             AddPanelNavbar();
             AddPanelInstrument();
-            AddPanelLayer2();
+            // AddPanelLayer1(); //TODO not popular versions, have bags 
+            // AddPanelLayer2(); //TODO not popular versions, have bags
             AddPanelLayer3();
-            AddPanelLayer();
             AddPanelToolBox();
             AddLocationManager();
         }
@@ -207,7 +207,7 @@ namespace ScopeIDE.Forms {
             this.Controls.Add(_panelInstrumentPanel1);
         }
 
-        private void AddPanelLayer() {
+        private void AddPanelLayer1() {
             DesignConfig.PanelInstrument.LocationXDef =
                 DesignConfig.PanelToolBox.Button.Width + DesignConfig.Resources.RetreatSize +
                 DesignConfig.Resources.RetreatSize;

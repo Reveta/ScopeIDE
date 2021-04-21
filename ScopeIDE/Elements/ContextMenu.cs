@@ -18,7 +18,7 @@ namespace ScopeIDE.Elements {
             get => _buttons;
             set {
                 _buttons = value;
-                Buttons.ForEach(button => AddButton(button));
+                Buttons.ForEach(button => AddButtonInstrument(button));
                 RePaint();
             }
         }
@@ -28,14 +28,14 @@ namespace ScopeIDE.Elements {
             this.DoubleBuffered = true;
 
             Buttons = buttons;
-            Buttons.ForEach(button => AddButton(button));
+            Buttons.ForEach(button => AddButtonInstrument(button));
 
             InitializeComponent();
             RePaint();
             this.Hide();
         }
 
-        public override void AddButton(Button button, bool onlyPosition = false) {
+        public override void AddButtonInstrument(Button button, bool onlyPosition = false) {
             int count = this.GetAllButtons().Count;
             button.Name = "contextItem" + count;
             button.TabIndex = count;

@@ -15,20 +15,20 @@ namespace ScopeIDE.Panels {
             DesignConfig = designConfig;
             DoubleBuffered = true;
             
-            AddButton(new ButtonMainInstrument(designConfig){Text = "😁"});
-            AddButton(new ButtonMainInstrument(designConfig){Text = "😂"});
-            AddButton(new ButtonMainInstrument(designConfig){Text = "😊"});
-            AddButton(new ButtonMainInstrument(designConfig){Text = "🤣"});
-            AddButton(new PartitionMainPanel(designConfig), true);
-            AddButton(new ButtonMainInstrument(designConfig){Text = "❤"});
-            AddButton(new ButtonMainInstrument(designConfig){Text = "😍"});
-            AddButton(new ButtonMainInstrument(designConfig){Text = "😁"});
-            AddButton(new ButtonMainInstrument(designConfig){Text = "😂"});
-            AddButton(new ButtonMainInstrument(designConfig){Text = "😊"});
-            AddButton(new ButtonMainInstrument(designConfig){Text = "🤣"});
-            AddButton(new PartitionMainPanel(designConfig), true);
-            AddButton(new ButtonMainInstrument(designConfig){Text = "🤣"});
-            AddButton(new ButtonMainInstrument(designConfig){Text = "😁"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "😁"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "😂"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "😊"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "🤣"});
+            AddButtonInstrument(new PartitionMainPanel(designConfig), true);
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "❤"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "😍"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "😁"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "😂"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "😊"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "🤣"});
+            AddButtonInstrument(new PartitionMainPanel(designConfig), true);
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "🤣"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "😁"});
 
             InitializeComponent();
             RePaint();
@@ -43,7 +43,7 @@ namespace ScopeIDE.Panels {
             this.PerformLayout();
         }
 
-        public override void AddButton(Button button, bool onlyPosition = false) {
+        public override void AddButtonInstrument(Button button, bool onlyPosition = false) {
             int count = this.GetAllButtons().Count;
             button.Name = "buttonMainInstrument" + count;
             button.TabIndex = count;

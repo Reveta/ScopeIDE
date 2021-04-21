@@ -15,21 +15,21 @@ namespace ScopeIDE.Panels {
             DesignConfig = designConfig;
             this.DoubleBuffered = true;
 
-            AddButton(new ButtonNavbar(designConfig){Text = "File"});
-            AddButton(new ButtonNavbar(designConfig){Text = "Windows"});
-            AddButton(new ButtonNavbar(designConfig){Text = "Edit"});
-            AddButton(new ButtonNavbar(designConfig){Text = "View"});
-            AddButton(new ButtonNavbar(designConfig){Text = "Navigate"});
-            AddButton(new ButtonNavbar(designConfig){Text = "View"});
-            AddButton(new ButtonNavbar(designConfig){Text = "Navigadsadasadte"});
-            AddButton(new ButtonNavbar(designConfig){Text = "Windows"});
-            AddButton(new ButtonNavbar(designConfig){Text = "Code"});
+            AddButtonInstrument(new ButtonNavbar(designConfig){Text = "File"});
+            AddButtonInstrument(new ButtonNavbar(designConfig){Text = "Windows"});
+            AddButtonInstrument(new ButtonNavbar(designConfig){Text = "Edit"});
+            AddButtonInstrument(new ButtonNavbar(designConfig){Text = "View"});
+            AddButtonInstrument(new ButtonNavbar(designConfig){Text = "Navigate"});
+            AddButtonInstrument(new ButtonNavbar(designConfig){Text = "View"});
+            AddButtonInstrument(new ButtonNavbar(designConfig){Text = "Navigadsadasadte"});
+            AddButtonInstrument(new ButtonNavbar(designConfig){Text = "Windows"});
+            AddButtonInstrument(new ButtonNavbar(designConfig){Text = "Code"});
 
             InitializeComponent();
             RePaint();
         }
 
-        public override void AddButton(Button button, bool onlyPosition = false) {
+        public override void AddButtonInstrument(Button button, bool onlyPosition = false) {
             int count = this.GetAllButtons().Count;
             button.Name = "buttonNavbar" + count;
             button.TabIndex = count;

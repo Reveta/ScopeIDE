@@ -105,37 +105,41 @@
     <Compile Include="Elements\Panels\PanelInstruments\ButtonTransform.Designer.cs">
       <DependentUpon>ButtonTransform.cs</DependentUpon>
     </Compile>
-    <Compile Include="Elements\Panels\PanelLayer\ButtonLayerControllerMock.cs" />
     <Compile Include="Elements\Panels\PanelLayer\ButtonLayerInstrument.cs" />
     <Compile Include="Elements\Panels\PanelLayer\ButtonLayerInstrument.Designer.cs">
       <DependentUpon>ButtonLayerInstrument.cs</DependentUpon>
     </Compile>
-    <Compile Include="Elements\Panels\PanelLayer\Buttons\AButtonLayer.cs" />
-    <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonHide.cs" />
-    <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonHide.Designer.cs">
-      <DependentUpon>ButtonHide.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonLayer.cs" />
-    <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonLayer.Designer.cs">
-      <DependentUpon>ButtonLayer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonLayerVer2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonLayerVer2.Designer.cs">
-      <DependentUpon>ButtonLayerVer2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonLayerVer3.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Elements\Panels\PanelLayer\Buttons\ButtonLayerVer3.Designer.cs">
-      <DependentUpon>ButtonLayerVer3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Elements\Panels\PanelLayer\Buttons\AButtonLayer.EditibleName.cs">
+    <Compile Include="Elements\Panels\PanelLayer\ButtonsLayerElements\ButtonLayerControllerMock.cs" />
+    <Compile Include="Elements\Panels\PanelLayer\ButtonsLayerElements\ButtonsLayers\AButtonLayer.cs" />
+    <Compile Include="Elements\Panels\PanelLayer\ButtonsLayerElements\ButtonsLayers\AButtonLayer.EditibleName.cs">
       <DependentUpon>AButtonLayer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Elements\Panels\PanelLayer\IButtonLayer.cs" />
-    <Compile Include="Elements\Panels\PanelLayer\IButtonLayerController.cs" />
+    <Compile Include="Elements\Panels\PanelLayer\ButtonsLayerElements\ButtonsLayers\ButtonLayerVer1.cs" />
+    <Compile Include="Elements\Panels\PanelLayer\ButtonsLayerElements\ButtonsLayers\ButtonLayerVer1.Designer.cs">
+      <DependentUpon>ButtonLayerVer1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\Panels\PanelLayer\ButtonsLayerElements\ButtonsLayers\ButtonLayerVer2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\Panels\PanelLayer\ButtonsLayerElements\ButtonsLayers\ButtonLayerVer2.Designer.cs">
+      <DependentUpon>ButtonLayerVer2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\Panels\PanelLayer\ButtonsLayerElements\ButtonsLayers\ButtonLayerVer3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\Panels\PanelLayer\ButtonsLayerElements\ButtonsLayers\ButtonLayerVer3.Designer.cs">
+      <DependentUpon>ButtonLayerVer3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\Panels\PanelLayer\ButtonsLayerElements\ButtonsStates\ButtonHide.cs" />
+    <Compile Include="Elements\Panels\PanelLayer\ButtonsLayerElements\ButtonsStates\ButtonHide.Designer.cs">
+      <DependentUpon>ButtonHide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\Panels\PanelLayer\ButtonsLayerElements\ButtonsStates\ButtonLayerEditingNameState.cs" />
+    <Compile Include="Elements\Panels\PanelLayer\ButtonsLayerElements\ButtonsStates\ButtonLayerEditingTransparencyState.cs" />
+    <Compile Include="Elements\Panels\PanelLayer\ButtonsLayerElements\ButtonsStates\ButtonLayerMainState.cs" />
+    <Compile Include="Elements\Panels\PanelLayer\ButtonsLayerElements\ButtonsStates\IButtonLayerState.cs" />
+    <Compile Include="Elements\Panels\PanelLayer\ButtonsLayerElements\IButtonLayer.cs" />
+    <Compile Include="Elements\Panels\PanelLayer\ButtonsLayerElements\IButtonLayerController.cs" />
     <Compile Include="Elements\Panels\PanelLayer\IButtonLayerInstrument.cs" />
     <Compile Include="Elements\Panels\PanelMain\ButtonMainInstrument.cs" />
     <Compile Include="Elements\Panels\PanelMain\ButtonMainInstrument.Designer.cs">
@@ -174,7 +178,6 @@
     </Compile>
     <Compile Include="Forms\IFormResizable.cs" />
     <Compile Include="libs\ControlExt\ControlCollectionExt.cs" />
-    <Compile Include="libs\EditiableButton.cs" />
     <Compile Include="libs\Egolds\Animation\Animation.cs" />
     <Compile Include="libs\Egolds\Animation\Animator.cs" />
     <Compile Include="libs\Egolds\Drawer.cs" />

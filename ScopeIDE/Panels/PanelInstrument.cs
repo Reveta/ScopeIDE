@@ -25,26 +25,26 @@ namespace ScopeIDE.Panels {
 
             AddTransformButton();
 
-            AddButton(new ButtonInstrument(designConfig) {Text = "😍"});
-            AddButton(new ButtonInstrument(designConfig){Text = "😘"});
-            AddButton(new ButtonInstrument(designConfig){Text = "👌"});
-            AddButton(new ButtonInstrument(designConfig){Text = "😒"});
+            AddButtonInstrument(new ButtonInstrument(designConfig) {Text = "😍"});
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "😘"});
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "👌"});
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "😒"});
             
-            AddButton(new ButtonInstrument(designConfig){Text = "😁"});
-            AddButton(new ButtonInstrument(designConfig){Text = "😂"});
-            AddButton(new ButtonInstrument(designConfig){Text = "😊"});
-            AddButton(new ButtonInstrument(designConfig){Text = "🤣"});
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "😁"});
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "😂"});
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "😊"});
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "🤣"});
             
-            AddButton(new ButtonInstrument(designConfig){Text = "❤"});
-            AddButton(new ButtonInstrument(designConfig){Text = "💕"});
-            AddButton(new ButtonInstrument(designConfig){Text = "🎉"});
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "❤"});
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "💕"});
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "🎉"});
 
             InitializeComponent();
         }
         
         
 
-        public override void AddButton(Button button, bool onlyPosition = false) {
+        public override void AddButtonInstrument(Button button, bool onlyPosition = false) {
             int count = this.GetAllButtons().Count;
             button.Name = "buttonInstrument" + count;
             button.TabIndex = count;
@@ -60,6 +60,7 @@ namespace ScopeIDE.Panels {
 
                 button.FlatAppearance.BorderSize = 0;
                 button.Margin = new Padding(0);
+                button.Padding = new Padding(0);
 
                 button.Size = new Size(
                     DesignConfig.PanelInstrument.Button.Width,

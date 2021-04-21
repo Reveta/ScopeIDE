@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
+namespace ScopeIDE.Elements.Panels.PanelLayer.ButtonsLayerElements.ButtonsLayers {
     partial class ButtonLayerVer3 {
         /// <summary> 
         /// Required designer variable.

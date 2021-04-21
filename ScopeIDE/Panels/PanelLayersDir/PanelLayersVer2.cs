@@ -6,7 +6,8 @@ using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements;
 using ScopeIDE.Elements.Panels.PanelInstruments;
 using ScopeIDE.Elements.Panels.PanelLayer;
-using ScopeIDE.Elements.Panels.PanelLayer.Buttons;
+using ScopeIDE.Elements.Panels.PanelLayer.ButtonsLayerElements;
+using ScopeIDE.Elements.Panels.PanelLayer.ButtonsLayerElements.ButtonsLayers;
 using ScopeIDE.libs.ControlExt;
 using ScopeIDE.LocationManagment;
 using ScopeIDE.LocationManagment.Configs;
@@ -25,16 +26,16 @@ namespace ScopeIDE.Panels.PanelLayersDir {
             DesignConfig = designConfig;
             AddTransformButton();
 
-            AddButton(new AButtonLayerInstrument(designConfig) {Text = "😁"});
-            AddButton(new AButtonLayerInstrument(designConfig) {Text = "🤣"});
-            AddButton(new AButtonLayerInstrument(designConfig) {Text = "😊"});
-            AddButton(new AButtonLayerInstrument(designConfig) {Text = "😂"});
-            AddButton(new AButtonLayerInstrument(designConfig) {Text = "😒"});
-            AddButton(new AButtonLayerInstrument(designConfig) {Text = "🤷‍"});
+            AddButtonInstrument(new AButtonLayerInstrument(designConfig) {Text = "😁"});
+            AddButtonInstrument(new AButtonLayerInstrument(designConfig) {Text = "🤣"});
+            AddButtonInstrument(new AButtonLayerInstrument(designConfig) {Text = "😊"});
+            AddButtonInstrument(new AButtonLayerInstrument(designConfig) {Text = "😂"});
+            AddButtonInstrument(new AButtonLayerInstrument(designConfig) {Text = "😒"});
+            AddButtonInstrument(new AButtonLayerInstrument(designConfig) {Text = "🤷‍"});
             
-            AddButtonLayer(new ButtonLayerVer3(designConfig, new ButtonLayerControllerMock()));
-            AddButtonLayer(new ButtonLayerVer3(designConfig, new ButtonLayerControllerMock()));
-            AddButtonLayer(new ButtonLayerVer3(designConfig, new ButtonLayerControllerMock()));
+            AddButtonLayer(new ButtonLayerVer2(designConfig, new ButtonLayerControllerMock()));
+            AddButtonLayer(new ButtonLayerVer2(designConfig, new ButtonLayerControllerMock()));
+            AddButtonLayer(new ButtonLayerVer2(designConfig, new ButtonLayerControllerMock()));
             
             AddLayersBack();
 
@@ -57,7 +58,7 @@ namespace ScopeIDE.Panels.PanelLayersDir {
             this.Controls.Add(_layersBack);
         }
 
-        public override void AddButton(Button button, bool onlyPosition = false) {
+        public override void AddButtonInstrument(Button button, bool onlyPosition = false) {
             int count = this.GetAllButtons().Count;
             button.Name = "buttonInstrument" + count;
             button.TabIndex = count;
@@ -231,7 +232,7 @@ namespace ScopeIDE.Panels.PanelLayersDir {
             this.BorderStyle = BorderStyle.None;
             this.Margin = new Padding(0);
 
-            this.Name = "PanelLayer";
+            this.Name = "PanelLayer2";
             this.ResumeLayout(false);
         }
 

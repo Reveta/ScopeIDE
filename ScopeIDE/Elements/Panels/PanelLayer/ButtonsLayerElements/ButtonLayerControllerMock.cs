@@ -2,23 +2,23 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace ScopeIDE.Elements.Panels.PanelLayer {
+namespace ScopeIDE.Elements.Panels.PanelLayer.ButtonsLayerElements {
     public class ButtonLayerControllerMock : IButtonLayerController {
+        public string Name { get; set; } = "Layer";
+        public int Transparency { get; set; }
         private Bitmap _bitmap;
+
 
         public ButtonLayerControllerMock() {
             var genBitmapRandom = GenBitmapRandom();
             var randLetter = DrawRandLetter(genBitmapRandom);
             var compressBitmap = CompressBitmap(randLetter);
             _bitmap = compressBitmap;
+            Transparency = 100;
         }
 
         public Bitmap GetLayerScreen() {
             return _bitmap;
-        }
-
-        public void SetName(string nameBoxText) {
-            // Pam pam, new name has set
         }
 
         public void SetVisible(bool layerVisibleStatus) {

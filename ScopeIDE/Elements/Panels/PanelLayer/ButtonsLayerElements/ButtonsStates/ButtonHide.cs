@@ -1,10 +1,8 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 using ScopeIDE.Config;
-using ScopeIDE.Forms;
 
-namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
+namespace ScopeIDE.Elements.Panels.PanelLayer.ButtonsLayerElements.ButtonsStates {
     public partial class ButtonHide : AButtonLayerInstrument {
         public IButtonLayerController ButtonLayerController { get; }
         private bool _layerVisibleStatus = true;
@@ -17,11 +15,12 @@ namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
             UpdateIcon();
             InitializeComponent();
         }
-        
+
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PanelMain.ButtonInstrument));
+            System.ComponentModel.ComponentResourceManager resources =
+                new System.ComponentModel.ComponentResourceManager(typeof(PanelMain.ButtonInstrument));
             this.SuspendLayout();
-		
+
             FlatStyle = FlatStyle.Flat;
 
             Font = new Font(
@@ -37,11 +36,11 @@ namespace ScopeIDE.Elements.Panels.PanelLayer.Buttons {
                 DesignConfig.PanelLayerConfig.ButtonInstrumentsConfig.Width,
                 DesignConfig.PanelLayerConfig.ButtonInstrumentsConfig.Height);
 
-           TabStop = false;
-           TextAlign = ContentAlignment.MiddleCenter;
-           UseVisualStyleBackColor = false;
-           AutoSize = false;
-            
+            TabStop = false;
+            TextAlign = ContentAlignment.MiddleCenter;
+            UseVisualStyleBackColor = false;
+            AutoSize = false;
+
             this.ResumeLayout(false);
         }
 
