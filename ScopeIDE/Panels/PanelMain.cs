@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using ScopeIDE.Config;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements;
 using ScopeIDE.Elements.Panels.PanelMain;
@@ -14,20 +15,20 @@ namespace ScopeIDE.Panels {
             DesignConfig = designConfig;
             DoubleBuffered = true;
             
-            AddLayer(new ButtonMainInstrument(designConfig){Text = "😁"});
-            AddLayer(new ButtonMainInstrument(designConfig){Text = "😂"});
-            AddLayer(new ButtonMainInstrument(designConfig){Text = "😊"});
-            AddLayer(new ButtonMainInstrument(designConfig){Text = "🤣"});
-            AddLayer(new PartitionMainPanel(designConfig), true);
-            AddLayer(new ButtonMainInstrument(designConfig){Text = "❤"});
-            AddLayer(new ButtonMainInstrument(designConfig){Text = "😍"});
-            AddLayer(new ButtonMainInstrument(designConfig){Text = "😁"});
-            AddLayer(new ButtonMainInstrument(designConfig){Text = "😂"});
-            AddLayer(new ButtonMainInstrument(designConfig){Text = "😊"});
-            AddLayer(new ButtonMainInstrument(designConfig){Text = "🤣"});
-            AddLayer(new PartitionMainPanel(designConfig), true);
-            AddLayer(new ButtonMainInstrument(designConfig){Text = "🤣"});
-            AddLayer(new ButtonMainInstrument(designConfig){Text = "😁"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "😁"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "😂"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "😊"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "🤣"});
+            AddButtonInstrument(new PartitionMainPanel(designConfig), true);
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "❤"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "😍"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "😁"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "😂"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "😊"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "🤣"});
+            AddButtonInstrument(new PartitionMainPanel(designConfig), true);
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "🤣"});
+            AddButtonInstrument(new ButtonMainInstrument(designConfig){Text = "😁"});
 
             InitializeComponent();
             RePaint();
@@ -42,7 +43,7 @@ namespace ScopeIDE.Panels {
             this.PerformLayout();
         }
 
-        public override void AddLayer(Button button, bool onlyPosition = false) {
+        public override void AddButtonInstrument(Button button, bool onlyPosition = false) {
             int count = this.GetAllButtons().Count;
             button.Name = "buttonMainInstrument" + count;
             button.TabIndex = count;

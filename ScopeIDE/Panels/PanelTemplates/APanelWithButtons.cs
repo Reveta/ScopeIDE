@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace ScopeIDE.Panels.PanelTemplates {
     public abstract class APanelWithButtons : UserControl, IPanelWithButtons {
-        public abstract void AddLayer(Button button, bool onlyPosition = false);
+        public abstract void AddButtonInstrument(Button button, bool onlyPosition = false);
         public abstract void RePaint();
 
         public List<Button> GetAllButtons() {

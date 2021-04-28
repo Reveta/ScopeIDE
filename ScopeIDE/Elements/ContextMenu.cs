@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using ScopeIDE.Config;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.LocationManagment;
 using ScopeIDE.LocationManagment.Configs;
@@ -8,6 +9,7 @@ using ScopeIDE.Panels;
 using ScopeIDE.Panels.PanelTemplates;
 
 namespace ScopeIDE.Elements {
+    //TODO Add OnLostFocus override
     public partial class ContextMenu : APanelWithButtons, IEventFormResize, IReLocateControl {
         private List<Button> _buttons;
         public IDesignConfig DesignConfig { get; set; }
@@ -16,7 +18,7 @@ namespace ScopeIDE.Elements {
             get => _buttons;
             set {
                 _buttons = value;
-                Buttons.ForEach(button => AddLayer(button));
+                Buttons.ForEach(button => AddButtonInstrument(button));
                 RePaint();
             }
         }
@@ -26,14 +28,14 @@ namespace ScopeIDE.Elements {
             this.DoubleBuffered = true;
 
             Buttons = buttons;
-            Buttons.ForEach(button => AddLayer(button));
+            Buttons.ForEach(button => AddButtonInstrument(button));
 
             InitializeComponent();
             RePaint();
             this.Hide();
         }
 
-        public override void AddLayer(Button button, bool onlyPosition = false) {
+        public override void AddButtonInstrument(Button button, bool onlyPosition = false) {
             int count = this.GetAllButtons().Count;
             button.Name = "contextItem" + count;
             button.TabIndex = count;

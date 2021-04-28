@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using ScopeIDE.Config;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements.Panels.ContextMenu;
 using ScopeIDE.Panels;

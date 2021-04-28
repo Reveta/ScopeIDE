@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using ScopeIDE.Config;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements;
 using ScopeIDE.Elements.Panels.PanelToolBoxs;
@@ -17,7 +18,7 @@ namespace ScopeIDE.Panels {
         public IDesignConfig DesignConfig { get; set; }
         public LocationManager LocationManager { get; set; }
         private readonly List<UserControl> _panels;
-        private ButtonToolBoxAdd ButtonToolBoxAdd { get; set; }
+        private AButtonToolBoxAdd AButtonToolBoxAdd { get; set; }
         private ContextMenu ContextMenu { get; set; }
 
 
@@ -43,22 +44,23 @@ namespace ScopeIDE.Panels {
             List<Button> addContextMenuButtons = new List<Button>();
 
             _panels.ForEach(panel => {
-                var buttonToolBox = new ButtonToolBox(panel.Name, DesignConfig, panel, LocationManager);
+                if (panel is null){return;}
+                var buttonToolBox = new AButtonToolBox(panel.Name, DesignConfig, panel, LocationManager);
                 var menuItem = new ButtonToolBoxAddContextItem(DesignConfig, buttonToolBox, this) {
                     Text = panel.Name
                 };
 
                 buttonToolBox.Hide();
-                AddLayer(buttonToolBox);
+                AddButtonInstrument(buttonToolBox);
                 addContextMenuButtons.Add(menuItem);
             });
 
             ContextMenu.Buttons = addContextMenuButtons;
-            ButtonToolBoxAdd = new ButtonToolBoxAdd(this.DesignConfig, ContextMenu);
-            AddLayer(ButtonToolBoxAdd);
+            AButtonToolBoxAdd = new AButtonToolBoxAdd(this.DesignConfig, ContextMenu);
+            AddButtonInstrument(AButtonToolBoxAdd);
         }
 
-        public override void AddLayer(Button button, bool onlyPosition = false) {
+        public override void AddButtonInstrument(Button button, bool onlyPosition = false) {
             int count = this.GetAllButtons().Count;
             button.Name = "buttonToolbox" + count;
             button.TabIndex = count;
@@ -93,13 +95,13 @@ namespace ScopeIDE.Panels {
             int yMargin = DesignConfig.Resources.RetreatSize;
 
             //Paint special Add Button
-            ButtonToolBoxAdd.Location = new Point(0, yMargin);
-            yMargin += ButtonToolBoxAdd.Height + DesignConfig.Resources.RetreatSize;
+            AButtonToolBoxAdd.Location = new Point(0, yMargin);
+            yMargin += AButtonToolBoxAdd.Height + DesignConfig.Resources.RetreatSize;
 
             var allButtons = GetAllButtons();
             allButtons
                 .FindAll(button => button.Visible)
-                .FindAll(button => button != ButtonToolBoxAdd)
+                .FindAll(button => button != AButtonToolBoxAdd)
                 .ForEach(button => {
                     button.Location = new Point(xMargin, yMargin);
                     yMargin += button.Height + DesignConfig.Resources.RetreatSize;;

@@ -5,7 +5,7 @@ using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Forms;
 
 namespace ScopeIDE.Elements.Panels.PanelInstruments {
-    public partial class ButtonTransform :  ButtonColorDepend, IEventFormResize {
+    public partial class ButtonTransform :  AButtonColorDepend, IEventFormResize {
         public readonly IDesignConfig DesignConfig;
 
         public ButtonTransform(IDesignConfig designConfig) : base(designConfig.ColorConfig) {

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using ScopeIDE.Config;
 using ScopeIDE.Config.Interfaces;
@@ -13,6 +16,7 @@ using ScopeIDE.LocationManagment;
 using ScopeIDE.LocationManagment.Configs;
 using ScopeIDE.LocationManagment.Configs.Sides;
 using ScopeIDE.Panels;
+using ScopeIDE.Panels.PanelLayersDir;
 using ContextMenu = ScopeIDE.Elements.ContextMenu;
 
 namespace ScopeIDE.Forms {
@@ -23,17 +27,21 @@ namespace ScopeIDE.Forms {
         public EScales Scales { get; set; }
 
         private PanelInstrument _panelInstrumentPanel1;
-        private PanelInstrument _panelInstrumentPanel2;
+        private PanelLayersVer1 _panelLayerVer1;
+        private PanelLayersVer2 _panelLayerVer2;
+        private PanelLayersVer3 _panelLayerVer3;
         private PanelNavbar _panelNavbar1;
         private PanelToolBox _panelToolBox;
         private PanelMain _panelMain1;
 
-        private int def = 4;  //TODO add to configuration
+        private int def = 4;
+        private bool _loaded = false;
 
         public FormMain(IDesignConfig designConfig) {
             DoubleBuffered = true;
             DesignConfig = designConfig;
             components = new Container();
+
             UpdateScale();
 
             FormConfig();
@@ -42,14 +50,23 @@ namespace ScopeIDE.Forms {
             AddPanelMain();
             AddPanelNavbar();
             AddPanelInstrument();
-            AddPanelLayer();
+            // AddPanelLayer1(); //TODO not popular versions, have bags 
+            // AddPanelLayer2(); //TODO not popular versions, have bags
+            AddPanelLayer3();
             AddPanelToolBox();
             AddLocationManager();
         }
 
 
+        protected override void OnLoad(EventArgs e) {
+            _loaded = true;
+            OnResize(e);
+            base.OnLoad(e);
+        }
+
         protected override void OnResize(EventArgs e) {
             UpdateScale();
+            if (!_loaded) return;;
 
             int coof = Scales switch {
                 EScales.HD => DesignConfig.Scale.HD,
@@ -69,6 +86,7 @@ namespace ScopeIDE.Forms {
 
             _locationManager?.UpdateDefValues(GetLocationManagerConfig());
             _locationManager?.ReLocateAll();
+
             base.OnResize(e);
         }
 
@@ -103,7 +121,9 @@ namespace ScopeIDE.Forms {
             _locationManager.AddPanel(_panelMain1, LocationSide.StaticUP, 1);
             _locationManager.AddPanel(_panelToolBox, LocationSide.StaticLeft, 1);
             _locationManager.AddPanel(_panelInstrumentPanel1, LocationSide.Left, 1);
-            _locationManager.AddPanel(_panelInstrumentPanel2, LocationSide.Left, 2);
+            _locationManager.AddPanel(_panelLayerVer1, LocationSide.Left, 2);
+            _locationManager.AddPanel(_panelLayerVer2, LocationSide.Left, 3);
+            _locationManager.AddPanel(_panelLayerVer3, LocationSide.Left, 4);
 
             _locationManager.ReLocateAll();
         }
@@ -148,12 +168,11 @@ namespace ScopeIDE.Forms {
 
         private void AddPanelToolBox() {
             List<UserControl> panelsToolBox = new List<UserControl>() {
-                this._panelMain1,
-                this._panelNavbar1,
+                this._panelLayerVer1,
+                this._panelLayerVer2,
+                this._panelLayerVer3,
                 this._panelInstrumentPanel1,
-                this._panelInstrumentPanel2,
             };
-
             var contextMenu = new ContextMenu(DesignConfig, new List<Button>());
 
             DesignConfig.PanelToolBox.LocationXDef = 0;
@@ -182,12 +201,13 @@ namespace ScopeIDE.Forms {
                 DesignConfig.PanelInstrument.LocationYDef)
             ) {
                 TabIndex = 3,
+                Visible = false,
             };
 
             this.Controls.Add(_panelInstrumentPanel1);
         }
 
-        private void AddPanelLayer() {
+        private void AddPanelLayer1() {
             DesignConfig.PanelInstrument.LocationXDef =
                 DesignConfig.PanelToolBox.Button.Width + DesignConfig.Resources.RetreatSize +
                 DesignConfig.Resources.RetreatSize;
@@ -195,16 +215,53 @@ namespace ScopeIDE.Forms {
             DesignConfig.PanelInstrument.LocationYDef =
                 DesignConfig.PanelMainConfig.Height - DesignConfig.Resources.RetreatSize - 1;
 
-            this._panelInstrumentPanel2 = new PanelInstrument(DesignConfig, new Point(
+            this._panelLayerVer1 = new PanelLayersVer1(DesignConfig, new Point(
                 DesignConfig.PanelInstrument.LocationXDef,
                 DesignConfig.PanelInstrument.LocationYDef)
             ) {
                 TabIndex = 3,
+                Visible = false,
             };
 
-            _panelInstrumentPanel2.BackColor = Color.Indigo;
+            this.Controls.Add(_panelLayerVer1);
+        }
 
-            this.Controls.Add(_panelInstrumentPanel2);
+        private void AddPanelLayer2() {
+            DesignConfig.PanelInstrument.LocationXDef =
+                DesignConfig.PanelToolBox.Button.Width + DesignConfig.Resources.RetreatSize +
+                DesignConfig.Resources.RetreatSize;
+
+            DesignConfig.PanelInstrument.LocationYDef =
+                DesignConfig.PanelMainConfig.Height - DesignConfig.Resources.RetreatSize - 1;
+
+            this._panelLayerVer2 = new PanelLayersVer2(DesignConfig, new Point(
+                DesignConfig.PanelInstrument.LocationXDef,
+                DesignConfig.PanelInstrument.LocationYDef)
+            ) {
+                TabIndex = 4,
+                Visible = false,
+            };
+
+            this.Controls.Add(_panelLayerVer2);
+        }
+
+        private void AddPanelLayer3() {
+            DesignConfig.PanelInstrument.LocationXDef =
+                DesignConfig.PanelToolBox.Button.Width + DesignConfig.Resources.RetreatSize +
+                DesignConfig.Resources.RetreatSize;
+
+            DesignConfig.PanelInstrument.LocationYDef =
+                DesignConfig.PanelMainConfig.Height - DesignConfig.Resources.RetreatSize - 1;
+
+            this._panelLayerVer3 = new PanelLayersVer3(DesignConfig, new Point(
+                DesignConfig.PanelInstrument.LocationXDef,
+                DesignConfig.PanelInstrument.LocationYDef)
+            ) {
+                TabIndex = 5,
+                Visible = false,
+            };
+
+            this.Controls.Add(_panelLayerVer3);
         }
 
 

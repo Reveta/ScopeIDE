@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 
-namespace ScopeIDE.Elements {
-    partial class ButtonColorDepend {
+namespace ScopeIDE.Elements.Panels.PanelLayer.ButtonsLayerElements.ButtonsLayers {
+    partial class ButtonLayerVer3 {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -27,9 +27,6 @@ namespace ScopeIDE.Elements {
         /// </summary>
         private void InitializeComponent() {
             components = new System.ComponentModel.Container();
-            //TODO Button color config
-            this.BackColor = this.ColorConfig.ThirdBackColor;
-            this.ForeColor = this.ColorConfig.FontColorMain;
         }
 
         #endregion

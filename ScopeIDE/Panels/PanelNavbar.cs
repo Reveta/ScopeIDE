@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using ScopeIDE.Config;
 using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Elements;
 using ScopeIDE.Elements.Panels.PanelNavbar;
@@ -14,21 +15,21 @@ namespace ScopeIDE.Panels {
             DesignConfig = designConfig;
             this.DoubleBuffered = true;
 
-            AddLayer(new ButtonNavbar(designConfig){Text = "File"});
-            AddLayer(new ButtonNavbar(designConfig){Text = "Windows"});
-            AddLayer(new ButtonNavbar(designConfig){Text = "Edit"});
-            AddLayer(new ButtonNavbar(designConfig){Text = "View"});
-            AddLayer(new ButtonNavbar(designConfig){Text = "Navigate"});
-            AddLayer(new ButtonNavbar(designConfig){Text = "View"});
-            AddLayer(new ButtonNavbar(designConfig){Text = "Navigadsadasadte"});
-            AddLayer(new ButtonNavbar(designConfig){Text = "Windows"});
-            AddLayer(new ButtonNavbar(designConfig){Text = "Code"});
+            AddButtonInstrument(new ButtonNavbar(designConfig){Text = "File"});
+            AddButtonInstrument(new ButtonNavbar(designConfig){Text = "Windows"});
+            AddButtonInstrument(new ButtonNavbar(designConfig){Text = "Edit"});
+            AddButtonInstrument(new ButtonNavbar(designConfig){Text = "View"});
+            AddButtonInstrument(new ButtonNavbar(designConfig){Text = "Navigate"});
+            AddButtonInstrument(new ButtonNavbar(designConfig){Text = "View"});
+            AddButtonInstrument(new ButtonNavbar(designConfig){Text = "Navigadsadasadte"});
+            AddButtonInstrument(new ButtonNavbar(designConfig){Text = "Windows"});
+            AddButtonInstrument(new ButtonNavbar(designConfig){Text = "Code"});
 
             InitializeComponent();
             RePaint();
         }
 
-        public override void AddLayer(Button button, bool onlyPosition = false) {
+        public override void AddButtonInstrument(Button button, bool onlyPosition = false) {
             int count = this.GetAllButtons().Count;
             button.Name = "buttonNavbar" + count;
             button.TabIndex = count;

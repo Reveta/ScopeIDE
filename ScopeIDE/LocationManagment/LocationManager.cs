@@ -41,7 +41,7 @@ namespace ScopeIDE.LocationManagment {
                 var containersBySide = Containers[side];
                 containersBySide.Sort((cont1, cont2) => cont2.Position - cont1.Position);
                 containersBySide
-                    .FindAll(containers => containers.Panel.Visible)
+                    .FindAll(container => container.Panel is not null && container.Panel.Visible)
                     .ForEach(ReLoad);
             });
         }

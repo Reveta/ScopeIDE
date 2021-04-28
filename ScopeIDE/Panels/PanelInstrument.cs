@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using ScopeIDE.Config.Interfaces;
+using ScopeIDE.Config;
 using ScopeIDE.Elements;
 using ScopeIDE.Elements.Panels.PanelInstruments;
 using ScopeIDE.libs.ControlExt;
@@ -25,24 +25,26 @@ namespace ScopeIDE.Panels {
 
             AddTransformButton();
 
-            AddLayer(new ButtonInstrument(designConfig) {Text = "😍"});
-            AddLayer(new ButtonInstrument(designConfig) {Text = "😘"});
-            AddLayer(new ButtonInstrument(designConfig) {Text = "👌"});
-            AddLayer(new ButtonInstrument(designConfig) {Text = "😒"});
-
-            AddLayer(new ButtonInstrument(designConfig) {Text = "😁"});
-            AddLayer(new ButtonInstrument(designConfig) {Text = "😂"});
-            AddLayer(new ButtonInstrument(designConfig) {Text = "😊"});
-            AddLayer(new ButtonInstrument(designConfig) {Text = "🤣"});
-
-            AddLayer(new ButtonInstrument(designConfig) {Text = "❤"});
-            AddLayer(new ButtonInstrument(designConfig) {Text = "💕"});
-            AddLayer(new ButtonInstrument(designConfig) {Text = "🎉"});
+            AddButtonInstrument(new ButtonInstrument(designConfig) {Text = "😍"});
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "😘"});
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "👌"});
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "😒"});
+            
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "😁"});
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "😂"});
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "😊"});
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "🤣"});
+            
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "❤"});
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "💕"});
+            AddButtonInstrument(new ButtonInstrument(designConfig){Text = "🎉"});
 
             InitializeComponent();
         }
+        
+        
 
-        public override void AddLayer(Button button, bool onlyPosition = false) {
+        public override void AddButtonInstrument(Button button, bool onlyPosition = false) {
             int count = this.GetAllButtons().Count;
             button.Name = "buttonInstrument" + count;
             button.TabIndex = count;
@@ -58,6 +60,7 @@ namespace ScopeIDE.Panels {
 
                 button.FlatAppearance.BorderSize = 0;
                 button.Margin = new Padding(0);
+                button.Padding = new Padding(0);
 
                 button.Size = new Size(
                     DesignConfig.PanelInstrument.Button.Width,
@@ -96,8 +99,7 @@ namespace ScopeIDE.Panels {
             _buttonTransform1 = new ButtonTransform(DesignConfig) {
                 Location = new Point(0, DesignConfig.Resources.RetreatSize),
             };
-            this._buttonTransform1.Click += this.buttonTransform1_Click_1;
-            this._buttonTransform1.Click += this.buttonTransform1_Click_1;
+            this._buttonTransform1.Click += this.ButtonTransform1Click1;
 
             this.Controls.Add(_buttonTransform1);
         }
@@ -124,7 +126,7 @@ namespace ScopeIDE.Panels {
 
         #region EventButtonTransformClick_Region
 
-        private void buttonTransform1_Click_1(object sender, EventArgs e) {
+        private void ButtonTransform1Click1(object sender, EventArgs e) {
             switch (_state) {
                 case EState.Big:
                     _state = EState.Small;

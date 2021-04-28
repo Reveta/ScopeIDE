@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 
 namespace ScopeIDE.Elements.Panels.PanelMain {
-	partial class ButtonInstrument {
+	public partial class ButtonInstrument {
 		/// <summary> 
 		/// Required designer variable.
 		/// </summary>

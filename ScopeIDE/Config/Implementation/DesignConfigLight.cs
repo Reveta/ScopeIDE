@@ -1,6 +1,7 @@
 ﻿using ScopeIDE.Config.Implementation.Def;
 using ScopeIDE.Config.Implementation.Light;
 using ScopeIDE.Config.Interfaces;
+using ScopeIDE.Config.Interfaces.Panels;
 
 namespace ScopeIDE.Config.Implementation {
     public class DesignConfigLight : IDesignConfig{
@@ -9,6 +10,7 @@ namespace ScopeIDE.Config.Implementation {
         public IContextMenuConfig ContextMenuConfig { get; set; }
         public IPanelMainConfig PanelMainConfig { get; set; }
         public IPanelInstrument PanelInstrument { get; set; }
+        public IPanelLayerConfig PanelLayerConfig { get; set; }
         public IPanelNavbar PanelNavbar { get; set; }
         public IPanelToolBox PanelToolBox { get; set; }
         public IResources Resources { get; set; }
@@ -21,6 +23,7 @@ namespace ScopeIDE.Config.Implementation {
             PanelMainConfig = new PanelMainConfig();
             PanelInstrument = new PanelInstrumentDef();
             PanelNavbar = new PanelNavbarDef();
+            PanelLayerConfig = new PanelLayerConfigDef();
             PanelToolBox = new PanelToolbox();
             Resources = new ResourcesDef();
             Scale = new ScaleDef();
