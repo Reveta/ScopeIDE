@@ -55,18 +55,20 @@ namespace ScopeIDE.Forms {
             AddPanelLayer3();
             AddPanelToolBox();
             AddLocationManager();
+            
+            this._panelToolBox.EventFormResize(this);  // TODO Rewrite this khuyovyy fix
         }
 
 
         protected override void OnLoad(EventArgs e) {
             _loaded = true;
-            OnResize(e);
             base.OnLoad(e);
+            OnResize(e);
         }
 
         protected override void OnResize(EventArgs e) {
             UpdateScale();
-            if (!_loaded) return;;
+            if (!_loaded) return;
 
             int coof = Scales switch {
                 EScales.HD => DesignConfig.Scale.HD,

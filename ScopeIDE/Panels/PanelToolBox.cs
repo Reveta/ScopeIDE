@@ -36,7 +36,6 @@ namespace ScopeIDE.Panels {
 
             SetPanels();
             InitializeComponent();
-            RePaint();
         }
 
         private void SetPanels() {
