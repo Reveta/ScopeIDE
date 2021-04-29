@@ -26,6 +26,10 @@ namespace ScopeIDE.Elements {
             DesignConfig = designConfig;
             this.DoubleBuffered = true;
 
+            this.LostFocus += (sender, args) => {
+                this.Hide();
+            };
+            
             Buttons = buttons;
             Buttons.ForEach(button => AddButtonInstrument(button));
 
@@ -123,5 +127,6 @@ namespace ScopeIDE.Elements {
         public void ReLocateAll() {
             LocationManager?.ReLocateAll();
         }
+        
     }
 }

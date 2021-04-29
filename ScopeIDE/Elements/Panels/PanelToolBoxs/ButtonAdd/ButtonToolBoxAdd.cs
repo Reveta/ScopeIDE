@@ -6,12 +6,12 @@ using ScopeIDE.Config.Interfaces;
 using ScopeIDE.Forms;
 
 namespace ScopeIDE.Elements.Panels.PanelToolBoxs.ButtonAdd {
-    public partial class AButtonToolBoxAdd : AButtonColorDepend, IEventFormResize {
+    public partial class ButtonToolBoxAdd : AButtonColorDepend, IEventFormResize {
         public IDesignConfig DesignConfig { get; }
         public Elements.ContextMenu ContextMenu { get; set; }
         private bool state;
 
-        public AButtonToolBoxAdd(IDesignConfig designConfig, Elements.ContextMenu contextMenu) : base(designConfig.ColorConfig) {
+        public ButtonToolBoxAdd(IDesignConfig designConfig, Elements.ContextMenu contextMenu) : base(designConfig.ColorConfig) {
             state = false;
             ContextMenu = contextMenu;
 
@@ -23,6 +23,9 @@ namespace ScopeIDE.Elements.Panels.PanelToolBoxs.ButtonAdd {
 
         protected override void OnClick(EventArgs e) {
             ContextMenu.BringToFront();
+
+            state = ContextMenu.Visible;
+            
             if (!state) {
                 ContextMenu.Show();
                 state = true;
