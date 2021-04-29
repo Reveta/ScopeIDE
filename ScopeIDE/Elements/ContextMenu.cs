@@ -41,6 +41,7 @@ namespace ScopeIDE.Elements {
             int count = this.GetAllButtons().Count;
             button.Name = "contextItem" + count;
             button.TabIndex = count;
+            button.LostFocus += (sender, args) => this.Hide();
 
             if (!onlyPosition) {
                 button.FlatStyle = FlatStyle.Flat;
