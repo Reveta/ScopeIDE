@@ -89,7 +89,7 @@ namespace ScopeIDE.Panels {
         }
 
         public override void RePaint() {
-            int xMargin = DesignConfig.Resources.RetreatSize;
+            int xMargin = 0;
             int yMargin = DesignConfig.Resources.RetreatSize;
 
             //Paint special Add Button
