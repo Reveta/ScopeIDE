@@ -17,14 +17,22 @@ namespace ScopeIDE.Elements.Panels.ContextMenu {
 
         public void EventFormResize(Form form) {
             if (form is IFormResizable formResizable) {
-                DesignConfig.PanelNavbar.Button.FontSize =
-                    (int) (DesignConfig.PanelNavbar.Button.FontSizeDef / 100 * formResizable.Scales switch {
-                        EScales.HD => DesignConfig.Scale.HD,
-                        EScales.FullHD => DesignConfig.Scale.FullHD,
-                        EScales.DoubleHD => DesignConfig.Scale.DoubleHD,
-                        EScales.FourHD => DesignConfig.Scale.FourHD,
-                        _ => DesignConfig.Scale.FourHD
-                    });
+                int coof = formResizable.Scales switch {
+                    EScales.HD => DesignConfig.Scale.HD,
+                    EScales.FullHD => DesignConfig.Scale.FullHD,
+                    EScales.DoubleHD => DesignConfig.Scale.DoubleHD,
+                    EScales.FourHD => DesignConfig.Scale.FourHD,
+                    _ => DesignConfig.Scale.FullHD
+                };
+
+                DesignConfig.ContextMenuConfig.ButtonConfig.FontSize =
+                    DesignConfig.ContextMenuConfig.ButtonConfig.FontSizeDef / 100f * coof;
+
+                // DesignConfig.ContextMenuConfig.ButtonConfig.Width =
+                    // (int) (DesignConfig.ContextMenuConfig.ButtonConfig.WidthDef / 100f * coof);
+
+                DesignConfig.ContextMenuConfig.ButtonConfig.Height =
+                    (int) (DesignConfig.ContextMenuConfig.ButtonConfig.HeightDef / 100f * coof);
 
                 this.Font = new Font(
                     DesignConfig.ContextMenuConfig.ButtonConfig.FontName,

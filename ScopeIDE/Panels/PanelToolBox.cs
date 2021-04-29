@@ -19,7 +19,7 @@ namespace ScopeIDE.Panels {
         public LocationManager LocationManager { get; set; }
         private readonly List<UserControl> _panels;
         private AButtonToolBoxAdd AButtonToolBoxAdd { get; set; }
-        private ContextMenu ContextMenu { get; set; }
+        private readonly ContextMenu _contextMenu;
 
 
         public PanelToolBox(
@@ -29,10 +29,9 @@ namespace ScopeIDE.Panels {
             Point location
                 ) : base(location) {
             //TODO придумати як зберігати контекстне меню всередині
-            ContextMenu = contextMenu;
+            _contextMenu = contextMenu;
             _panels = panels;
             DesignConfig = designConfig;
-            this.DoubleBuffered = true;
 
             SetPanels();
             InitializeComponent();
@@ -54,8 +53,8 @@ namespace ScopeIDE.Panels {
                 addContextMenuButtons.Add(menuItem);
             });
 
-            ContextMenu.Buttons = addContextMenuButtons;
-            AButtonToolBoxAdd = new AButtonToolBoxAdd(this.DesignConfig, ContextMenu);
+            _contextMenu.Buttons = addContextMenuButtons;
+            AButtonToolBoxAdd = new AButtonToolBoxAdd(this.DesignConfig, _contextMenu);
             AddButtonInstrument(AButtonToolBoxAdd);
         }
 
@@ -106,7 +105,7 @@ namespace ScopeIDE.Panels {
                     yMargin += button.Height + DesignConfig.Resources.RetreatSize;;
                 });
 
-            ContextMenu.Location = new Point(
+            _contextMenu.Location = new Point(
                 base.Location.X + this.Width + DesignConfig.Resources.RetreatSize,
                 base.Location.Y
             );
@@ -120,6 +119,7 @@ namespace ScopeIDE.Panels {
                 if (control is IEventFormResize element) {
                     element.EventFormResize(form);
                 }
+                _contextMenu.EventFormResize(form);
             });
 
             DesignConfig.PanelToolBox.Height = form.Height;

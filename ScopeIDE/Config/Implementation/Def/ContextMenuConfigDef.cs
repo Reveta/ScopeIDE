@@ -17,7 +17,7 @@ namespace ScopeIDE.Config.Implementation.Def {
             Height = 30;
 
             ButtonConfig = new ButtonConfigEmpty() {
-                WidthDef = 120,
+                WidthDef = 50,
                 HeightDef = 30,
                 Width = 120,
                 Height = 30,

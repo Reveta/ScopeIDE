@@ -2,10 +2,9 @@
 using System.Drawing;
 using System.Windows.Forms;
 using ScopeIDE.Config;
-using ScopeIDE.Config.Interfaces;
+using ScopeIDE.Forms;
 using ScopeIDE.LocationManagment;
 using ScopeIDE.LocationManagment.Configs;
-using ScopeIDE.Panels;
 using ScopeIDE.Panels.PanelTemplates;
 
 namespace ScopeIDE.Elements {
@@ -31,7 +30,6 @@ namespace ScopeIDE.Elements {
             Buttons.ForEach(button => AddButtonInstrument(button));
 
             InitializeComponent();
-            RePaint();
             this.Hide();
         }
 
@@ -69,41 +67,48 @@ namespace ScopeIDE.Elements {
             this.Controls.Add(button);
         }
 
+        public void EventFormResize(Form form) {
+            Buttons.ForEach(button => {
+                if (button is IEventFormResize element) {
+                    button.AutoSize = false;
+                    element.EventFormResize(form);
+                }
+            });
+            
+            int maxButtonWidth = 0;
+            Buttons.ForEach(control => {
+                if (control is IEventFormResize resize) {
+                    control.AutoSize = true;
+                    if (control.Width > maxButtonWidth) {
+                        maxButtonWidth = control.Width;
+                    }
+                }
+            });
+
+            DesignConfig.ContextMenuConfig.ButtonConfig.WidthDef = maxButtonWidth;
+
+
+            DesignConfig.ContextMenuConfig.Width = maxButtonWidth;
+
+            DesignConfig.ContextMenuConfig.Height = 
+            DesignConfig.ContextMenuConfig.ButtonConfig.Height * (Buttons.Count) 
+            + (DesignConfig.Resources.RetreatSize * 2);
+
+            RePaint();
+            ReLocateAll();
+        }
+
         public override void RePaint() {
             int xMargin = 0;
             int yMargin = DesignConfig.Resources.RetreatSize;
 
             Buttons.ForEach(button => {
                 button.Location = new Point(xMargin, yMargin);
+                button.Width = DesignConfig.ContextMenuConfig.ButtonConfig.WidthDef;
                 yMargin += button.Height;
             });
 
             this.Size = new Size(DesignConfig.ContextMenuConfig.Width, DesignConfig.ContextMenuConfig.Height);
-        }
-
-        public void EventFormResize(Form form) {
-            int maxButtonWidth = DesignConfig.ContextMenuConfig.ButtonConfig.WidthDef;
-            
-            Buttons.ForEach(control => {
-                if (control.Width > maxButtonWidth) {
-                    maxButtonWidth = control.Width;
-                }
-            });
-
-            DesignConfig.ContextMenuConfig.Height = 
-                Buttons.Count * DesignConfig.ContextMenuConfig.ButtonConfig.Height + 
-                (DesignConfig.Resources.RetreatSize * 2);
-            DesignConfig.ContextMenuConfig.ButtonConfig.Width = maxButtonWidth;
-            DesignConfig.ContextMenuConfig.Width = maxButtonWidth;
-            
-            Buttons.ForEach(button => {
-                if (button is IEventFormResize element) {
-                    element.EventFormResize(form);
-                }
-            });
-
-            RePaint();
-            ReLocateAll();
         }
 
         private void InitializeComponent() {
@@ -116,7 +121,7 @@ namespace ScopeIDE.Elements {
 
         public LocationManager LocationManager { get; set; }
         public void ReLocateAll() {
-            LocationManager.ReLocateAll();
+            LocationManager?.ReLocateAll();
         }
     }
 }
