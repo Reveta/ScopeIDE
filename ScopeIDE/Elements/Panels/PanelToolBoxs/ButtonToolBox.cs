@@ -9,7 +9,7 @@ using ScopeIDE.LocationManagment.Configs;
 using ScopeIDE.Panels;
 
 namespace ScopeIDE.Elements.Panels.PanelToolBoxs {
-    public partial class AButtonToolBox : AButtonColorDepend, IEventFormResize, IReLocateControl {
+    public partial class ButtonToolBox : AButtonColorDepend, IEventFormResize, IReLocateControl {
         public IDesignConfig DesignConfig { get; }
         public LocationManager LocationManager { get; set; }
         public UserControl Panel { get; }
@@ -17,7 +17,7 @@ namespace ScopeIDE.Elements.Panels.PanelToolBoxs {
         private string VerticalText { get; set; }
 
 
-        public AButtonToolBox(string verticalText, IDesignConfig designConfig, UserControl panel, LocationManager locationManager) : base(designConfig.ColorConfig) {
+        public ButtonToolBox(string verticalText, IDesignConfig designConfig, UserControl panel, LocationManager locationManager) : base(designConfig.ColorConfig) {
             DesignConfig = designConfig;
             LocationManager = locationManager;
             Panel = panel;

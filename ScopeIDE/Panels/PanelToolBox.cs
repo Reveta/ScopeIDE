@@ -43,7 +43,7 @@ namespace ScopeIDE.Panels {
 
             _panels.ForEach(panel => {
                 if (panel is null){return;}
-                var buttonToolBox = new AButtonToolBox(panel.Name, DesignConfig, panel, LocationManager);
+                var buttonToolBox = new ButtonToolBox(panel.Name, DesignConfig, panel, LocationManager);
                 var menuItem = new ButtonToolBoxAddContextItem(DesignConfig, buttonToolBox, this) {
                     Text = panel.Name
                 };
